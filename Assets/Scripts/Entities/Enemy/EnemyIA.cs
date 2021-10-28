@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class EnemyIA : MonoBehaviour
 {
-
-    private Rigidbody2D rigidBody;
+    #region VARIABLES
+    
+  
     private Transform player;
     private Animator animator;
     private EnemyController enemy;
 
-    public float moveSpeed = 1f;
+   
     public float attackDistance;
 
     public float cooldownTimer;
@@ -23,13 +24,15 @@ public class EnemyIA : MonoBehaviour
     public bool attackMode;
     public bool isAttacking;
 
+    #endregion
+
     private void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
+       
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerController>().transform;
 
-        moveSpeed = 3;
+        
         followPlayer = true;
         attackDistance = 2f;
         intTimer = 2f;
@@ -103,7 +106,7 @@ public class EnemyIA : MonoBehaviour
 
     private void moveCharacter(Vector2 direction)
     {
-        rigidBody.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
+        //rigidBody.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
     }
 
     private void GetPlayerPos()
@@ -115,7 +118,7 @@ public class EnemyIA : MonoBehaviour
     }
     private void StopMoving()
     {
-        rigidBody.velocity = Vector2.zero;
+        //rigidBody.velocity = Vector2.zero;
         animator.SetBool("canWalk", false);
     }
 

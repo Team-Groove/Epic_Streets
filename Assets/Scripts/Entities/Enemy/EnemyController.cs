@@ -5,12 +5,11 @@ public class EnemyController : Fighter
     #region OWN_VARIABLES
 
     private Transform player;
+    private EnemyIA ia;
+
+    public float spriteRendererLocalScaleX;
+    public Vector2 playersPos;
     public bool isDummy;
-
-    [SerializeField] EnemyIA ia;
-
-    //PARA HACER EL SPRITE FLIP
-    private float spriteRendererLocalScaleX;
 
     #endregion
 
@@ -31,31 +30,15 @@ public class EnemyController : Fighter
     private void Update()
     {
         UpdateHealthBar(currenthealth);
-        FlipSprite();
         OutOfHealth();
+        GetPlayersPos();
     }
 
     #endregion
 
     #region FUNCTIONS
 
-    private void FlipSprite()
-    {
-        if (!isDummy)
-        {
-            if (!ia.isAttacking)
-            {
-                if (player.position.x > transform.position.x)
-                {
-                    spriteRenderer.transform.localScale = new Vector3(spriteRendererLocalScaleX, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.z);
-                }
-                else if (player.position.x < transform.position.x)
-                {
-                    spriteRenderer.transform.localScale = new Vector3(-spriteRendererLocalScaleX, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.z);
-                }
-            }
-        }
-    }
+    
     private void OutOfHealth()
     {
         if (currenthealth <= 0)
@@ -70,6 +53,10 @@ public class EnemyController : Fighter
             }
         }
     }
-
+    private void GetPlayersPos()
+    {
+        playersPos = player.transform.position;
+    }
+    
     #endregion
 }

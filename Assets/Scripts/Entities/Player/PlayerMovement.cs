@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         VelocityMovement(new Vector2(player.horizontal_speed, player.vertical_speed), controlAxis);
+        StopMovementY();
     }
 
     #endregion
@@ -75,6 +76,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void StopMovementY()
+    {
+        if (player.rigidBody.velocity.y != 0  && attack.isAttacking)
+        {
+            player.rigidBody.velocity = Vector2.zero;
+        }
+    }
     private void OnGetComponentStart()
     {
         dash = GetComponent<Dash>();
