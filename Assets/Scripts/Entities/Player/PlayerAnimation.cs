@@ -122,7 +122,7 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    public IEnumerator RedFeedback()
+    public IEnumerator DamageRedFeedback()
     {
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.2f);

@@ -3,9 +3,11 @@ using UnityEngine;
 public class EnemyController : Fighter
 {
     #region OWN_VARIABLES
-    
+
     private Transform player;
     public bool isDummy;
+
+    [SerializeField] EnemyIA ia;
 
     //PARA HACER EL SPRITE FLIP
     private float spriteRendererLocalScaleX;
@@ -13,11 +15,17 @@ public class EnemyController : Fighter
     #endregion
 
     #region UNITY_CALLS
-   
+
     private void Start()
     {
         player = FindObjectOfType<PlayerController>().transform;
         spriteRendererLocalScaleX = spriteRenderer.transform.localScale.x;
+
+        if (!isDummy)
+        {
+            ia = GetComponent<EnemyIA>();
+        }
+
     }
 
     private void Update()
@@ -33,16 +41,18 @@ public class EnemyController : Fighter
 
     private void FlipSprite()
     {
-        
         if (!isDummy)
         {
-            if (player.position.x > transform.position.x)
+            if (!ia.isAttacking)
             {
-                spriteRenderer.transform.localScale = new Vector3(spriteRendererLocalScaleX, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.z);
-            }
-            else if (player.position.x < transform.position.x)
-            {
-                spriteRenderer.transform.localScale = new Vector3(-spriteRendererLocalScaleX, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.z);
+                if (player.position.x > transform.position.x)
+                {
+                    spriteRenderer.transform.localScale = new Vector3(spriteRendererLocalScaleX, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.z);
+                }
+                else if (player.position.x < transform.position.x)
+                {
+                    spriteRenderer.transform.localScale = new Vector3(-spriteRendererLocalScaleX, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.z);
+                }
             }
         }
     }

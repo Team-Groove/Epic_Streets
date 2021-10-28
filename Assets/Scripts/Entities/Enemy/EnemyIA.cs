@@ -14,13 +14,14 @@ public class EnemyIA : MonoBehaviour
     public float cooldownTimer;
     public float intTimer;
     private Vector2 movement;
-    private float distance;
+    public float distance;
 
     public bool cooling;
 
     public bool followPlayer;
     public bool chasingPlayer;
     public bool attackMode;
+    public bool isAttacking;
 
     private void Start()
     {
@@ -42,18 +43,27 @@ public class EnemyIA : MonoBehaviour
 
         distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (distance > attackDistance)
+        if (distance > attackDistance && !isAttacking)
         {
-            StopAttacking();
+
             chasingPlayer = true;
             animator.SetBool("canWalk", true);
 
         }
-        else
+        else if (distance < attackDistance)
         {
             chasingPlayer = false;
             animator.SetBool("canWalk", false);
-            attackMode = true;
+            if (!isAttacking)
+            {
+            
+                attackMode = true;
+        
+            }
+            else
+            {
+                attackMode = false;
+            }
         }
 
         if (attackMode)
@@ -71,19 +81,19 @@ public class EnemyIA : MonoBehaviour
         {
             StopMoving();
         }
-    
-       
+
+
     }
 
     private void FixedUpdate()
     {
         if (followPlayer)
         {
-            if (chasingPlayer)
+            if (chasingPlayer && !isAttacking)
             {
                 moveCharacter(movement);
             }
-            else
+            else 
             {
                 StopMoving();
             }
@@ -109,12 +119,20 @@ public class EnemyIA : MonoBehaviour
         animator.SetBool("canWalk", false);
     }
 
+    public void isAttackingTrue()
+    {
+        isAttacking = true;
+    }
+    public void isAttackingFalse()
+    {
+        isAttacking = false;
+    }
     private void Attack()
     {
         animator.SetBool("Attack", true);
     }
 
-    private void StopAttacking()
+    public void StopAttacking()
     {
         attackMode = false;
         animator.SetBool("Attack", false);
