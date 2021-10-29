@@ -75,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
     }
-
     private void StopMovementY()
     {
         if (player.rigidBody.velocity.y != 0  && attack.isAttacking)

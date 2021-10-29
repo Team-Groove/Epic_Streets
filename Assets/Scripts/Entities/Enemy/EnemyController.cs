@@ -18,7 +18,7 @@ public class EnemyController : Fighter
     private void Start()
     {
         player = FindObjectOfType<PlayerController>().transform;
-        spriteRendererLocalScaleX = spriteRenderer.transform.localScale.x;
+        
 
         if (!isDummy)
         {
@@ -38,7 +38,6 @@ public class EnemyController : Fighter
 
     #region FUNCTIONS
 
-    
     private void OutOfHealth()
     {
         if (currenthealth <= 0)

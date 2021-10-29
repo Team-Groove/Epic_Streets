@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7779233358081553780
 Transform:
   m_ObjectHideFlags: 0
@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 7408336630474282167}
   - component: {fileID: 7408336630474282166}
   - component: {fileID: 5391920343759691023}
+  - component: {fileID: 2062717982547630146}
   - component: {fileID: 7408336630474282162}
   - component: {fileID: 7408336630474282163}
   m_Layer: 0
@@ -276,12 +277,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3541a7e4c9481224b8114fae20d424ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vertical_speed: 1
-  horizontal_speed: 1
+  vertical_speed: 2
+  horizontal_speed: 2
   maxhealth: 100
   currenthealth: 100
   rigidBody: {fileID: 0}
   healthBar: {fileID: 7408336631475702788}
+  spriteRendererLocalScaleX: 0
+  playersPos: {x: 0, y: 0}
   isDummy: 0
 --- !u!114 &5391920343759691023
 MonoBehaviour:
@@ -295,14 +298,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2da4052de98519468bc82b49c0680e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
   attackDistance: 2.5
-  cooldownTimer: 1
-  intTimer: 0
-  cooling: 0
-  followPlayer: 1
+  timeBetweenAttacks: 0
+  pointToGo: {x: 0, y: 0}
+  playerPos: {x: 0, y: 0}
   chasingPlayer: 0
-  attackMode: 1
+  readyToAttack: 0
+  isAttacking: 0
+--- !u!114 &2062717982547630146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7408336630474282161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f420332f2ddd1d24f8ae8bbb2225b073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0}
 --- !u!95 &7408336630474282162
 Animator:
   serializedVersion: 3
@@ -334,7 +349,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

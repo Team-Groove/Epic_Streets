@@ -3,124 +3,58 @@ using UnityEngine;
 public class EnemyIA : MonoBehaviour
 {
     #region VARIABLES
-    
-  
-    private Transform player;
+
+
+    [SerializeField]private Transform playerSidePos_1;
+    [SerializeField]private Transform playerSidePos_2;
     private Animator animator;
-    private EnemyController enemy;
+    private EnemyMovement movement;
 
-   
-    public float attackDistance;
+    [SerializeField] private float attackDistance;
+    [SerializeField] private float timeBetweenAttacks;
+    
+    private float timer;
+    [SerializeField] private float distance1;
+    [SerializeField] private float distance2;
+    [SerializeField] private float distanceFromObjective;
 
-    public float cooldownTimer;
-    public float intTimer;
-    private Vector2 movement;
-    public float distance;
+    public Vector3 pointToGo;
+    
+    private bool cooling;
 
-    public bool cooling;
-
-    public bool followPlayer;
     public bool chasingPlayer;
-    public bool attackMode;
+    public bool readyToAttack;
     public bool isAttacking;
 
     #endregion
 
+    #region UNITY_CALLS
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        playerSidePos_1 = GameObject.Find("PointsEnemiesGo1").transform;
+        playerSidePos_2 = GameObject.Find("PointsEnemiesGo2").transform;
+        movement = GetComponent<EnemyMovement>();
+    }
     private void Start()
     {
-       
-        animator = GetComponent<Animator>();
-        player = FindObjectOfType<PlayerController>().transform;
-
-        
-        followPlayer = true;
-        attackDistance = 2f;
-        intTimer = 2f;
-
-
+        timer = timeBetweenAttacks;
     }
     private void Update()
     {
-
-        //DESIGN TOOL VARIABLES
-
-        distance = Vector2.Distance(transform.position, player.transform.position);
-
-        if (distance > attackDistance && !isAttacking)
-        {
-
-            chasingPlayer = true;
-            animator.SetBool("canWalk", true);
-
-        }
-        else if (distance < attackDistance)
-        {
-            chasingPlayer = false;
-            animator.SetBool("canWalk", false);
-            if (!isAttacking)
-            {
-            
-                attackMode = true;
-        
-            }
-            else
-            {
-                attackMode = false;
-            }
-        }
-
-        if (attackMode)
-        {
-            Attack();
-        }
-
-        if (cooling)
-        {
-            AttackCooldown();
-            animator.SetBool("Attack", false);
-        }
         GetPlayerPos();
-        if (!followPlayer)
-        {
-            StopMoving();
-        }
+        ChooseOnePointToAttack();
+        CheckDistanceFromPlayer();
+        Attack();
+        AttackCooldown();
 
-
+        Debug.DrawLine(transform.position, pointToGo, Color.yellow);
     }
 
-    private void FixedUpdate()
-    {
-        if (followPlayer)
-        {
-            if (chasingPlayer && !isAttacking)
-            {
-                moveCharacter(movement);
-            }
-            else 
-            {
-                StopMoving();
-            }
+    #endregion
 
-        }
-    }
-
-    private void moveCharacter(Vector2 direction)
-    {
-        //rigidBody.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
-    }
-
-    private void GetPlayerPos()
-    {
-        Vector2 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        direction.Normalize();
-        movement = direction;
-    }
-    private void StopMoving()
-    {
-        //rigidBody.velocity = Vector2.zero;
-        animator.SetBool("canWalk", false);
-    }
+    #region ANIMATION_EVENTS
 
     public void isAttackingTrue()
     {
@@ -130,33 +64,93 @@ public class EnemyIA : MonoBehaviour
     {
         isAttacking = false;
     }
-    private void Attack()
-    {
-        animator.SetBool("Attack", true);
-    }
-
-    public void StopAttacking()
-    {
-        attackMode = false;
-        animator.SetBool("Attack", false);
-    }
-
     public void TriggerCooling()
     {
         cooling = true;
     }
 
-    private void AttackCooldown()
+    #endregion
+
+    #region PRIVATE_FUNCTIONS
+
+    private void ChasePlayer(bool a)
     {
-
-        cooldownTimer -= Time.deltaTime;
-
-        if (cooldownTimer <= 0 && cooling && attackMode)
+        chasingPlayer = a;
+        animator.SetBool("canWalk", a);
+    }
+    private void IsReadyToAttack(bool a)
+    {
+        readyToAttack = a;
+        animator.SetBool("Attack", a);
+    }
+    private void CheckDistanceFromPlayer()
+    {
+        
+        if (distanceFromObjective > attackDistance && !isAttacking)
         {
-            cooling = false;
-            cooldownTimer = intTimer;
+            ChasePlayer(true);
+            IsReadyToAttack(false);
+        }
+        else if (distanceFromObjective <= attackDistance || distance2 <= attackDistance)
+        {
+            ChasePlayer(false);
+            movement.StopMoving();
+            IsReadyToAttack(true);
+        }
+    }
+    private void ChooseOnePointToAttack()
+    {
+        distance1 = Vector2.Distance(transform.position, playerSidePos_1.transform.position);
+        distance2 = Vector2.Distance(transform.position, playerSidePos_2.transform.position);
+
+        if (distance1 > distance2)
+        {
+            pointToGo = playerSidePos_2.position;
+            Debug.Log("Objetivo: Derecha");
+        }
+        else if (distance1 < distance2)
+        {
+            pointToGo = playerSidePos_1.position;
+            Debug.Log("Objetivo: Izquierda");
         }
 
+        distanceFromObjective = Vector2.Distance(transform.position, pointToGo);
+
+    }
+    private void AttackCooldown()
+    {
+        if (cooling)
+        {
+            animator.SetBool("Attack", false);
+            timer -= Time.deltaTime;
+
+            if (timer <= 0 && cooling && readyToAttack)
+            {
+                cooling = false;
+                timer = timeBetweenAttacks;
+            }
+        }
+    }
+    private void Attack()
+    {
+        if (readyToAttack)
+        {
+            animator.SetBool("Attack", true);
+        }
     }
 
+
+    #endregion
+
+    #region PUBLIC_FUNCTIONS
+
+    public Vector2 GetPlayerPos()
+    {
+        Vector2 direction = pointToGo - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        direction.Normalize();
+        return direction;
+    }
+
+    #endregion
 }
