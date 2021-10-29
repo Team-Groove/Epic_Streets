@@ -11,7 +11,9 @@ public class EnemyHitBox : MonoBehaviour
 
     [SerializeField] private GameObject popUpNumber;
     [SerializeField] private GameObject popUpNumberSpawnPoint;
-    
+
+    [SerializeField] private AudioClip sfxSounds;
+
     #endregion
 
     #region UNITY_CALLS
@@ -33,6 +35,7 @@ public class EnemyHitBox : MonoBehaviour
         {
             enemy.SendMessage("RedFeedback");
             enemy.ReceiveDamage(dmgReceived);
+            SFXController.instance.PlaySound(sfxSounds, 0.8f, Random.Range(0.2f, 0.8f));
             popUpNumber.GetComponentInChildren<TextMeshPro>().SetText("-" + dmgReceived.ToString());
             Instantiate(popUpNumber, popUpNumberSpawnPoint.transform.position, Quaternion.identity);
         }

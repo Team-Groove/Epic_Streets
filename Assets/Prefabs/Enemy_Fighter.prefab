@@ -298,10 +298,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2da4052de98519468bc82b49c0680e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSidePos_1: {fileID: 0}
+  playerSidePos_2: {fileID: 0}
   attackDistance: 2.5
   timeBetweenAttacks: 0
-  pointToGo: {x: 0, y: 0}
-  playerPos: {x: 0, y: 0}
+  distance1: 0
+  distance2: 0
+  distanceFromObjective: 0
+  pointToGo: {x: 0, y: 0, z: 0}
   chasingPlayer: 0
   readyToAttack: 0
   isAttacking: 0
@@ -317,7 +321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f420332f2ddd1d24f8ae8bbb2225b073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0}
 --- !u!95 &7408336630474282162
 Animator:
   serializedVersion: 3
@@ -822,6 +825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpNumber: {fileID: 648994674615115820, guid: 42fa476b334c9ef4388d45f30105269d, type: 3}
   popUpNumberSpawnPoint: {fileID: 7408336630677001997}
+  sfxSounds: {fileID: 8300000, guid: f833fbfbb7ac56c419523a8c840d4540, type: 3}
 --- !u!1 &7408336631333234766
 GameObject:
   m_ObjectHideFlags: 0

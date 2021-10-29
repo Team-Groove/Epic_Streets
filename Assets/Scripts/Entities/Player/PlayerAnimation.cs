@@ -18,7 +18,8 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private GameObject attackTag;
 
     //STRING DE ANIMACIONES
-    [SerializeField] private string[] animations;
+    [SerializeField] public string[] normalAttackAnimationsNames;
+    
 
     //PUBLIC
     public int currentAttackIndex;
@@ -37,7 +38,6 @@ public class PlayerAnimation : MonoBehaviour
     private void Start()
     {
         GetComponents();
-
         canMove = true;
     }
 
@@ -49,9 +49,9 @@ public class PlayerAnimation : MonoBehaviour
         SetAnimationBool(movement.isMoving, "Run");
         
         PlayAnimation(dash.isDashing, "Dash");
-        CheckStateInfo_Play("Punch_1", attack.strongAttack, "StrongKick", "Punch_2", "Kick_2");
-        CheckStateInfo_Play("StrongKick", attack.normalAttack, animations[currentAttackIndex], "DistanceAttack");
-        CheckStateInfo_Play("Punch_1", distance.distanceAttack, "DistanceAttack", "Punch_2", "Kick_2", "StrongKick");
+        CheckStateInfo_Play("Punch_1", attack.strongAttack, "StrongPunch", "Punch_2", "Kick_2");
+        CheckStateInfo_Play("StrongPunch", attack.normalAttack, normalAttackAnimationsNames[currentAttackIndex], "DistanceAttack");
+        CheckStateInfo_Play("Punch_1", distance.distanceAttack, "DistanceAttack", "Punch_2", "Kick_2", "StrongPunch");
 
         StopVelocityMovementWhenAttack();
     }
@@ -97,11 +97,12 @@ public class PlayerAnimation : MonoBehaviour
     //HARDCODEADO
     private void StopVelocityMovementWhenAttack()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Punch_1") ||
-            animator.GetCurrentAnimatorStateInfo(0).IsName("Punch_2") ||
-            animator.GetCurrentAnimatorStateInfo(0).IsName("Kick_2") ||
-            animator.GetCurrentAnimatorStateInfo(0).IsName("StrongKick") ||
-            animator.GetCurrentAnimatorStateInfo(0).IsName("DistanceAttack"))
+        if (GetCurrentAnimatorState("Punch_1") ||
+            GetCurrentAnimatorState("Punch_2") ||
+            GetCurrentAnimatorState("Kick_2") ||
+            GetCurrentAnimatorState("StrongKick") ||
+            GetCurrentAnimatorState("DistanceAttack") ||
+            GetCurrentAnimatorState("StrongPunch"))
         {
             canMove = false;
         }
@@ -117,9 +118,14 @@ public class PlayerAnimation : MonoBehaviour
         {
             for (int k = 0; k < comboSystem.comboStrings.Length; k++)
             {
-                animations[k] = comboSystem.comboStrings[k];
+                normalAttackAnimationsNames[k] = comboSystem.comboStrings[k];
             }
         }
+    }
+
+    private bool GetCurrentAnimatorState(string stateName)
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).IsName(stateName);
     }
 
     public IEnumerator DamageRedFeedback()

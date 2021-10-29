@@ -5,13 +5,13 @@ public class DistanceAttackSystem : MonoBehaviour
 {
     #region PRIVATE_VARIABLES
 
+    private AttackSystem attackSystem;
+
     [SerializeField] private GameObject projectile;
     [SerializeField] private Transform instanciatePoint;
-    [SerializeField] private float timeCooldown;
     
-    private bool canShoot;
-    private float shootingCooldown;
-
+    public bool canShoot;
+    
     #endregion
 
     #region PUBLIC_VARIABLES
@@ -23,16 +23,15 @@ public class DistanceAttackSystem : MonoBehaviour
     #endregion
 
     #region UNITY_CALLS
-    
-    private void Start()
+
+    private void Awake()
     {
-        shootingCooldown = timeCooldown;
-        canShoot = true;
+        attackSystem = GetComponent<AttackSystem>();
     }
 
-    void Update()
+    private void Start()
     {
-        ShootingCooldown();
+        canShoot = true;
     }
 
     #endregion
@@ -55,19 +54,7 @@ public class DistanceAttackSystem : MonoBehaviour
     {
         Instantiate(projectile, instanciatePoint.position, Quaternion.identity); 
     }
-    private void ShootingCooldown()
-    {
-        if (shootingCooldown > 0 && !canShoot)
-        {
-            shootingCooldown -= Time.deltaTime;
-        }
-        else if (shootingCooldown <= 0)
-        {
-            canShoot = true;
-            shootingCooldown = timeCooldown;
-            return;
-        }
-    }
+
 
     #endregion
 }

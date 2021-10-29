@@ -21,8 +21,7 @@ public class PlayerHitBox : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EnemyPunch1"))
         {
-            anim.SendMessage("DamageRedFeedback");
-
+            anim.StartCoroutine("DamageRedFeedback");
             player.ReceiveDamage(10);
         }
     }
