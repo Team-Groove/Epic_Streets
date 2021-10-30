@@ -1,10 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
     #region VARIABLES
 
-    private GameObject spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidBody;
     private EnemyController controller;
     private EnemyIA ia;
@@ -20,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         controller = GetComponent<EnemyController>();
         ia = GetComponent<EnemyIA>();
-        spriteRenderer = GameObject.Find("SpriteRenderer");
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     private void Start()
     {
@@ -63,11 +64,17 @@ public class EnemyMovement : MonoBehaviour
         {
             rigidBody.velocity = new Vector2(ia.GetPlayerPos().x * controller.horizontal_speed, ia.GetPlayerPos().y * controller.vertical_speed);
         }
-        
     }
     public void StopMoving()
     {
         rigidBody.velocity = Vector2.zero;
+    }
+
+    public IEnumerator EnemyDamageRedFeedback()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = Color.white;
     }
 
     #endregion

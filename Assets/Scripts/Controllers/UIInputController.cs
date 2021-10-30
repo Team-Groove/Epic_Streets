@@ -9,7 +9,8 @@ public class UIInputController : MonoBehaviour
     //PRIVADAS
     [SerializeField] private Image TabMenu;
     [SerializeField] private Image pauseMenu;
-
+    [SerializeField] private Image[] comboSlots;
+    
     private bool gameInPause;
     
     //VARIABLES ESTATICAS
@@ -27,6 +28,7 @@ public class UIInputController : MonoBehaviour
     private void Update()
     {
         OnPauseGame();
+        ComboSlotsHideImages();
     }
 
     #endregion
@@ -45,7 +47,24 @@ public class UIInputController : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+    private void ComboSlotsHideImages()
+    {
 
+        if (tabMenuOn)
+        {
+            for (int i = 0; i < comboSlots.Length; i++)
+            {
+                comboSlots[i].enabled = true;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < comboSlots.Length; i++)
+            {
+                comboSlots[i].enabled = false;
+            }
+        }
+    }
     #endregion
 
     #region PUBLIC_FUNCTIONS
@@ -62,12 +81,12 @@ public class UIInputController : MonoBehaviour
     }
     public void ComboMenuInput(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !tabMenuOn)
         {
             TabMenu.gameObject.SetActive(true);
             tabMenuOn = true;
         }
-        else
+        else if (context.performed && tabMenuOn)
         {
             TabMenu.gameObject.SetActive(false);
             tabMenuOn = false;

@@ -57,3 +57,6 @@ TagManager:
   - name: Fighter
     uniqueID: 896093799
     locked: 0
+  - name: Effects
+    uniqueID: 4032497435
+    locked: 0

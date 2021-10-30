@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using UnityEngine;
 
 public class Fighter : MonoBehaviour
@@ -16,7 +16,7 @@ public class Fighter : MonoBehaviour
     //PROTECTEDS
     protected BoxCollider2D boxCollider2D = null;
     public Rigidbody2D rigidBody = null;
-    protected SpriteRenderer spriteRenderer = null;
+   
     [SerializeField] public HealthBar healthBar = null;
 
     //BOOLS
@@ -30,7 +30,7 @@ public class Fighter : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponentInChildren<BoxCollider2D>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
     }
 
     #endregion
@@ -49,12 +49,6 @@ public class Fighter : MonoBehaviour
         }
     }
     
-    public IEnumerator RedFeedback()
-    {
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
-        spriteRenderer.color = Color.white;
-    }
     protected void ResetHealthBar()
     {
         currenthealth = maxhealth;

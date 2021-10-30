@@ -1,18 +1,21 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class EnemyHitBox : MonoBehaviour
 {
     #region VARIABLES
     
-    private BoxCollider2D boxCollider2D;
     private EnemyController enemy;
     private AttackDamageManager damageManager;
+    private EnemyMovement sprite;
 
     [SerializeField] private GameObject popUpNumber;
     [SerializeField] private GameObject popUpNumberSpawnPoint;
 
     [SerializeField] private AudioClip sfxSounds;
+
+    public bool test;
 
     #endregion
 
@@ -20,9 +23,17 @@ public class EnemyHitBox : MonoBehaviour
 
     private void Start()
     {
-        boxCollider2D = GetComponent<BoxCollider2D>();
         enemy = GetComponentInParent<EnemyController>();
         damageManager = FindObjectOfType<AttackDamageManager>();
+        sprite = GetComponentInParent<EnemyMovement>();
+    }
+
+    private void Update()
+    {
+        if (test)
+        {
+            enemy.StartCoroutine("EnemyDamageRedFeedback");
+        }
     }
 
     #endregion
@@ -33,9 +44,9 @@ public class EnemyHitBox : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(nameOfAttack))
         {
-            enemy.SendMessage("RedFeedback");
+            sprite.StartCoroutine("EnemyDamageRedFeedback");
             enemy.ReceiveDamage(dmgReceived);
-            SFXController.instance.PlaySound(sfxSounds, 0.8f, Random.Range(0.2f, 0.8f));
+            SFXController.instance.PlaySound(sfxSounds, 0.3f, Random.Range(0.6f, 0.8f));
             popUpNumber.GetComponentInChildren<TextMeshPro>().SetText("-" + dmgReceived.ToString());
             Instantiate(popUpNumber, popUpNumberSpawnPoint.transform.position, Quaternion.identity);
         }
@@ -50,7 +61,7 @@ public class EnemyHitBox : MonoBehaviour
         CheckAttackTag(collision, "Final_1", damageManager.final1);
         CheckAttackTag(collision, "PlayersProjectile", damageManager.longDistance);
     }
-
+ 
     #endregion
 }
 

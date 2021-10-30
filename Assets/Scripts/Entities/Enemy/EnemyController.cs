@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyController : Fighter
 {
@@ -6,6 +7,7 @@ public class EnemyController : Fighter
 
     private Transform player;
     private EnemyIA ia;
+    private SpriteRenderer spriteRenderer;
 
     public float spriteRendererLocalScaleX;
     public Vector2 playersPos;
@@ -18,13 +20,11 @@ public class EnemyController : Fighter
     private void Start()
     {
         player = FindObjectOfType<PlayerController>().transform;
-        
-
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if (!isDummy)
         {
             ia = GetComponent<EnemyIA>();
         }
-
     }
 
     private void Update()
@@ -56,6 +56,7 @@ public class EnemyController : Fighter
     {
         playersPos = player.transform.position;
     }
+   
     
     #endregion
 }
