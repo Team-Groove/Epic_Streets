@@ -167,7 +167,11 @@ public class PlayerAnimation : MonoBehaviour
     {
         distance.distanceAttack = false;
     }
-
+    public void ResetStrongAttack()
+    {
+        attack.strongAttack = false;
+    }
+    
     //TAGS DE ATAQUE
 
     public void ChangeToPunch1Tag()
