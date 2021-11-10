@@ -27,7 +27,8 @@ public class UIInputController : MonoBehaviour
 
     private void Update()
     {
-        OnPauseGame();
+        // TODO: remove this constant checking
+        // OnPauseGame(); // PAUSA DESHABILITADA
         ComboSlotsHideImages();
     }
 
