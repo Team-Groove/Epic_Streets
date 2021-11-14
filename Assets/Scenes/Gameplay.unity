@@ -1618,15 +1618,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeee6affd42b741409b550a37fbe31cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   TabMenu: {fileID: 99144020}
   pauseMenu: {fileID: 1957422216}
   comboSlots:
   - {fileID: 6820231195677528578}
   - {fileID: 2139803608838087887}
   - {fileID: 3114318969401383125}
-=======
->>>>>>> 62e79dc02db5a6e9edcb85f6e7691b04e1dc18ab
 --- !u!1 &890531384
 GameObject:
   m_ObjectHideFlags: 0
