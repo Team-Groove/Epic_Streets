@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -118,7 +119,19 @@ public class PlayerAnimation : MonoBehaviour
         {
             for (int k = 0; k < comboSystem.comboStrings.Length; k++)
             {
-                normalAttackAnimationsNames[k] = comboSystem.comboStrings[k];
+                try
+                {
+                    normalAttackAnimationsNames[k] = comboSystem.comboStrings[k];
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    Debug.Log("PlayerAnimation.'Normal Attack Animation Names' probablemente vacío.");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
             }
         }
     }
