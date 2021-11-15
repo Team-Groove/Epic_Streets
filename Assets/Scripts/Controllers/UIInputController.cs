@@ -28,7 +28,7 @@ public class UIInputController : MonoBehaviour
     private void Update()
     {
         // TODO: remove this constant checking
-        // OnPauseGame(); // PAUSA DESHABILITADA
+        OnPauseGame(); // PAUSA DESHABILITADA
         ComboSlotsHideImages();
     }
 
@@ -96,7 +96,7 @@ public class UIInputController : MonoBehaviour
     public void BackToMenu()
     {
         gameInPause = false;
-        SceneController.LoadScene(0, 1f, 0.5f);
+        SceneController.LoadScene("MainMenu", 1f, 0.5f);
     }
 
     #endregion

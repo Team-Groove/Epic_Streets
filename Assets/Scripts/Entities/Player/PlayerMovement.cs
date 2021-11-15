@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         VelocityMovement(new Vector2(player.horizontal_speed, player.vertical_speed), controlAxis);
         StopMovementY();
+        StopWhenDead();
     }
 
     #endregion
@@ -55,13 +56,20 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FlipSprite()
     {
-        if (controlAxis.x > 0 && anim.canMove)
+        if (player.IsDead)
         {
-            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            return;
         }
-        else if (controlAxis.x < 0 && anim.canMove)
+        else
         {
-            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            if (controlAxis.x > 0 && anim.canMove)
+            {
+                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            }
+            else if (controlAxis.x < 0 && anim.canMove)
+            {
+                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            }
         }
     }
     private void CheckIfMoving()
@@ -78,6 +86,14 @@ public class PlayerMovement : MonoBehaviour
     private void StopMovementY()
     {
         if (player.rigidBody.velocity.y != 0  && attack.isAttacking)
+        {
+            player.rigidBody.velocity = Vector2.zero;
+        }
+    }
+    
+    private void StopWhenDead()
+    {
+        if (player.IsDead)
         {
             player.rigidBody.velocity = Vector2.zero;
         }

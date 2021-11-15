@@ -20,7 +20,7 @@ public class Fighter : MonoBehaviour
     [SerializeField] public HealthBar healthBar = null;
 
     //BOOLS
-    protected bool IsDead = false;
+    public bool IsDead = false;
 
     #endregion
 
@@ -49,6 +49,18 @@ public class Fighter : MonoBehaviour
         }
     }
     
+    protected void IfCurrentLifeisZero()
+    {
+        if (currenthealth <= 0)
+        {
+            IsDead = true;
+        }
+        else
+        {
+            IsDead = false;
+        }
+    }
+
     protected void ResetHealthBar()
     {
         currenthealth = maxhealth;

@@ -10,11 +10,17 @@ public class MainMenu : MonoBehaviour
 
     #endregion
 
+    #region UNITY_CALLS
+
+    
+
+    #endregion
+
     #region PUBLIC_FUNCTIONS
 
     public void StartGame()
     {
-        SceneController.LoadScene(1, 1f, 0.5f);
+        SceneController.LoadScene("Gameplay", 1f, 0.5f);
     }
     public void ExitGame()
     {

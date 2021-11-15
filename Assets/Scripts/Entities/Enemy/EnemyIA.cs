@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyIA : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class EnemyIA : MonoBehaviour
     [SerializeField]private Transform playerSidePos_2;
     private Animator animator;
     private EnemyMovement movement;
+    private EnemyController controller;
 
     [SerializeField] private float attackDistance;
     [SerializeField] private float timeBetweenAttacks;
@@ -36,6 +38,7 @@ public class EnemyIA : MonoBehaviour
         playerSidePos_1 = GameObject.Find("PointsEnemiesGo1").transform;
         playerSidePos_2 = GameObject.Find("PointsEnemiesGo2").transform;
         movement = GetComponent<EnemyMovement>();
+        controller = GetComponent<EnemyController>();
     }
     private void Start()
     {
@@ -48,7 +51,8 @@ public class EnemyIA : MonoBehaviour
         CheckDistanceFromPlayer();
         Attack();
         AttackCooldown();
-
+        DeadAnimation();
+        
         Debug.DrawLine(transform.position, pointToGo, Color.yellow);
     }
 
@@ -138,8 +142,14 @@ public class EnemyIA : MonoBehaviour
             animator.SetBool("Attack", true);
         }
     }
-
-
+    private void DeadAnimation()
+    {
+        if (controller.IsDead)
+        {
+            animator.SetTrigger("Death");
+        }
+    }
+    
     #endregion
 
     #region PUBLIC_FUNCTIONS
@@ -151,6 +161,6 @@ public class EnemyIA : MonoBehaviour
         direction.Normalize();
         return direction;
     }
-
+  
     #endregion
 }

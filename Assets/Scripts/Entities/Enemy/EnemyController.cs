@@ -8,9 +8,13 @@ public class EnemyController : Fighter
     private Transform player;
     private EnemyIA ia;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
+    public float stunnedDuration;
     public float spriteRendererLocalScaleX;
     public Vector2 playersPos;
+
+    public bool isStunned;
     public bool isDummy;
 
     #endregion
@@ -21,6 +25,7 @@ public class EnemyController : Fighter
     {
         player = FindObjectOfType<PlayerController>().transform;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         if (!isDummy)
         {
             ia = GetComponent<EnemyIA>();
@@ -48,7 +53,7 @@ public class EnemyController : Fighter
             }
             else
             {
-                Destroy(gameObject);
+                IsDead = true;
             }
         }
     }
@@ -56,7 +61,36 @@ public class EnemyController : Fighter
     {
         playersPos = player.transform.position;
     }
-   
-    
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
+    public IEnumerator GetStunned()
+    {
+        int random;
+        random = Random.Range(0, 1);
+
+        isStunned = true;
+
+        switch (random)
+        {
+            case 0:
+
+                animator.Play("Stunned_1");
+
+                break;
+            
+            case 1:
+
+                animator.Play("Stunned_2");
+
+                break;
+        }
+
+        yield return new WaitForSeconds(stunnedDuration);
+
+        isStunned = false;
+    }
+
     #endregion
 }

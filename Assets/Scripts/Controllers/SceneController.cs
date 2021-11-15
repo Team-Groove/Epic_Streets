@@ -24,16 +24,17 @@ public class SceneController : MonoBehaviour
     
     #region FUNCTIONS
     
-    public static void LoadScene(int index, float duration, float waitTime)
-    {
-        instance.StartCoroutine(instance.FaderScene(index, duration, waitTime));
-    }
+   
     
-    public static int GetActualScene()
+    public static string GetActualScene()
     {
-        return SceneManager.sceneCount;
+        return SceneManager.GetActiveScene().name;
     }
-    private IEnumerator FaderScene(int index, float duration = 1, float waitTime = 0)
+    public static void LoadScene(string sceneName, float duration, float waitTime)
+    {
+        instance.StartCoroutine(instance.FaderScene(sceneName, duration, waitTime));
+    }
+    private IEnumerator FaderScene(string sceneName, float duration = 1, float waitTime = 0)
     {
         fader.gameObject.SetActive(true);
 
@@ -43,7 +44,7 @@ public class SceneController : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene(index);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 
 
         yield return new WaitForSeconds(waitTime);

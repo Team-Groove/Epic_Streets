@@ -45,6 +45,7 @@ public class EnemyHitBox : MonoBehaviour
         if (collision.gameObject.CompareTag(nameOfAttack))
         {
             sprite.StartCoroutine("EnemyDamageRedFeedback");
+            enemy.StartCoroutine("GetStunned");
             enemy.ReceiveDamage(dmgReceived);
             SFXController.instance.PlaySound(sfxSounds, 0.3f, Random.Range(0.6f, 0.8f));
             popUpNumber.GetComponentInChildren<TextMeshPro>().SetText("-" + dmgReceived.ToString());

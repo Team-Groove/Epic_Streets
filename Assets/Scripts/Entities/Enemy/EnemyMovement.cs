@@ -29,7 +29,8 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Update()
     {
-        FlipSprite();       
+        FlipSprite();
+        InCaseOfDead();
     }
     private void FixedUpdate()
     {
@@ -43,26 +44,36 @@ public class EnemyMovement : MonoBehaviour
   
     private void FlipSprite()
     {
-        if (!controller.isDummy)
+        if (!controller.IsDead)
         {
-            if (!ia.isAttacking)
+            if (!controller.isDummy)
             {
-                if (controller.playersPos.x > transform.position.x)
+                if (!ia.isAttacking)
                 {
-                    spriteRenderer.transform.localScale = new Vector3(spriteRendererLocalScaleX, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.z);
-                }
-                else if (controller.playersPos.x < transform.position.x)
-                {
-                    spriteRenderer.transform.localScale = new Vector3(-spriteRendererLocalScaleX, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.z);
+                    if (controller.playersPos.x > transform.position.x)
+                    {
+                        spriteRenderer.transform.localScale = new Vector3(spriteRendererLocalScaleX, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.z);
+                    }
+                    else if (controller.playersPos.x < transform.position.x)
+                    {
+                        spriteRenderer.transform.localScale = new Vector3(-spriteRendererLocalScaleX, spriteRenderer.transform.localScale.y, spriteRenderer.transform.localScale.z);
+                    }
                 }
             }
         }
     }
     private void MoveCharacter()
     {
-        if (ia.chasingPlayer)
+        if (ia.chasingPlayer && !controller.isStunned && !controller.IsDead)
         {
             rigidBody.velocity = new Vector2(ia.GetPlayerPos().x * controller.horizontal_speed, ia.GetPlayerPos().y * controller.vertical_speed);
+        }
+    }
+    private void InCaseOfDead()
+    {
+        if (controller.IsDead)
+        {
+            StopMoving();
         }
     }
     public void StopMoving()
@@ -76,6 +87,7 @@ public class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = Color.white;
     }
+    
 
     #endregion
 }

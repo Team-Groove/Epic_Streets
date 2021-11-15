@@ -11,6 +11,7 @@ public class PlayerAnimation : MonoBehaviour
     private Animator animator;
     private PlayerMovement movement;
     private AttackSystem attack;
+    private PlayerController controller;
     private Dash dash;
     private DistanceAttackSystem distance;
     private ComboSystemManager comboSystem;
@@ -44,17 +45,23 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
+        if (!controller.IsDead)
+        {
+            GetStringFromComboSystem();
 
-        GetStringFromComboSystem();
+            SetAnimationBool(movement.isMoving, "Run");
 
-        SetAnimationBool(movement.isMoving, "Run");
-        
-        PlayAnimation(dash.isDashing, "Dash");
-        CheckStateInfo_Play("Punch_1", attack.strongAttack, "StrongPunch", "Punch_2", "Kick_2");
-        CheckStateInfo_Play("StrongPunch", attack.normalAttack, normalAttackAnimationsNames[currentAttackIndex], "DistanceAttack");
-        CheckStateInfo_Play("Punch_1", distance.distanceAttack, "DistanceAttack", "Punch_2", "Kick_2", "StrongPunch");
+            PlayAnimation(dash.isDashing, "Dash");
+            CheckStateInfo_Play("Punch_1", attack.strongAttack, "StrongPunch", "Punch_2", "Kick_2");
+            CheckStateInfo_Play("StrongPunch", attack.normalAttack, normalAttackAnimationsNames[currentAttackIndex], "DistanceAttack");
+            CheckStateInfo_Play("Punch_1", distance.distanceAttack, "DistanceAttack", "Punch_2", "Kick_2", "StrongPunch");
 
-        StopVelocityMovementWhenAttack();
+            StopVelocityMovementWhenAttack();
+        }
+        else
+        {
+            DeathAnimation();
+        }   
     }
     
     #endregion
@@ -93,6 +100,7 @@ public class PlayerAnimation : MonoBehaviour
         attack = GetComponent<AttackSystem>();
         distance = GetComponent<DistanceAttackSystem>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        controller = GetComponent<PlayerController>();
     }
 
     //HARDCODEADO
@@ -146,6 +154,14 @@ public class PlayerAnimation : MonoBehaviour
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = Color.white;
+    }
+
+    private void DeathAnimation()
+    {
+        if (controller.IsDead)
+        {
+            animator.SetBool("isDead", true);
+        }
     }
 
     #endregion
