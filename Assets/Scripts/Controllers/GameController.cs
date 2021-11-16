@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour
         if (gameOver)
         {
             StartCoroutine("GameOverCoroutine");
-            SceneController.LoadScene("MainMenu", gameOverFadeInTime, 1f);
+           
         }
     }
 
@@ -67,6 +67,8 @@ public class GameController : MonoBehaviour
             yield return null;
         }
 
+        yield return new WaitForSeconds(1f);
+        SceneController.LoadScene("MainMenu", 2f, 1f);
     }
 
 

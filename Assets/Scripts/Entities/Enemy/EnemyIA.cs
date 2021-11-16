@@ -79,8 +79,12 @@ public class EnemyIA : MonoBehaviour
 
     private void ChasePlayer(bool a)
     {
-        chasingPlayer = a;
-        animator.SetBool("canWalk", a);
+        if (!controller.isStunned)
+        {
+            chasingPlayer = a;
+            animator.SetBool("canWalk", a);
+        }
+        
     }
     private void IsReadyToAttack(bool a)
     {
@@ -90,7 +94,7 @@ public class EnemyIA : MonoBehaviour
     private void CheckDistanceFromPlayer()
     {
         
-        if (distanceFromObjective > attackDistance && !isAttacking)
+        if (distanceFromObjective > attackDistance && !isAttacking && !controller.isStunned)
         {
             ChasePlayer(true);
             IsReadyToAttack(false);

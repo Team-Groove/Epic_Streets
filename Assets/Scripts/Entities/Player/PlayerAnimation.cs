@@ -15,7 +15,7 @@ public class PlayerAnimation : MonoBehaviour
     private Dash dash;
     private DistanceAttackSystem distance;
     private ComboSystemManager comboSystem;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     [SerializeField] private GameObject attackTag;
 

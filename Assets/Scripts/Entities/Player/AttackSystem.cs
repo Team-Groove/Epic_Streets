@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class AttackSystem: MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class AttackSystem: MonoBehaviour
     #region VARIABLES
 
     public float secondaryAttackCooldown;
-    private float secondaryAttackcooldownTimer;
+    public float secondaryAttackcooldownTimer;
     
     public bool normalAttack;
     public bool strongAttack;
@@ -17,7 +18,7 @@ public class AttackSystem: MonoBehaviour
 
     private PlayerInput input;
     private DistanceAttackSystem distance;
-   
+    private PlayerAnimation sprite;
 
     #endregion
 
@@ -27,6 +28,7 @@ public class AttackSystem: MonoBehaviour
     {
         input = GetComponent<PlayerInput>();
         distance = GetComponent<DistanceAttackSystem>();
+        sprite = GetComponent<PlayerAnimation>();
     }
 
     private void Start()
@@ -56,7 +58,7 @@ public class AttackSystem: MonoBehaviour
             isAttacking = false;
         }
     }
-
+    
 
     #endregion
 

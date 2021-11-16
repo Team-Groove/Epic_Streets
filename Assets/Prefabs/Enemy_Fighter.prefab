@@ -284,8 +284,10 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   healthBar: {fileID: 7408336631475702788}
   IsDead: 0
+  stunnedDuration: 0.4
   spriteRendererLocalScaleX: 0
   playersPos: {x: 0, y: 0}
+  isStunned: 0
   isDummy: 0
 --- !u!114 &5391920343759691023
 MonoBehaviour:

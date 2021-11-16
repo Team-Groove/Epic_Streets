@@ -817,7 +817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7408336630474282166, guid: 8ea30eb61680d824197a319757ab4b12, type: 3}
       propertyPath: stunnedDuration
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7408336630474282166, guid: 8ea30eb61680d824197a319757ab4b12, type: 3}
       propertyPath: horizontal_speed
@@ -968,6 +968,10 @@ PrefabInstance:
     - target: {fileID: 7408336630474282166, guid: 8ea30eb61680d824197a319757ab4b12, type: 3}
       propertyPath: vertical_speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408336630474282166, guid: 8ea30eb61680d824197a319757ab4b12, type: 3}
+      propertyPath: stunnedDuration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7408336630474282166, guid: 8ea30eb61680d824197a319757ab4b12, type: 3}
       propertyPath: horizontal_speed
@@ -1826,6 +1830,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4146440272332464381, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
+      propertyPath: m_Color.a
+      value: 0.6745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146440272332464381, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
+      propertyPath: m_Color.b
+      value: 0.1251335
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146440272332464381, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.70172375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146440272332464381, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7169812
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146440272332464381, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146440272332464381, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 896093799
+      objectReference: {fileID: 0}
     - target: {fileID: 6896929255880195235, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1880,7 +1908,7 @@ PrefabInstance:
       objectReference: {fileID: 1217786373}
     - target: {fileID: 6896929255880195256, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
       propertyPath: currenthealth
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6896929255880195262, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
       propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
