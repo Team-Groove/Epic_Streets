@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffe077cce90867488ec69c7cc2871f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackSystem: {fileID: 0}
 --- !u!1 &5288831693264932652
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,12 +472,13 @@ GameObject:
   - component: {fileID: 6896929255880195260}
   - component: {fileID: 6896929255880195258}
   - component: {fileID: 6896929255880195259}
+  - component: {fileID: 123461836470542788}
   - component: {fileID: 6896929255880195234}
   - component: {fileID: 6896929255880195232}
   - component: {fileID: 6896929255880195262}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -520,6 +522,7 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   healthBar: {fileID: 0}
   IsDead: 0
+  npc: {fileID: 0}
 --- !u!114 &6896929255880195233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondaryAttackCooldown: 2
+  secondaryAttackcooldownTimer: 0
   normalAttack: 0
   strongAttack: 0
   canStrongAttack: 0
@@ -606,6 +610,20 @@ MonoBehaviour:
   distanceAttack: 0
   timeBeforeDestroy: 2
   projectileSpeed: 30
+--- !u!114 &123461836470542788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6896929255880195237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476813a25159fbc498f2c7ced6fc1ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites: []
+  image: {fileID: 0}
 --- !u!50 &6896929255880195234
 Rigidbody2D:
   serializedVersion: 4
@@ -815,6 +833,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7a33ce52-caa1-4afb-9bfb-42e3672c18f9
     m_ActionName: Player/ComboMenu[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f25faae-662a-494a-b47c-af9cfff266f3
+    m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a91fd914-d183-47c4-9889-031325fb3029
+    m_ActionName: Dialogue/E[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

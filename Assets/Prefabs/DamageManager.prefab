@@ -49,3 +49,5 @@ MonoBehaviour:
   kick2: 25
   final1: 30
   longDistance: 10
+  punchSound: {fileID: 8300000, guid: f833fbfbb7ac56c419523a8c840d4540, type: 3}
+  longDistanceSfx: {fileID: 8300000, guid: f833fbfbb7ac56c419523a8c840d4540, type: 3}

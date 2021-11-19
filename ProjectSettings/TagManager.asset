@@ -15,6 +15,7 @@ TagManager:
   - EnemyPunch1
   - ChangeScene2
   - RepeatScene
+  - NPC
   layers:
   - Default
   - TransparentFX

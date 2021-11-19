@@ -13,10 +13,6 @@ public class EnemyHitBox : MonoBehaviour
     [SerializeField] private GameObject popUpNumber;
     [SerializeField] private GameObject popUpNumberSpawnPoint;
 
-    [SerializeField] private AudioClip sfxSounds;
-
-    public bool test;
-
     #endregion
 
     #region UNITY_CALLS
@@ -28,26 +24,26 @@ public class EnemyHitBox : MonoBehaviour
         sprite = GetComponentInParent<EnemyMovement>();
     }
 
-    private void Update()
-    {
-        if (test)
-        {
-            enemy.StartCoroutine("EnemyDamageRedFeedback");
-        }
-    }
-
     #endregion
 
     #region FUNCTIONS
 
-    private void CheckAttackTag(Collider2D collision, string nameOfAttack, int dmgReceived)
+    private void CheckAttackTag(Collider2D collision, string nameOfAttack, int dmgReceived, AudioClip audio, float pitch,bool canStun)
     {
         if (collision.gameObject.CompareTag(nameOfAttack))
         {
-            sprite.StartCoroutine("EnemyDamageRedFeedback");
-            enemy.StartCoroutine("GetStunned");
+            
+            if (canStun && !enemy.isDummy)
+            {
+                sprite.StartCoroutine("EnemyDamageRedFeedback");
+                enemy.StartCoroutine("GetStunned");
+            }
+            else
+            {
+                enemy.StartCoroutine("EnemyDamageRedFeedback");
+            }
             enemy.ReceiveDamage(dmgReceived);
-            SFXController.instance.PlaySound(sfxSounds, 0.3f, Random.Range(0.6f, 0.8f));
+            SFXController.instance.PlaySound(audio, 0.3f, pitch);
             popUpNumber.GetComponentInChildren<TextMeshPro>().SetText("-" + dmgReceived.ToString());
             Instantiate(popUpNumber, popUpNumberSpawnPoint.transform.position, Quaternion.identity);
         }
@@ -55,12 +51,12 @@ public class EnemyHitBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CheckAttackTag(collision, "Punch_1", damageManager.punch1);
-        CheckAttackTag(collision, "Punch_2", damageManager.punch2);
-        CheckAttackTag(collision, "Kick_1", damageManager.kick1);
-        CheckAttackTag(collision, "Kick_2", damageManager.kick2);
-        CheckAttackTag(collision, "Final_1", damageManager.final1);
-        CheckAttackTag(collision, "PlayersProjectile", damageManager.longDistance);
+        CheckAttackTag(collision, "Punch_1", damageManager.punch1, damageManager.punchSound, 1f, true);
+        CheckAttackTag(collision, "Punch_2", damageManager.punch2, damageManager.punchSound, 0.8f, true);
+        CheckAttackTag(collision, "Kick_1", damageManager.kick1, damageManager.punchSound, 0.6f, true);
+        CheckAttackTag(collision, "Kick_2", damageManager.kick2, damageManager.punchSound, 0.5f,true);
+        CheckAttackTag(collision, "Final_1", damageManager.final1, damageManager.punchSound, 0.4f, true);
+        CheckAttackTag(collision, "PlayersProjectile", damageManager.longDistance, damageManager.longDistanceSfx, 0.3f, false);
     }
  
     #endregion

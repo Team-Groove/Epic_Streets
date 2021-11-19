@@ -45,7 +45,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        if (!controller.IsDead)
+        if (!controller.IsDead && !controller.InDialogue())
         {
             GetStringFromComboSystem();
 

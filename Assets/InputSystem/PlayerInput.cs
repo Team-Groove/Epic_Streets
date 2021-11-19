@@ -73,6 +73,14 @@ public class @PlayerMovementInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f25faae-662a-494a-b47c-af9cfff266f3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -207,6 +215,17 @@ public class @PlayerMovementInput : IInputActionCollection, IDisposable
                     ""action"": ""ComboMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d7ba624b-97c9-4bd7-b3e4-b222439ea648"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -255,6 +274,33 @@ public class @PlayerMovementInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Dialogue"",
+            ""id"": ""bb3a87de-af83-40f4-a0ae-bbb6dbb06a83"",
+            ""actions"": [
+                {
+                    ""name"": ""E"",
+                    ""type"": ""Button"",
+                    ""id"": ""a91fd914-d183-47c4-9889-031325fb3029"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9ce1a84a-3f9a-4436-8074-cc083605af80"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""E"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -268,10 +314,14 @@ public class @PlayerMovementInput : IInputActionCollection, IDisposable
         m_Player_LongDistanceAttack = m_Player.FindAction("LongDistanceAttack", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_ComboMenu = m_Player.FindAction("ComboMenu", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         m_UI_ComboMenu = m_UI.FindAction("ComboMenu", throwIfNotFound: true);
+        // Dialogue
+        m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
+        m_Dialogue_E = m_Dialogue.FindAction("E", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +378,7 @@ public class @PlayerMovementInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_LongDistanceAttack;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_ComboMenu;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @PlayerMovementInput m_Wrapper;
@@ -339,6 +390,7 @@ public class @PlayerMovementInput : IInputActionCollection, IDisposable
         public InputAction @LongDistanceAttack => m_Wrapper.m_Player_LongDistanceAttack;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @ComboMenu => m_Wrapper.m_Player_ComboMenu;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -369,6 +421,9 @@ public class @PlayerMovementInput : IInputActionCollection, IDisposable
                 @ComboMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnComboMenu;
                 @ComboMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnComboMenu;
                 @ComboMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnComboMenu;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -394,6 +449,9 @@ public class @PlayerMovementInput : IInputActionCollection, IDisposable
                 @ComboMenu.started += instance.OnComboMenu;
                 @ComboMenu.performed += instance.OnComboMenu;
                 @ComboMenu.canceled += instance.OnComboMenu;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -439,6 +497,39 @@ public class @PlayerMovementInput : IInputActionCollection, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Dialogue
+    private readonly InputActionMap m_Dialogue;
+    private IDialogueActions m_DialogueActionsCallbackInterface;
+    private readonly InputAction m_Dialogue_E;
+    public struct DialogueActions
+    {
+        private @PlayerMovementInput m_Wrapper;
+        public DialogueActions(@PlayerMovementInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @E => m_Wrapper.m_Dialogue_E;
+        public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueActions set) { return set.Get(); }
+        public void SetCallbacks(IDialogueActions instance)
+        {
+            if (m_Wrapper.m_DialogueActionsCallbackInterface != null)
+            {
+                @E.started -= m_Wrapper.m_DialogueActionsCallbackInterface.OnE;
+                @E.performed -= m_Wrapper.m_DialogueActionsCallbackInterface.OnE;
+                @E.canceled -= m_Wrapper.m_DialogueActionsCallbackInterface.OnE;
+            }
+            m_Wrapper.m_DialogueActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @E.started += instance.OnE;
+                @E.performed += instance.OnE;
+                @E.canceled += instance.OnE;
+            }
+        }
+    }
+    public DialogueActions @Dialogue => new DialogueActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -448,10 +539,15 @@ public class @PlayerMovementInput : IInputActionCollection, IDisposable
         void OnLongDistanceAttack(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnComboMenu(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
         void OnPause(InputAction.CallbackContext context);
         void OnComboMenu(InputAction.CallbackContext context);
+    }
+    public interface IDialogueActions
+    {
+        void OnE(InputAction.CallbackContext context);
     }
 }

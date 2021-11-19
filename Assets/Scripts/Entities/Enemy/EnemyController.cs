@@ -26,6 +26,9 @@ public class EnemyController : Fighter
         player = FindObjectOfType<PlayerController>().transform;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        healthBar.SetMaxHealth(maxhealth);
+
         if (!isDummy)
         {
             ia = GetComponent<EnemyIA>();
@@ -90,6 +93,13 @@ public class EnemyController : Fighter
         yield return new WaitForSeconds(stunnedDuration);
 
         isStunned = false;
+    }
+
+    public IEnumerator EnemyDamageRedFeedback()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = Color.white;
     }
 
     #endregion

@@ -1,12 +1,20 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : Fighter
 {
     #region VARIABLES
 
+    [SerializeField] private NPCcontroller npc;
+    private Keyboard keyboard;
     #endregion
 
     #region UNITY_CALLS
+
+    private void Start()
+    {
+        keyboard = Keyboard.current;
+    }
 
     private void Update()
     {
@@ -14,23 +22,45 @@ public class PlayerController : Fighter
         IfCurrentLifeisZero();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("ChangeScene"))
+        if (collision.gameObject.tag == "NPC")
         {
-            SceneController.LoadScene("Gameplay2", 1f, 0.5f);
+            npc = collision.gameObject.GetComponentInParent<NPCcontroller>();
+
+            Debug.Log("en zona");
+
+            if (keyboard.eKey.isPressed)
+            {
+                Debug.Log("E");
+                npc.ActivateDialogue();
+            }
         }
-        else if (collision.gameObject.CompareTag("ChangeScene2"))
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "NPC")
         {
-            SceneController.LoadScene("MainHub", 1f, 0.5f);
-        }
-        else if (collision.gameObject.CompareTag("RepeatScene"))
-        {
-            SceneController.LoadScene(SceneController.GetActualScene(), 1f, 0.5f);
+            npc = null;
         }
     }
 
     #endregion
 
-   
+    #region FUNCTIONS
+
+    public bool InDialogue()
+    {
+        if (npc != null)
+        {
+            return npc.DialogueActive();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    #endregion
 }

@@ -49,6 +49,7 @@ public class Dash : MonoBehaviour
     private Rigidbody2D rigidBody;
     private PlayerInput input;
     private SpriteRenderer spriteRenderer;
+    private PlayerController controller;
     [SerializeField] private GameObject deactiavateBoxCollider;
     
     #endregion
@@ -59,6 +60,7 @@ public class Dash : MonoBehaviour
     {
         canDash = true;
         dashTime = startDashTime;
+        controller = GetComponent<PlayerController>();
         rigidBody = GetComponent<Rigidbody2D>();
         input = GetComponent<PlayerInput>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -82,7 +84,7 @@ public class Dash : MonoBehaviour
 
     public void DashInput(InputAction.CallbackContext context)
     {
-        if (canDash)
+        if (canDash && !controller.InDialogue())
         {
             if (context.performed && input.actions.FindAction("Move").ReadValue<Vector2>().x > 0)
             {

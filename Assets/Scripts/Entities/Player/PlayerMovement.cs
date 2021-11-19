@@ -49,14 +49,14 @@ public class PlayerMovement : MonoBehaviour
     
     private void VelocityMovement(Vector2 movementSpeed, Vector2 direction)
     {
-        if (!dash.isDashing && !attack.isAttacking && anim.canMove)
+        if (!dash.isDashing && !attack.isAttacking && anim.canMove && !player.InDialogue())
         {
             player.rigidBody.velocity = new Vector2(direction.x * movementSpeed.x, direction.y * movementSpeed.y);
         }
     }
     private void FlipSprite()
     {
-        if (player.IsDead)
+        if (player.IsDead || player.InDialogue())
         {
             return;
         }

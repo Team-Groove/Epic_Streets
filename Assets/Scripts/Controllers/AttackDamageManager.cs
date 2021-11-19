@@ -8,4 +8,7 @@ public class AttackDamageManager : MonoBehaviour
     [SerializeField] public int kick2 = 25;
     [SerializeField] public int final1 = 30;
     [SerializeField] public int longDistance = 10;
+
+    [SerializeField] public AudioClip punchSound;
+    [SerializeField] public AudioClip longDistanceSfx;
 }

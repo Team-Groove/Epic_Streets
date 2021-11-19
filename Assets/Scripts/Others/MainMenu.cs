@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneController.LoadScene("Gameplay", 1f, 0.5f);
+        SceneController.LoadScene("MainHub", 1f, 0.5f);
     }
     public void ExitGame()
     {

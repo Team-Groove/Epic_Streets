@@ -98,6 +98,10 @@ public class UIInputController : MonoBehaviour
         gameInPause = false;
         SceneController.LoadScene("MainMenu", 1f, 0.5f);
     }
-
+    public void ChangeSceneToGameplay()
+    {
+        gameInPause = false;
+        SceneController.LoadScene("Gameplay", 1f, .5f);
+    }
     #endregion
 }
