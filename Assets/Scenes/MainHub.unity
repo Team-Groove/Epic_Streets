@@ -546,11 +546,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3001157894167016448, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.3801193
+      value: 7.382187
       objectReference: {fileID: 0}
     - target: {fileID: 3001157894167016448, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.033987522
+      value: -0.03399515
       objectReference: {fileID: 0}
     - target: {fileID: 3001157894167016449, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
       propertyPath: orthographic size
@@ -1510,8 +1510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225479386a972714197c227ee3f40156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repeatScene: 1
-  toGameplay: 0
 --- !u!114 &575893306 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6896929255880195256, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
