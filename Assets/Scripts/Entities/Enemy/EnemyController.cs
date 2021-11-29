@@ -9,6 +9,7 @@ public class EnemyController : Fighter
     private EnemyIA ia;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private int randomInt;
 
     public float stunnedDuration;
     public float spriteRendererLocalScaleX;
@@ -40,6 +41,7 @@ public class EnemyController : Fighter
         UpdateHealthBar(currenthealth);
         OutOfHealth();
         GetPlayersPos();
+        randomInt = Random.Range(0, 1);
     }
 
     #endregion
@@ -64,29 +66,33 @@ public class EnemyController : Fighter
     {
         playersPos = player.transform.position;
     }
+    
+    public void PushEnemyBack()
+    {
+        rigidBody.velocity *= -1f;
+    }
+    
     public void DestroyObject()
     {
         Destroy(gameObject);
     }
     public IEnumerator GetStunned()
     {
-        int random;
-        random = Random.Range(0, 1);
-
+      
         isStunned = true;
 
-        switch (random)
+        switch (randomInt)
         {
             case 0:
 
                 animator.Play("Stunned_1");
-
+                PushEnemyBack();
                 break;
             
             case 1:
 
                 animator.Play("Stunned_2");
-
+                PushEnemyBack();
                 break;
         }
 

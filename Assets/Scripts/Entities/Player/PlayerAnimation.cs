@@ -17,6 +17,7 @@ public class PlayerAnimation : MonoBehaviour
     private ComboSystemManager comboSystem;
     public SpriteRenderer spriteRenderer;
 
+    [SerializeField] private Material glowMaterial;
     [SerializeField] private GameObject attackTag;
 
     //STRING DE ANIMACIONES
@@ -61,7 +62,31 @@ public class PlayerAnimation : MonoBehaviour
         else
         {
             DeathAnimation();
-        }   
+        }
+
+        //CAMBIAR EL COLOR DEL MATERIAL 
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Punch_1"))
+        {
+         /*VERDE*/   glowMaterial.color = new Color(24f / 255f, 91f / 255f, 0f) * 30;
+        }
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Punch_2"))
+        {
+          /*CIAN*/  glowMaterial.color = new Color(18f / 255f, 174f / 255f, 191f/255f) * 20;
+        }
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Kick_2"))
+        {
+          /*NARANJA*/ glowMaterial.color = new Color(191f / 255f, 68f / 255f, 0f) * 20;
+        }
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Kick_1"))
+        {
+          /*GRIS*/ glowMaterial.color = new Color(167f / 255f, 189f / 255f, 171f/255f) * 20;
+        }
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("StrongPunch"))
+        {
+          /*Azul*/ glowMaterial.color = new Color(32f / 255f, 53f / 255f, 191f/255f) * 25;
+        }
+
     }
     
     #endregion

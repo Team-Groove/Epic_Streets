@@ -12,6 +12,13 @@ public class EnemyHitBox : MonoBehaviour
 
     [SerializeField] private GameObject popUpNumber;
     [SerializeField] private GameObject popUpNumberSpawnPoint;
+    [SerializeField] private GameObject hitSpawnPoint;
+
+    [SerializeField] private ParticleSystem hitEffect;
+
+    public int staggerCount;
+    public float timeBetweenStagger;
+    public float staggerTimer;
 
     #endregion
 
@@ -22,6 +29,13 @@ public class EnemyHitBox : MonoBehaviour
         enemy = GetComponentInParent<EnemyController>();
         damageManager = FindObjectOfType<AttackDamageManager>();
         sprite = GetComponentInParent<EnemyMovement>();
+        staggerTimer = timeBetweenStagger;
+    }
+
+    private void Update()
+    {
+        DelayStaggerTimer();
+        Debug.Log(staggerCount);
     }
 
     #endregion
@@ -33,10 +47,12 @@ public class EnemyHitBox : MonoBehaviour
         if (collision.gameObject.CompareTag(nameOfAttack))
         {
             
-            if (canStun && !enemy.isDummy)
+            if (canStun && !enemy.isDummy && staggerCount <= 1)
             {
                 sprite.StartCoroutine("EnemyDamageRedFeedback");
                 enemy.StartCoroutine("GetStunned");
+                
+                staggerCount++;
             }
             else
             {
@@ -46,6 +62,9 @@ public class EnemyHitBox : MonoBehaviour
             SFXController.instance.PlaySound(audio, 0.3f, pitch);
             popUpNumber.GetComponentInChildren<TextMeshPro>().SetText("-" + dmgReceived.ToString());
             Instantiate(popUpNumber, popUpNumberSpawnPoint.transform.position, Quaternion.identity);
+            Instantiate(hitEffect, new Vector3(Random.Range(hitSpawnPoint.transform.position.x + 0.5f , hitSpawnPoint.transform.position.x - 0.5f), Random.Range(hitSpawnPoint.transform.position.y + 0.5f, hitSpawnPoint.transform.position.y - 0.5f), hitSpawnPoint.transform.position.z), Quaternion.identity);
+            enemy.PushEnemyBack();
+            CineMachineShake.Instance.ShakeCamera(0.3f, 0.2f);
         }
     }
 
@@ -59,6 +78,27 @@ public class EnemyHitBox : MonoBehaviour
         CheckAttackTag(collision, "PlayersProjectile", damageManager.longDistance, damageManager.longDistanceSfx, 0.3f, false);
     }
  
+
+    private void DelayStaggerTimer()
+    {
+        
+        if (staggerCount != 0)
+        {
+          
+            if (staggerTimer > 0)
+            {
+                staggerTimer -= Time.deltaTime;
+            }
+            else if (staggerTimer <= 0)
+            {
+                staggerCount = 0;
+                staggerTimer = timeBetweenStagger;
+                return;
+            }
+        }
+       
+    }
+
     #endregion
 }
 
