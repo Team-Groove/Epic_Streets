@@ -6,7 +6,9 @@ public class SFXController : MonoBehaviour
     public static SFXController instance = null;
     
     [SerializeField] private AudioSource trackSource = null;
-    [SerializeField] private AudioSource sfxSource = null;
+    [SerializeField] public AudioSource enemyHitBox = null;
+    [SerializeField] public AudioSource playersAttack = null;
+
 
     [SerializeField] private AudioClip[] tracks = null;
 
@@ -37,13 +39,23 @@ public class SFXController : MonoBehaviour
         trackSource.Play();
     }
 
-    public void PlaySound(AudioClip clip, float volume = 1.0f, float pitch = 1.0f)
+    public void PlayOnHitEnemySound(AudioClip clip, float volume = 1.0f, float pitch = 1.0f)
     {
-        sfxSource.volume = volume;
-        sfxSource.pitch = pitch;
+        enemyHitBox.volume = volume;
+        enemyHitBox.pitch = pitch;
 
-        sfxSource.PlayOneShot(clip);
+        enemyHitBox.PlayOneShot(clip);
     }
+    public void PlayOnPlayerAttackSound(AudioClip clip, float volume = 1.0f, float pitch = 1.0f)
+    {
+        playersAttack.volume = volume;
+        playersAttack.pitch = pitch;
+
+     
+        playersAttack.PlayOneShot(clip);
+    }
+
+
     #endregion
 
     #region PRIVATE_METHODS

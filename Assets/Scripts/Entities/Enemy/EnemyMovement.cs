@@ -12,6 +12,8 @@ public class EnemyMovement : MonoBehaviour
 
     private float spriteRendererLocalScaleX;
 
+    public float pushBackForce;
+
     #endregion
 
     #region UNITY_CALLS
@@ -35,6 +37,11 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MoveCharacter();
+
+        if (controller.isStunned)
+        {
+            PushEnemyBack();
+        }
     }
 
     #endregion
@@ -79,6 +86,21 @@ public class EnemyMovement : MonoBehaviour
     public void StopMoving()
     {
         rigidBody.velocity = Vector2.zero;
+    }
+
+    public void PushEnemyBack()
+    {
+        if (controller.playersPos.x > transform.position.x)
+        {
+            rigidBody.velocity = Vector2.zero;
+            rigidBody.AddForce(Vector2.left * pushBackForce);
+        }
+        else if (controller.playersPos.x < transform.position.x)
+        {
+            rigidBody.velocity = Vector2.zero;
+            rigidBody.AddForce(Vector2.right * pushBackForce);
+        }
+        
     }
 
     public IEnumerator EnemyDamageRedFeedback()

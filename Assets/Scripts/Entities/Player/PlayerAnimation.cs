@@ -20,6 +20,8 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Material glowMaterial;
     [SerializeField] private GameObject attackTag;
 
+    [SerializeField] private AudioClip[] sfx;
+
     //STRING DE ANIMACIONES
     [SerializeField] public string[] normalAttackAnimationsNames;
     
@@ -27,6 +29,7 @@ public class PlayerAnimation : MonoBehaviour
     //PUBLIC
     public int currentAttackIndex;
     public bool canMove;
+    public bool isPlayingSound;
 
     #endregion
 
@@ -63,12 +66,12 @@ public class PlayerAnimation : MonoBehaviour
         {
             DeathAnimation();
         }
-
+        
         //CAMBIAR EL COLOR DEL MATERIAL 
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Punch_1"))
         {
-         /*VERDE*/   glowMaterial.color = new Color(24f / 255f, 91f / 255f, 0f) * 30;
+         /*VERDE*/  glowMaterial.color = new Color(24f / 255f, 91f / 255f, 0f) * 30;
         }
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Punch_2"))
         {
@@ -86,7 +89,6 @@ public class PlayerAnimation : MonoBehaviour
         {
           /*Azul*/ glowMaterial.color = new Color(32f / 255f, 53f / 255f, 191f/255f) * 25;
         }
-
     }
     
     #endregion
@@ -224,6 +226,10 @@ public class PlayerAnimation : MonoBehaviour
     public void ResetStrongAttack()
     {
         attack.strongAttack = false;
+    }
+    public void PlaySoundPunch1()
+    {
+        SFXController.instance.PlayOnPlayerAttackSound(sfx[0]);
     }
     
     //TAGS DE ATAQUE

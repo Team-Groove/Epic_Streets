@@ -8,6 +8,7 @@ public class EnemyHitBox : MonoBehaviour
     
     private EnemyController enemy;
     private AttackDamageManager damageManager;
+    private EnemyMovement movement;
     private EnemyMovement sprite;
 
     [SerializeField] private GameObject popUpNumber;
@@ -29,13 +30,14 @@ public class EnemyHitBox : MonoBehaviour
         enemy = GetComponentInParent<EnemyController>();
         damageManager = FindObjectOfType<AttackDamageManager>();
         sprite = GetComponentInParent<EnemyMovement>();
+        movement = GetComponentInParent<EnemyMovement>();
         staggerTimer = timeBetweenStagger;
     }
 
     private void Update()
     {
         DelayStaggerTimer();
-        Debug.Log(staggerCount);
+       
     }
 
     #endregion
@@ -51,7 +53,7 @@ public class EnemyHitBox : MonoBehaviour
             {
                 sprite.StartCoroutine("EnemyDamageRedFeedback");
                 enemy.StartCoroutine("GetStunned");
-                
+                movement.PushEnemyBack();
                 staggerCount++;
             }
             else
@@ -59,12 +61,13 @@ public class EnemyHitBox : MonoBehaviour
                 enemy.StartCoroutine("EnemyDamageRedFeedback");
             }
             enemy.ReceiveDamage(dmgReceived);
-            SFXController.instance.PlaySound(audio, 0.3f, pitch);
+            SFXController.instance.PlayOnHitEnemySound(audio, 1f, pitch);
             popUpNumber.GetComponentInChildren<TextMeshPro>().SetText("-" + dmgReceived.ToString());
             Instantiate(popUpNumber, popUpNumberSpawnPoint.transform.position, Quaternion.identity);
             Instantiate(hitEffect, new Vector3(Random.Range(hitSpawnPoint.transform.position.x + 0.5f , hitSpawnPoint.transform.position.x - 0.5f), Random.Range(hitSpawnPoint.transform.position.y + 0.5f, hitSpawnPoint.transform.position.y - 0.5f), hitSpawnPoint.transform.position.z), Quaternion.identity);
-            enemy.PushEnemyBack();
+
             CineMachineShake.Instance.ShakeCamera(0.3f, 0.2f);
+
         }
     }
 

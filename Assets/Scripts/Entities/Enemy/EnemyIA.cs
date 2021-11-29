@@ -28,6 +28,7 @@ public class EnemyIA : MonoBehaviour
     public bool readyToAttack;
     public bool isAttacking;
 
+
     #endregion
 
     #region UNITY_CALLS
@@ -114,12 +115,12 @@ public class EnemyIA : MonoBehaviour
         if (distance1 > distance2)
         {
             pointToGo = playerSidePos_2.position;
-            Debug.Log("Objetivo: Derecha");
+           
         }
         else if (distance1 < distance2)
         {
             pointToGo = playerSidePos_1.position;
-            Debug.Log("Objetivo: Izquierda");
+           
         }
 
         distanceFromObjective = Vector2.Distance(transform.position, pointToGo);
