@@ -977,8 +977,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.016666668
-    functionName: PlaySoundPunch1
+  - time: 0.083333336
+    functionName: PlaySoundPoisonFist
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

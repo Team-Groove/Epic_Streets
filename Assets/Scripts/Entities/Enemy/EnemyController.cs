@@ -105,5 +105,13 @@ public class EnemyController : Fighter
         spriteRenderer.color = Color.white;
     }
 
+    public IEnumerator EnemyStatusEffectFeedback(float duration, Color color)
+    {
+        spriteRenderer.color = color;
+        yield return new WaitForSeconds(duration);
+        spriteRenderer.color = Color.white;
+    }
+
+
     #endregion
 }

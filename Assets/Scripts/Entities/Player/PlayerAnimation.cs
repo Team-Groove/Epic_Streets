@@ -15,6 +15,9 @@ public class PlayerAnimation : MonoBehaviour
     private Dash dash;
     private DistanceAttackSystem distance;
     private ComboSystemManager comboSystem;
+    private AttackDamageManager damageManager;
+    private AudioManager audioManager;
+
     public SpriteRenderer spriteRenderer;
 
     [SerializeField] private Material glowMaterial;
@@ -24,7 +27,7 @@ public class PlayerAnimation : MonoBehaviour
 
     //STRING DE ANIMACIONES
     [SerializeField] public string[] normalAttackAnimationsNames;
-    
+
 
     //PUBLIC
     public int currentAttackIndex;
@@ -38,6 +41,8 @@ public class PlayerAnimation : MonoBehaviour
     private void Awake()
     {
         comboSystem = FindObjectOfType<ComboSystemManager>();
+        damageManager = FindObjectOfType<AttackDamageManager>();
+        audioManager = FindObjectOfType<AudioManager>();
         GetStringFromComboSystem();
     }
 
@@ -56,8 +61,11 @@ public class PlayerAnimation : MonoBehaviour
             SetAnimationBool(movement.isMoving, "Run");
 
             PlayAnimation(dash.isDashing, "Dash");
+            //CONDICION ATAQUE FUERTE
             CheckStateInfo_Play("Punch_1", attack.strongAttack, "StrongPunch", "Punch_2", "Kick_2");
+            //CONDICION ATAQUES NORMALES
             CheckStateInfo_Play("StrongPunch", attack.normalAttack, normalAttackAnimationsNames[currentAttackIndex], "DistanceAttack");
+            //CONDICION ATAQUE A DISTANCIA
             CheckStateInfo_Play("Punch_1", distance.distanceAttack, "DistanceAttack", "Punch_2", "Kick_2", "StrongPunch");
 
             StopVelocityMovementWhenAttack();
@@ -66,36 +74,46 @@ public class PlayerAnimation : MonoBehaviour
         {
             DeathAnimation();
         }
-        
+
         //CAMBIAR EL COLOR DEL MATERIAL 
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Punch_1"))
         {
-         /*VERDE*/  glowMaterial.color = new Color(24f / 255f, 91f / 255f, 0f) * 30;
+            /*VERDE*/
+            glowMaterial.color = new Color(24f / 255f, 91f / 255f, 0f) * 30;
         }
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Punch_2"))
         {
-          /*CIAN*/  glowMaterial.color = new Color(18f / 255f, 174f / 255f, 191f/255f) * 20;
+            /*CIAN*/
+            glowMaterial.color = new Color(18f / 255f, 174f / 255f, 191f / 255f) * 20;
         }
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Kick_2"))
         {
-          /*NARANJA*/ glowMaterial.color = new Color(191f / 255f, 68f / 255f, 0f) * 20;
+            /*NARANJA*/
+            glowMaterial.color = new Color(191f / 255f, 68f / 255f, 0f) * 20;
         }
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Kick_1"))
         {
-          /*GRIS*/ glowMaterial.color = new Color(167f / 255f, 189f / 255f, 171f/255f) * 20;
+            /*GRIS*/
+            glowMaterial.color = new Color(167f / 255f, 189f / 255f, 171f / 255f) * 20;
         }
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("StrongPunch"))
         {
-          /*Azul*/ glowMaterial.color = new Color(32f / 255f, 53f / 255f, 191f/255f) * 25;
+            /*Azul*/
+            glowMaterial.color = new Color(32f / 255f, 53f / 255f, 191f / 255f) * 25;
         }
+
+
+        //EFECTOS DISTINTOS SEGUN EL SLOT
+        SpecialEffectAttacks();
+
     }
-    
+
     #endregion
 
     #region PRIVATE_FUNCTIONS
 
-    private void SetAnimationBool(bool isActive,string stateName)
+    private void SetAnimationBool(bool isActive, string stateName)
     {
         animator.SetBool(stateName, isActive);
     }
@@ -106,10 +124,10 @@ public class PlayerAnimation : MonoBehaviour
             animator.Play(stateName);
         }
     }
-    private void CheckStateInfo_Play(string stateName, bool condition, string animationName, 
+    private void CheckStateInfo_Play(string stateName, bool condition, string animationName,
         string stateName_2 = default(string), string stateName_3 = default(string), string stateName_4 = default(string))
-    { 
-        
+    {
+
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) &&
                     !animator.GetCurrentAnimatorStateInfo(0).IsName(stateName_2) &&
                     !animator.GetCurrentAnimatorStateInfo(0).IsName(stateName_3) &&
@@ -135,6 +153,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (GetCurrentAnimatorState("Punch_1") ||
             GetCurrentAnimatorState("Punch_2") ||
+            GetCurrentAnimatorState("Kick_1") ||
             GetCurrentAnimatorState("Kick_2") ||
             GetCurrentAnimatorState("StrongKick") ||
             GetCurrentAnimatorState("DistanceAttack") ||
@@ -227,11 +246,8 @@ public class PlayerAnimation : MonoBehaviour
     {
         attack.strongAttack = false;
     }
-    public void PlaySoundPunch1()
-    {
-        SFXController.instance.PlayOnPlayerAttackSound(sfx[0]);
-    }
-    
+
+
     //TAGS DE ATAQUE
 
     public void ChangeToPunch1Tag()
@@ -256,6 +272,106 @@ public class PlayerAnimation : MonoBehaviour
     }
 
 
+    //EVENTOS DE ANIMACION ESPECIALES SEGUN EL SLOT
+
+    private void ChangeSpeed(int index, string attackName, string animationName, float animationSpeed)
+    {
+        if (normalAttackAnimationsNames[index] == attackName)
+        {
+            animator.SetFloat(animationName, animationSpeed);
+        }
+    }
+
+    private void SetPoisonAndDamage(int index, string attackName, bool tf, int newDamage)
+    {
+        if (normalAttackAnimationsNames[index] == attackName)
+        {
+            damageManager.punch1 = newDamage;
+            damageManager.canPoison = tf;
+        }
+    }
+    private void SetBurnAndDamage(int index, string attackName, bool tf, int newDamage)
+    {
+        if (normalAttackAnimationsNames[index] == attackName)
+        {
+            damageManager.kick2 = newDamage;
+            damageManager.canBurn = tf;
+        }
+    }
+    private void SetFreezeAndDamage(int index, string attackName, bool tf, int newDamage)
+    {
+        if (normalAttackAnimationsNames[index] == attackName)
+        {
+            damageManager.punch2 = newDamage;
+            damageManager.canFreeze = tf;
+        }
+    }
+    private void SetPushbackAndDamage(int index, string attackName, bool tf, int newDamage)
+    {
+        if (normalAttackAnimationsNames[index] == attackName)
+        {
+            damageManager.kick1 = newDamage;
+            damageManager.canWindBack = tf;
+        }
+    }
+
+    private void SpecialEffectAttacks()
+    {
+        ChangeSpeed(2, "Punch_1", "Punch1Speed", 0.6f);
+        ChangeSpeed(2, "Punch_2", "Punch2Speed", 0.6f);
+        ChangeSpeed(2, "Kick_1", "Kick1Speed", 0.6f);
+        ChangeSpeed(2, "Kick_2", "Kick2Speed", 0.7f);
+
+        ChangeSpeed(1, "Punch_1", "Punch1Speed", 1.4f);
+        ChangeSpeed(1, "Punch_2", "Punch2Speed", 1.3f);
+        ChangeSpeed(1, "Kick_1", "Kick1Speed", 1.2f);
+        ChangeSpeed(1, "Kick_2", "Kick2Speed", 1.1f);
+        
+        ChangeSpeed(0, "Punch_1", "Punch1Speed", 1f);
+        ChangeSpeed(0, "Punch_2", "Punch2Speed", 1f);
+        ChangeSpeed(0, "Kick_1", "Kick1Speed", 1f);
+        ChangeSpeed(0, "Kick_2", "Kick2Speed", 1f);
+
+
+        SetPoisonAndDamage(2, "Punch_1", true, 18);
+        SetFreezeAndDamage(2, "Punch_2", true, 20);
+        SetPushbackAndDamage(2, "Kick_1", true, 23);
+        SetBurnAndDamage(2, "Kick_2", true, 25);
+        
+        SetPoisonAndDamage(1, "Punch_1", false, 13);
+        SetFreezeAndDamage(1, "Punch_2", false, 15);
+        SetPushbackAndDamage(1, "Kick_1", false, 19);
+        SetBurnAndDamage(1, "Kick_2", false, 20);
+
+        SetPoisonAndDamage(0, "Punch_1", false, 9);
+        SetFreezeAndDamage(0, "Punch_2", false, 13);
+        SetPushbackAndDamage(0, "Kick_1", false, 17);
+        SetBurnAndDamage(0, "Kick_2", false, 19);
+     
+    }
+
+    //SOUNDS EVENTS
+
+    public void PlaySoundDash()
+    {
+        audioManager.Play("Dash");
+    }
+    public void PlaySoundFireKick()
+    {
+        audioManager.Play("FireKick");
+    }
+    public void PlaySoundPoisonFist()
+    {
+        audioManager.Play("PoisonFist");
+    }
+    public void PlaySoundIceFist()
+    {
+        audioManager.Play("IceFist");
+    }
+    public void PlaySoundWindKick()
+    {
+        audioManager.Play("WindKick");
+    }
     #endregion
 
 }

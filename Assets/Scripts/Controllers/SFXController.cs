@@ -4,7 +4,7 @@ using UnityEngine;
 public class SFXController : MonoBehaviour
 {
     public static SFXController instance = null;
-    
+
     [SerializeField] private AudioSource trackSource = null;
     [SerializeField] public AudioSource enemyHitBox = null;
     [SerializeField] public AudioSource playersAttack = null;
@@ -13,7 +13,7 @@ public class SFXController : MonoBehaviour
     [SerializeField] private AudioClip[] tracks = null;
 
     [SerializeField] private float[] modeVolumes = null;
- 
+
     public enum VOLUME_MODE { MINIMAL, NORMAL, HIGH }
     public enum PITCH_MODE { MINIMAL, NORMAL, HIGH }
     public enum TRACK { MENU, GAMEPLAY }
@@ -51,8 +51,9 @@ public class SFXController : MonoBehaviour
         playersAttack.volume = volume;
         playersAttack.pitch = pitch;
 
-     
-        playersAttack.PlayOneShot(clip);
+        playersAttack.clip = clip;
+
+        playersAttack.Play();
     }
 
 

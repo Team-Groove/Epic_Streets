@@ -37,11 +37,6 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MoveCharacter();
-
-        if (controller.isStunned)
-        {
-            PushEnemyBack();
-        }
     }
 
     #endregion
@@ -88,7 +83,7 @@ public class EnemyMovement : MonoBehaviour
         rigidBody.velocity = Vector2.zero;
     }
 
-    public void PushEnemyBack()
+    public void PushEnemyBack(float pushBackForce)
     {
         if (controller.playersPos.x > transform.position.x)
         {
