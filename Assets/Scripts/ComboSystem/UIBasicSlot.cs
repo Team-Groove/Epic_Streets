@@ -26,6 +26,8 @@ public class UIBasicSlot : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag != null)
         {
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = rectTransform.anchoredPosition;
+            eventData.pointerDrag.GetComponent<DragAndDrop>().droppedOnSlot = true;
+            eventData.pointerDrag.GetComponent<DragAndDrop>().defaultPos = transform.localPosition;
         }
     }
 

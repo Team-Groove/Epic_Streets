@@ -10,8 +10,8 @@ public class Fighter : MonoBehaviour
     [SerializeField] public float horizontal_speed = 0.0f;
    
     //STATS
-    [SerializeField] public int maxhealth;
-    [SerializeField] public int currenthealth;
+    [SerializeField] public float maxhealth;
+    [SerializeField] public float currenthealth;
 
     //PROTECTEDS
     protected BoxCollider2D boxCollider2D = null;
@@ -36,7 +36,7 @@ public class Fighter : MonoBehaviour
     #endregion
 
     #region PROTECTED_FUNCTIONS
-    protected void UpdateHealthBar(int currenthealth)
+    protected void UpdateHealthBar(float currenthealth)
     {
         if (currenthealth < 0)
         {
@@ -65,7 +65,7 @@ public class Fighter : MonoBehaviour
     {
         currenthealth = maxhealth;
     }
-    public void ReceiveDamage(int dmg)
+    public void ReceiveDamage(float dmg)
     {
         currenthealth -= dmg;
         UpdateHealthBar(currenthealth);

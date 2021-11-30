@@ -98,20 +98,15 @@ public class EnemyController : Fighter
         isStunned = false;
     }
 
-    public IEnumerator EnemyDamageRedFeedback()
-    {
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
-        spriteRenderer.color = Color.white;
-    }
 
-    public IEnumerator EnemyStatusEffectFeedback(float duration, Color color)
+    public void EnemyStatusEffectFeedback(Color color)
     {
         spriteRenderer.color = color;
-        yield return new WaitForSeconds(duration);
+    }
+    public void EnemyNoStatusFeedback()
+    {
         spriteRenderer.color = Color.white;
     }
-
 
     #endregion
 }

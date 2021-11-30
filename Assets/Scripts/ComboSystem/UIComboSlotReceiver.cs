@@ -16,6 +16,8 @@ public class UIComboSlotReceiver : MonoBehaviour, IDropHandler
     public string stringName;
     public int attackDamage;
     public bool filled;
+    
+    public DragAndDrop[] attacks;
 
     #endregion
 
@@ -33,6 +35,18 @@ public class UIComboSlotReceiver : MonoBehaviour, IDropHandler
         ComboSlotEvent.eventos.ONSacarAtaqueDeSlot += SacarAtaque;
     }
 
+    private void Update()
+    {
+        for (int i = 0; i < attacks.Length; i++)
+        {
+            if (rectTransform.localPosition == attacks[i].GetComponent<DragAndDrop>().defaultPos)
+            {
+               
+                
+            }
+        }
+    }
+
     #endregion
 
     #region FUNCTIONS
@@ -42,7 +56,7 @@ public class UIComboSlotReceiver : MonoBehaviour, IDropHandler
         {
             if (ataque.Equals(attack.nameOfAttack))
             {
-                Debug.Log("SACANDO ATAQUE");
+             
                 attack = null;
                 stringName = null;
                 attackDamage = 0;
@@ -55,8 +69,9 @@ public class UIComboSlotReceiver : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
 
-        Debug.Log("OnDrop ComboSlot");
-
+     
+        eventData.pointerDrag.GetComponent<DragAndDrop>().droppedOnSlot = true;
+        eventData.pointerDrag.GetComponent<DragAndDrop>().defaultPos = transform.localPosition;
 
         if (eventData.pointerDrag != null)
         {

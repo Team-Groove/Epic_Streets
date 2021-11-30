@@ -24,12 +24,12 @@ public class HealthBar : MonoBehaviour
 
     #region PUBLIC_FUNCTIONS
 
-    public void SetMaxHealth(int health)
+    public void SetMaxHealth(float health)
     {
         slider.maxValue = health;
     }
 
-    public void UpdateHealth(int health)
+    public void UpdateHealth(float health)
     {
         slider.value = health;
         hp.SetText(health.ToString());

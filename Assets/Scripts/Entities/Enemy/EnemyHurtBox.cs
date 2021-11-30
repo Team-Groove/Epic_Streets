@@ -62,18 +62,30 @@ public class EnemyHurtBox : MonoBehaviour
 
             if (canStagger && !enemy.isDummy && staggerCount != staggerResistence)
             {
-                sprite.StartCoroutine("EnemyDamageRedFeedback");
+
                 enemy.StartCoroutine("GetStunned");
-                
+            
                 staggerCount++;
             }
             else
             {
-                enemy.StartCoroutine("EnemyDamageRedFeedback");
+                
             }
             enemy.ReceiveDamage(dmgReceived);
             audioManager.Play(audioName);
             popUpNumber.GetComponentInChildren<TextMeshPro>().SetText("-" + dmgReceived.ToString());
+
+            if (!damageManager.criticalHit)
+            {
+                popUpNumber.GetComponentInChildren<TextMeshPro>().fontSize = 10f;
+                popUpNumber.GetComponentInChildren<TextMeshPro>().color = Color.white;
+            }
+            else
+            {
+                popUpNumber.GetComponentInChildren<TextMeshPro>().fontSize = 12f;
+                popUpNumber.GetComponentInChildren<TextMeshPro>().color = Color.yellow;
+            }
+            
             Instantiate(popUpNumber, popUpNumberSpawnPoint.transform.position, Quaternion.identity);
             Instantiate(hitEffect, new Vector3(Random.Range(hitSpawnPoint.transform.position.x + 0.5f , hitSpawnPoint.transform.position.x - 0.5f), Random.Range(hitSpawnPoint.transform.position.y + 0.5f, hitSpawnPoint.transform.position.y - 0.5f), hitSpawnPoint.transform.position.z), Quaternion.identity);
 

@@ -107,6 +107,15 @@ public class PlayerAnimation : MonoBehaviour
         //EFECTOS DISTINTOS SEGUN EL SLOT
         SpecialEffectAttacks();
 
+        //LETRAS AMARILLAS DE GOLPE CRITICO
+        if (currentAttackIndex == 2)
+        {
+            damageManager.criticalHit = true;
+        }
+        else
+        {
+            damageManager.criticalHit = false;
+        }
     }
 
     #endregion

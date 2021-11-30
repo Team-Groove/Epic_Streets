@@ -9,9 +9,22 @@ public class AttackDamageManager : MonoBehaviour
     public bool canWindBack;
     public bool canStun;
 
-    public float poisonDuration;
+    public bool criticalHit;
+
+    //POISON
+    public float poisonTotalDamage;
+    public float poisonDamagePerLoop;
+    public float poisonInterval;
+    
+    //FREEZE
     public float freezeDuration;
-    public float burnDuration;
+    public float slowAmount;
+    
+    //BURN
+    public float burnTotalDamage;
+    public float burnDamagePerLoop;
+    public float burnInterval;
+    
     public float stunDuration;
     public float windForce;
 

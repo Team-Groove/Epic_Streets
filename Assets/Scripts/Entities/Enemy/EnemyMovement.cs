@@ -97,14 +97,5 @@ public class EnemyMovement : MonoBehaviour
         }
         
     }
-
-    public IEnumerator EnemyDamageRedFeedback()
-    {
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
-        spriteRenderer.color = Color.white;
-    }
-    
-
     #endregion
 }
