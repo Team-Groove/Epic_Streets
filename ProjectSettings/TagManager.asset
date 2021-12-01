@@ -53,12 +53,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
+  - name: 
     uniqueID: 3015219193
     locked: 0
-  - name: Fighter
+  - name: Floor
     uniqueID: 896093799
     locked: 0
-  - name: Effects
+  - name: 
     uniqueID: 4032497435
+    locked: 0
+  - name: Fighter
+    uniqueID: 3251300221
+    locked: 0
+  - name: Effects
+    uniqueID: 303463595
+    locked: 0
+  - name: Background
+    uniqueID: 3373876919
+    locked: 0
+  - name: UI
+    uniqueID: 3847936723
     locked: 0

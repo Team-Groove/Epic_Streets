@@ -444,6 +444,11 @@ MonoBehaviour:
   currenthealth: 100
   rigidBody: {fileID: 0}
   healthBar: {fileID: 3178485901950980361}
+  IsDead: 0
+  stunnedDuration: 0
+  spriteRendererLocalScaleX: 0
+  playersPos: {x: 0, y: 0}
+  isStunned: 0
   isDummy: 1
 --- !u!1 &3178485901237418978
 GameObject:
@@ -602,8 +607,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 896093799
-  m_SortingLayer: 2
+  m_SortingLayerID: -1043667075
+  m_SortingLayer: 4
   m_SortingOrder: -125
   m_Sprite: {fileID: 21300000, guid: bc80adf1c4b12d3438d165846e4b2912, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -794,6 +799,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpNumber: {fileID: 648994674615115820, guid: 42fa476b334c9ef4388d45f30105269d, type: 3}
   popUpNumberSpawnPoint: {fileID: 3178485900434459136}
+  hitSpawnPoint: {fileID: 0}
+  hitEffect: {fileID: 0}
+  staggerCount: 0
+  timeBetweenStagger: 0
+  staggerTimer: 0
+  staggerResistence: 0
 --- !u!1 &3178485902093464899
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +862,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 896093799
+  m_SortingLayerID: -447030573
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3178485902093464896

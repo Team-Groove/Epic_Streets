@@ -3,6 +3,23 @@ using UnityEngine;
 public class AttackDamageManager : MonoBehaviour
 {
 
+    public static AttackDamageManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     public bool canPoison;
     public bool canFreeze;
     public bool canBurn;

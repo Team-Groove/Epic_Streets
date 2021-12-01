@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 896093799
-  m_SortingLayer: 2
+  m_SortingLayerID: -921090377
+  m_SortingLayer: 6
   m_SortingOrder: -469
   m_Sprite: {fileID: 7025173788880920831, guid: a41b5eeabc0a0374d974d6ae4dc5785d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -123,7 +123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6432679048118746722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.54, y: 0.51, z: 0}
+  m_LocalPosition: {x: -0.54, y: 1.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5036347924760454364}
@@ -147,10 +147,10 @@ MonoBehaviour:
   m_Color: {r: 0.13039613, g: 1, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000f997b8b3674e6935
+  m_ApplyToSortingLayers: 00000000f997b8b3674e69357de7cac1ab7c1612
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
-  m_LightOrder: 0
+  m_LightOrder: 10
   m_AlphaBlendOnOverlap: 0
   m_ShadowIntensity: 0
   m_ShadowVolumeIntensity: 0
@@ -214,7 +214,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0000015050173, y: -1.2040765}
+  m_Offset: {x: 0.0000014901161, y: 0.2314077}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -225,7 +225,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.54629004, y: 0.41366673}
+  m_Size: {x: 0.54629004, y: 0.45321655}
   m_EdgeRadius: 0
 --- !u!1 &8410118960282209789
 GameObject:
@@ -252,7 +252,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8410118960282209789}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.47, y: 0.53, z: 0}
+  m_LocalPosition: {x: 0.47, y: 1.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5036347924760454364}
@@ -276,10 +276,10 @@ MonoBehaviour:
   m_Color: {r: 0.052918315, g: 1, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000f997b8b3674e6935
+  m_ApplyToSortingLayers: 00000000f997b8b3674e69357de7cac1ab7c1612
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
-  m_LightOrder: 0
+  m_LightOrder: 10
   m_AlphaBlendOnOverlap: 0
   m_ShadowIntensity: 0
   m_ShadowVolumeIntensity: 0
