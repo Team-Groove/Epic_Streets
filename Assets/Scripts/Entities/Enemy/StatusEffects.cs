@@ -18,6 +18,8 @@ public class StatusEffects : MonoBehaviour
     [SerializeField] private GameObject popUpNumber;
     [SerializeField] private GameObject popUpNumberSpawnPoint;
 
+    [SerializeField] private GameObject popUpStatusName;
+   
     public _statusEffects actualStatusEffect;
 
     private void Awake()
@@ -31,7 +33,7 @@ public class StatusEffects : MonoBehaviour
 
     private void Start()
     {
-       
+        popUpStatusName.SetActive(false);
     }
 
     private void Update()
@@ -98,22 +100,25 @@ public class StatusEffects : MonoBehaviour
 
         while (amountDamaged <= poisonDamage)
         {
+            SetStatusNamePopUp("Poisoned", color);
             
             controller.ReceiveDamage(damagePerLoop);
          
-            Instantiate(popUpNumber, popUpNumberSpawnPoint.transform.position, Quaternion.identity); 
+            Instantiate(popUpNumber, popUpNumberSpawnPoint.transform.position, Quaternion.identity);
+            
 
             amountDamaged += damagePerLoop;
             
             yield return new WaitForSeconds(interval);
         }
-       
+
+        popUpStatusName.SetActive(false);
         controller.EnemyNoStatusFeedback();
         actualStatusEffect = _statusEffects.normal;
     }
     private IEnumerator FrozenStatus(float duration, Color color, float slow)
     {
-
+        SetStatusNamePopUp("Frozen", color);
         Vector2 a = new Vector2(controller.horizontal_speed, controller.vertical_speed);
       
         controller.EnemyStatusEffectFeedback(color);
@@ -123,6 +128,8 @@ public class StatusEffects : MonoBehaviour
 
         yield return new WaitForSeconds(duration);
 
+        popUpStatusName.SetActive(false);
+        
         controller.horizontal_speed = a.x;
         controller.vertical_speed = a.y;
 
@@ -139,6 +146,7 @@ public class StatusEffects : MonoBehaviour
 
         while (amountDamaged <= Damage)
         {
+            SetStatusNamePopUp("Burning", color);
 
             controller.ReceiveDamage(damagePerLoop);
 
@@ -148,6 +156,8 @@ public class StatusEffects : MonoBehaviour
 
             amountDamaged += damagePerLoop;
         }
+
+        popUpStatusName.SetActive(false);
 
         controller.EnemyNoStatusFeedback();
         actualStatusEffect = _statusEffects.normal;
@@ -179,6 +189,15 @@ public class StatusEffects : MonoBehaviour
             StartCoroutine(BurnedStatus( new Color(1f, 120f / 255f, 49 / 255f), damageManager.burnTotalDamage, damageManager.burnDamagePerLoop, damageManager.burnInterval));
         }
     }
+
+    private void SetStatusNamePopUp(string statusName, Color color)
+    {
+        popUpStatusName.GetComponentInChildren<TextMeshPro>().text = statusName;
+        popUpStatusName.GetComponentInChildren<TextMeshPro>().color = color;
+
+        popUpStatusName.SetActive(true);
+    }
+
 
 
 }

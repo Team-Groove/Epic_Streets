@@ -13,11 +13,12 @@ public class EnemyHurtBox : MonoBehaviour
     private AudioManager audioManager;
     private StatusEffects statusEffects;
 
-    [SerializeField] private GameObject popUpNumber;
-    [SerializeField] private GameObject popUpNumberSpawnPoint;
-    [SerializeField] private GameObject hitSpawnPoint;
+    [SerializeField] private GameObject attackPopUpNumberPrefab;
+    [SerializeField] private ParticleSystem particleHitPrefab;
 
-    [SerializeField] private ParticleSystem hitEffect;
+    [SerializeField] private GameObject popUpNumberSpawnPoint;
+    [SerializeField] private GameObject particleSpawnPoint;
+   
 
     public int staggerCount;
     public float timeBetweenStagger;
@@ -73,21 +74,21 @@ public class EnemyHurtBox : MonoBehaviour
             }
             enemy.ReceiveDamage(dmgReceived);
             audioManager.Play(audioName);
-            popUpNumber.GetComponentInChildren<TextMeshPro>().SetText("-" + dmgReceived.ToString());
+            attackPopUpNumberPrefab.GetComponentInChildren<TextMeshPro>().SetText("-" + dmgReceived.ToString());
 
             if (!damageManager.criticalHit)
             {
-                popUpNumber.GetComponentInChildren<TextMeshPro>().fontSize = 10f;
-                popUpNumber.GetComponentInChildren<TextMeshPro>().color = Color.white;
+                attackPopUpNumberPrefab.GetComponentInChildren<TextMeshPro>().fontSize = 10f;
+                attackPopUpNumberPrefab.GetComponentInChildren<TextMeshPro>().color = Color.white;
             }
             else
             {
-                popUpNumber.GetComponentInChildren<TextMeshPro>().fontSize = 12f;
-                popUpNumber.GetComponentInChildren<TextMeshPro>().color = Color.yellow;
+                attackPopUpNumberPrefab.GetComponentInChildren<TextMeshPro>().fontSize = 12f;
+                attackPopUpNumberPrefab.GetComponentInChildren<TextMeshPro>().color = Color.yellow;
             }
             
-            Instantiate(popUpNumber, popUpNumberSpawnPoint.transform.position, Quaternion.identity);
-            Instantiate(hitEffect, new Vector3(Random.Range(hitSpawnPoint.transform.position.x + 0.5f , hitSpawnPoint.transform.position.x - 0.5f), Random.Range(hitSpawnPoint.transform.position.y + 0.5f, hitSpawnPoint.transform.position.y - 0.5f), hitSpawnPoint.transform.position.z), Quaternion.identity);
+            Instantiate(attackPopUpNumberPrefab, popUpNumberSpawnPoint.transform.position, Quaternion.identity);
+            Instantiate(particleHitPrefab, new Vector3(Random.Range(particleSpawnPoint.transform.position.x + 0.5f , particleSpawnPoint.transform.position.x - 0.5f), Random.Range(particleSpawnPoint.transform.position.y + 0.5f, particleSpawnPoint.transform.position.y - 0.5f), particleSpawnPoint.transform.position.z), Quaternion.identity);
 
             CineMachineShake.Instance.ShakeCamera(0.3f, 0.2f);
 

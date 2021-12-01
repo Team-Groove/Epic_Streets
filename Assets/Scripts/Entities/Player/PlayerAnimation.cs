@@ -23,7 +23,7 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Material glowMaterial;
     [SerializeField] private GameObject attackTag;
 
-    [SerializeField] private AudioClip[] sfx;
+    [SerializeField] public EffectColor[] attackColors;
 
     //STRING DE ANIMACIONES
     [SerializeField] public string[] normalAttackAnimationsNames;
@@ -77,32 +77,10 @@ public class PlayerAnimation : MonoBehaviour
 
         //CAMBIAR EL COLOR DEL MATERIAL 
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Punch_1"))
-        {
-            /*VERDE*/
-            glowMaterial.color = new Color(24f / 255f, 91f / 255f, 0f) * 30;
-        }
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Punch_2"))
-        {
-            /*CIAN*/
-            glowMaterial.color = new Color(18f / 255f, 174f / 255f, 191f / 255f) * 20;
-        }
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Kick_2"))
-        {
-            /*NARANJA*/
-            glowMaterial.color = new Color(191f / 255f, 68f / 255f, 0f) * 20;
-        }
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Kick_1"))
-        {
-            /*GRIS*/
-            glowMaterial.color = new Color(167f / 255f, 189f / 255f, 171f / 255f) * 20;
-        }
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("StrongPunch"))
-        {
-            /*Azul*/
-            glowMaterial.color = new Color(32f / 255f, 53f / 255f, 191f / 255f) * 25;
-        }
-
+        SetEffectColor("Punch_1", "Veneno");
+        SetEffectColor("Punch_2", "Hielo");
+        SetEffectColor("Kick_1", "Viento");
+        SetEffectColor("Kick_2", "Fuego");
 
         //EFECTOS DISTINTOS SEGUN EL SLOT
         SpecialEffectAttacks();
@@ -122,6 +100,19 @@ public class PlayerAnimation : MonoBehaviour
 
     #region PRIVATE_FUNCTIONS
 
+    private void SetEffectColor(string animationName, string colorName)
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName(animationName))
+        {
+            for (int i = 0; i < attackColors.Length; i++)
+            {
+                if (attackColors[i].name == colorName)
+                {
+                    glowMaterial.color = attackColors[i].color * attackColors[i].intensity;
+                }
+            }
+        }
+    }
     private void SetAnimationBool(bool isActive, string stateName)
     {
         animator.SetBool(stateName, isActive);

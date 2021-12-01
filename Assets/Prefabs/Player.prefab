@@ -277,7 +277,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1043667075
   m_SortingLayer: 4
-  m_SortingOrder: -117
+  m_SortingOrder: -658
   m_Sprite: {fileID: -2413806693520163455, guid: 8efe96296059b0344af94ef665f8bd32, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.4627451}
   m_FlipX: 0
@@ -433,7 +433,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1043667075
   m_SortingLayer: 4
-  m_SortingOrder: -109
+  m_SortingOrder: -650
   m_Sprite: {fileID: -4551553420487462637, guid: 7e3016a92b20f054bb676829e41297c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -551,7 +551,19 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   glowMaterial: {fileID: 0}
   attackTag: {fileID: 6896929255073886973}
-  sfx: []
+  attackColors:
+  - name: Veneno
+    color: {r: 0.06074228, g: 0.990566, b: 0.08848644, a: 1}
+    intensity: 10
+  - name: Hielo
+    color: {r: 0, g: 0.9062108, b: 0.9528302, a: 0}
+    intensity: 10
+  - name: Fuego
+    color: {r: 0.9811321, g: 0.68992424, b: 0, a: 0}
+    intensity: 10
+  - name: Viento
+    color: {r: 0.80544674, g: 0.9433962, b: 0.9303316, a: 0}
+    intensity: 10
   normalAttackAnimationsNames:
   - 
   - 
