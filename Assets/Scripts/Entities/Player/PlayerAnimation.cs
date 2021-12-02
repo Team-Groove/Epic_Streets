@@ -60,7 +60,8 @@ public class PlayerAnimation : MonoBehaviour
 
             SetAnimationBool(movement.isMoving, "Run");
 
-            PlayAnimation(dash.isDashing, "Dash");
+            PlayAnimation(dash.isDashingX, "Dash");
+            PlayAnimation(dash.isDashingY, "Dash_Y");
             //CONDICION ATAQUE FUERTE
             CheckStateInfo_Play("Punch_1", attack.strongAttack, "StrongPunch", "Punch_2", "Kick_2");
             //CONDICION ATAQUES NORMALES
@@ -81,6 +82,7 @@ public class PlayerAnimation : MonoBehaviour
         SetEffectColor("Punch_2", "Hielo");
         SetEffectColor("Kick_1", "Viento");
         SetEffectColor("Kick_2", "Fuego");
+        SetEffectColor("StrongPunch", "Final_1");
 
         //EFECTOS DISTINTOS SEGUN EL SLOT
         SpecialEffectAttacks();

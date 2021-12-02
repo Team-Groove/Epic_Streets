@@ -27,7 +27,8 @@ public class Dash : MonoBehaviour
 
     //STATUS
     private bool canDash;
-    public bool isDashing;
+    public bool isDashingY;
+    public bool isDashingX;
 
     //FUNCIONALIDAD
     private bool dashStop;
@@ -172,19 +173,24 @@ public class Dash : MonoBehaviour
     }
     private void CheckIfDashin()
     {
-        if (direction != 0)
+        if (direction == 1 || direction == 2)
         {
-            isDashing = true;
+            isDashingX = true;
         }
-        else
+        else if (direction == 3 || direction == 4)
         {
-            isDashing = false;
+            isDashingY = true;
+        }
+        else if(direction == 0)
+        {
+            isDashingX = false;
+            isDashingY = false;
         }
     }
         
     private void DeactivateDashDuring()
     {
-        if (isDashing)
+        if (isDashingX || isDashingY)
         {
             deactiavateBoxCollider.SetActive(false);
         }
@@ -196,7 +202,8 @@ public class Dash : MonoBehaviour
 
     private void StopDashes()
     {
-        isDashing = false;
+        isDashingY = false;
+        isDashingX = false;
         dashRight = false;
         dashLeft = false;
         dashStop = false;
@@ -208,6 +215,7 @@ public class Dash : MonoBehaviour
         switch (direction)
         {
             case 1:
+                
                 dashRight = true;
                 break;
             case 2:
