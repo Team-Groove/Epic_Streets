@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditionToLeave: {fileID: 0}
-  sceneName: Level_3
+  sceneName: EndGame
 --- !u!61 &805725074
 BoxCollider2D:
   m_ObjectHideFlags: 0
