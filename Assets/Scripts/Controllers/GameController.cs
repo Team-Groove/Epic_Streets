@@ -1,38 +1,39 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     #region VARIABLES
 
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private Image gameOverScreen;
-
-    
+    public PlayerController playerController;
+    private Image gameOverScreen;
+  
     public bool gameOver = false;
 
     public float gameOverFadeInTime;
 
+    public bool runOnce;
+
     #endregion
 
     #region UNIT_CALLS
-
+    
+    
     private void Start()
     {
-        gameOver = false;
-    }
+        gameOverFadeInTime = 3f;
 
-    private void Awake()
-    {
-        playerController = GameObject.FindObjectOfType<PlayerController>().GetComponent<PlayerController>();
+        gameOver = false;
+        playerController = FindObjectOfType<PlayerController>();
+        gameOverScreen = GameObject.Find("UIController").gameObject.transform.Find("GameOverScreen").GetComponent<Image>();
     }
 
     private void Update()
     {
         PlayersLifeisZero();
-        GameOverSecuence();
+        GameOverSecuence(); 
     }
 
     #endregion
@@ -41,21 +42,28 @@ public class GameController : MonoBehaviour
 
     private void PlayersLifeisZero()
     {
-        if (playerController.currenthealth <= 0)
+        if (playerController == null)
+        {
+            return;
+        }
+        else if (playerController.currenthealth <= 0)
         {
             gameOver = true;
+            playerController.IsDead = true;
         }
     }
-    
     private void GameOverSecuence()
     {
         if (gameOver)
         {
-            StartCoroutine("GameOverCoroutine");
-           
+            if (runOnce == false)
+            {
+                StartCoroutine("GameOverCoroutine");
+                gameOver = false;
+                runOnce = true;
+            }
         }
     }
-
     private IEnumerator GameOverCoroutine()
     {
         
@@ -68,10 +76,21 @@ public class GameController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-        SceneController.LoadScene("MainMenu", 2f, 1f);
+        SceneController.LoadScene("MainHub", 2f, 1f);
+
     }
-
-
+  
+    private void CheckIfObjectExistInScene(string objectToFind, GameObject objectToInstantiate)
+    {
+        if (GameObject.Find(objectToFind) != null)
+        { 
+            return;
+        }
+        else
+        {
+            Instantiate(objectToInstantiate, GameObject.Find("PlayerSpawnPoint").GetComponent<Transform>().transform.position, Quaternion.identity);
+        }
+    }
     #endregion
 
 }

@@ -15,7 +15,7 @@ public class PlayerAnimation : MonoBehaviour
     private Dash dash;
     private DistanceAttackSystem distance;
     private ComboSystemManager comboSystem;
-    private AttackDamageManager damageManager;
+    public AttackDamageManager damageManager;
     private AudioManager audioManager;
 
     public SpriteRenderer spriteRenderer;
@@ -70,11 +70,12 @@ public class PlayerAnimation : MonoBehaviour
             CheckStateInfo_Play("Punch_1", distance.distanceAttack, "DistanceAttack", "Punch_2", "Kick_2", "StrongPunch");
 
             StopVelocityMovementWhenAttack();
+
+           
         }
-        else
-        {
-            DeathAnimation();
-        }
+       
+        DeathAnimation();
+        
 
         //CAMBIAR EL COLOR DEL MATERIAL 
 
@@ -206,10 +207,9 @@ public class PlayerAnimation : MonoBehaviour
 
     private void DeathAnimation()
     {
-        if (controller.IsDead)
-        {
-            animator.SetBool("isDead", true);
-        }
+      
+        animator.SetBool("isDead", controller.IsDead);
+        
     }
 
     #endregion

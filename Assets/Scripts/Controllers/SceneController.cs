@@ -15,17 +15,20 @@ public class SceneController : MonoBehaviour
 
     #region UNITY_CALLS
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
     private void Awake()
     {
         OnInstance();
     }
 
     #endregion
-    
+
     #region FUNCTIONS
-    
-   
-    
+
     public static string GetActualScene()
     {
         return SceneManager.GetActiveScene().name;
@@ -75,6 +78,19 @@ public class SceneController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneController.instance != null)
+        {
+            DontDestroyOnLoad(gameObject);
+            return;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
     #endregion
 }

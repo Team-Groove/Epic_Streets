@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6964273134241152817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6964273134241152823}
+  - component: {fileID: 6261385737642242796}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6964273134241152823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6964273134241152817}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -48.5, y: -0.099999905, z: -1.6949446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6261385737642242796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6964273134241152817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0565ceb7e8d2e6a419f2d2529cfddb5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: FireKick
+    audioClip: {fileID: 8300000, guid: 262cfc910ba2fa34daf9671bb9927b3d, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: HurtBox_1
+    audioClip: {fileID: 8300000, guid: 423829050bf614142a64cbc069dac1b8, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: HurtBox_2
+    audioClip: {fileID: 8300000, guid: deb428ceeacad7f4a99323fd90d24728, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: HurtBox_3
+    audioClip: {fileID: 8300000, guid: 5974c8a56d6a23346991325c9e6b8349, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: HurtBox_4
+    audioClip: {fileID: 8300000, guid: 356b2167c2ec87647b704d4a256d2d2b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: PoisonFist
+    audioClip: {fileID: 8300000, guid: edc9ff22f4d179b45b582da09ac6af49, type: 3}
+    volume: 0.2
+    pitch: 1.3
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: IceFist
+    audioClip: {fileID: 8300000, guid: 9bdead7a18e3ea944b3cbf4dd514a73d, type: 3}
+    volume: 0.6
+    pitch: 1.2
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: WindKick
+    audioClip: {fileID: 8300000, guid: 1bcbad1fa9fc04540a7af98a59cff59d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Dash
+    audioClip: {fileID: 8300000, guid: f3c94f85b9c0de04dafef685bf276d28, type: 3}
+    volume: 0.2
+    pitch: 0.8
+    loop: 0
+    audioSource: {fileID: 0}
+  musics:
+  - name: FightMusic
+    audioClip: {fileID: 8300000, guid: c255f8398ea01b843909cf3562f1ff0f, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    audioSource: {fileID: 0}

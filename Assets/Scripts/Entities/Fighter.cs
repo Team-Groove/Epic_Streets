@@ -26,7 +26,7 @@ public class Fighter : MonoBehaviour
 
     #region UNITY_CALLS
     
-    protected virtual void Awake()
+    public virtual void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponentInChildren<BoxCollider2D>();
