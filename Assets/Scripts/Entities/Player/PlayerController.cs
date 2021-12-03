@@ -62,11 +62,8 @@ public class PlayerController : Fighter
         {
             npc = collision.gameObject.GetComponentInParent<NPCcontroller>();
 
-            Debug.Log("en zona");
-
-            if (keyboard.eKey.isPressed)
+            if (keyboard.eKey.isPressed && !npc.DialogueActive())
             {
-                Debug.Log("E");
                 npc.ActivateDialogue();
             }
         }
@@ -124,11 +121,13 @@ public class PlayerController : Fighter
     {
         if (SceneManager.GetSceneByName("MainMenu").isLoaded)
         {
+            uiController.gameObject.SetActive(false);
             return;
         }
         else
         {
             uiController = GameObject.FindObjectOfType<UIController>();
+            uiController.gameObject.SetActive(true);
 
             playerAnimation.damageManager = FindObjectOfType<AttackDamageManager>();
 

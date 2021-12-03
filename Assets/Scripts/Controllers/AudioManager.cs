@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AudioManager: MonoBehaviour
 {
@@ -45,9 +46,14 @@ public class AudioManager: MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += ChangeMusicDependingOfScene;
+    }
+
     private void Start()
     {
-        PlayMusic("FightMusic");
+        
     }
 
     public void Play(string name)
@@ -67,13 +73,52 @@ public class AudioManager: MonoBehaviour
     {
        
         Sound m = Array.Find(musics, sound => sound.name == name);
+        
         if (m == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+        
         m.audioSource.Play();
      
+    }
+
+    public void StopMusic(string name)
+    {
+
+        Sound m = Array.Find(musics, sound => sound.name == name);
+
+        if (m == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+
+        m.audioSource.Stop();
+
+    }
+
+    private void ChangeMusicDependingOfScene(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneManager.GetSceneByName("MainMenu").isLoaded)
+        {
+            StopMusic("FightMusic");
+            StopMusic("MainHubMusic");
+            PlayMusic("MainMenuMusic");
+        }
+        else if (SceneManager.GetSceneByName("MainHub").isLoaded)
+        {
+            StopMusic("FightMusic");
+            StopMusic("MainMenuMusic");
+            PlayMusic("MainHubMusic");
+        }
+        else if (SceneManager.GetSceneByName("Level_1").isLoaded)
+        {
+            StopMusic("MainMenuMusic");
+            StopMusic("MainHubMusic");
+            PlayMusic("FightMusic");
+        }
     }
 
 }

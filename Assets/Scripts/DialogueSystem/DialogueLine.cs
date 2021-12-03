@@ -14,6 +14,8 @@ public class DialogueLine : DialogueBaseClass
     [SerializeField] private Sprite characterSprite;
     [SerializeField] private Image imageHolder;
 
+    private bool canTalkTo = true;
+
     private IEnumerator lineAppear;
 
     private void Awake()
@@ -34,7 +36,7 @@ public class DialogueLine : DialogueBaseClass
 
     private void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+       if (Keyboard.current.spaceKey.wasPressedThisFrame )
         {
             if (textHolder.text != input)
             {

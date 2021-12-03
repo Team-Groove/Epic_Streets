@@ -17,7 +17,7 @@ public class DialogueBaseClass : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
 
-        yield return new WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame);
+        yield return new WaitUntil(() => Keyboard.current.eKey.wasPressedThisFrame);
         
         finished = true;
     }

@@ -7,8 +7,11 @@ public class DialogueHolder : MonoBehaviour
     private IEnumerator dialogeSeq;
     private bool dialogueFinished;
 
+    private bool canToAgain;
+
     private void OnEnable()
     {
+        canToAgain = false;
         dialogeSeq = DialogueSequence();
         StartCoroutine(dialogeSeq);
     }

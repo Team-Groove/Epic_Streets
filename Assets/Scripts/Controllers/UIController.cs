@@ -6,23 +6,42 @@ public class UIController : MonoBehaviour
 {
     #region VARIABLES
 
+    public static UIController instance;
 
     //PRIVADAS
     [SerializeField] public Image TabMenu;
     [SerializeField] private Image pauseMenu;
     [SerializeField] private Image[] comboSlots;
 
+    private Image settingsMenu;
+
     public Image gameOverScreen;
 
     public bool gameInPause;
+
+    //BUG EVENT SYSTEm
     
+
     //VARIABLES ESTATICAS
     public bool tabMenuOn;
 
     #endregion
 
     #region UNITY_CALLS
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
         TabMenu.gameObject.SetActive(false);
@@ -74,6 +93,7 @@ public class UIController : MonoBehaviour
 
     #region PUBLIC_FUNCTIONS
 
+    
     public void BackToMenu()
     {
         gameInPause = false;

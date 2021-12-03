@@ -43,7 +43,7 @@ public class EnemyHurtBox : MonoBehaviour
     private void Update()
     {
         DelayStaggerTimer();
-       
+     
     }
 
     #endregion
@@ -97,12 +97,16 @@ public class EnemyHurtBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CheckAttackTag(collision, "Punch_1", damageManager.punch1, "HurtBox_1", 1f, false, true, damageManager.canPoison, _statusEffects.poisoned);
-        CheckAttackTag(collision, "Punch_2", damageManager.punch2, "HurtBox_3", 0.8f, true, true, damageManager.canFreeze, _statusEffects.freezed);
-        CheckAttackTag(collision, "Kick_1", damageManager.kick1, "HurtBox_2", 0.6f, true, true, damageManager.canWindBack, _statusEffects.pushedBack);
-        CheckAttackTag(collision, "Kick_2", damageManager.kick2, "HurtBox_4", 0.5f,true, true, damageManager.canBurn, _statusEffects.burned);
-        CheckAttackTag(collision, "Final_1", damageManager.final1, "HurtBox_1", 0.4f, true, true, damageManager.canStun, _statusEffects.stunned);
-        CheckAttackTag(collision, "PlayersProjectile", damageManager.longDistance, "HurtBox_1", 0.3f, false, false, false, _statusEffects.normal);
+        if (!enemy.IsDead)
+        {
+            CheckAttackTag(collision, "Punch_1", damageManager.punch1, "HurtBox_1", 1f, false, true, damageManager.canPoison, _statusEffects.poisoned);
+            CheckAttackTag(collision, "Punch_2", damageManager.punch2, "HurtBox_3", 0.8f, true, true, damageManager.canFreeze, _statusEffects.freezed);
+            CheckAttackTag(collision, "Kick_1", damageManager.kick1, "HurtBox_2", 0.6f, true, true, damageManager.canWindBack, _statusEffects.pushedBack);
+            CheckAttackTag(collision, "Kick_2", damageManager.kick2, "HurtBox_4", 0.5f, true, true, damageManager.canBurn, _statusEffects.burned);
+            CheckAttackTag(collision, "Final_1", damageManager.final1, "HurtBox_1", 0.4f, true, true, damageManager.canStun, _statusEffects.stunned);
+            CheckAttackTag(collision, "PlayersProjectile", damageManager.longDistance, "HurtBox_1", 0.3f, false, false, false, _statusEffects.normal);
+        }
+        
     }
  
 

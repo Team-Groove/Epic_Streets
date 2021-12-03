@@ -125,6 +125,7 @@ public class PlayerAnimation : MonoBehaviour
         if (condition)
         {
             animator.Play(stateName);
+            
         }
     }
     private void CheckStateInfo_Play(string stateName, bool condition, string animationName,
@@ -247,6 +248,10 @@ public class PlayerAnimation : MonoBehaviour
     public void ResetStrongAttack()
     {
         attack.strongAttack = false;
+    }
+    public void IsDashingYFalse()
+    {
+        dash.isDashingY = false;
     }
 
 

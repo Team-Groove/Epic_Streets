@@ -1097,9 +1097,9 @@ MonoBehaviour:
   popUpNumberSpawnPoint: {fileID: 7408336630677001997}
   particleSpawnPoint: {fileID: 9190814780228294695}
   staggerCount: 0
-  timeBetweenStagger: 1
-  staggerTimer: 0
-  staggerResistence: 0
+  timeBetweenStagger: 1.2
+  staggerTimer: 0.5
+  staggerResistence: 2
 --- !u!1 &7408336631333234766
 GameObject:
   m_ObjectHideFlags: 0

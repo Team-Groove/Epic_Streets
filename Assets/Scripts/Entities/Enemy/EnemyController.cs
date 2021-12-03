@@ -25,6 +25,7 @@ public class EnemyController : Fighter
     private void Start()
     {
         player = FindObjectOfType<PlayerController>().transform;
+        playersPos = player.transform.position;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
@@ -64,7 +65,22 @@ public class EnemyController : Fighter
     }
     private void GetPlayersPos()
     {
-        playersPos = player.transform.position;
+        if (isDummy)
+        {
+            return;
+        }
+        else
+        {
+            if (playersPos == null)
+            {
+                player = FindObjectOfType<PlayerController>().transform;
+            }
+            else
+            {
+                playersPos = player.transform.position;
+            }
+        }
+      
     }
     
    

@@ -14,7 +14,7 @@ public class Dash : MonoBehaviour
 
     //DIRECCION EN INT
 
-    private int direction;
+    public int direction;
 
     //COOLDOWN
 
@@ -87,19 +87,19 @@ public class Dash : MonoBehaviour
     {
         if (canDash && !controller.InDialogue())
         {
-            if (context.performed && input.actions.FindAction("Move").ReadValue<Vector2>().x > 0)
+            if (context.performed && input.actions.FindAction("Move").ReadValue<Vector2>().x > 0.1f)
             {
                 direction = 1;
             }
-            else if (context.performed && input.actions.FindAction("Move").ReadValue<Vector2>().x < 0)
+            else if (context.performed && input.actions.FindAction("Move").ReadValue<Vector2>().x < -0.1f)
             {
                 direction = 2;
             }
-            else if (context.performed && input.actions.FindAction("Move").ReadValue<Vector2>().y > 0)
+            else if (context.performed && input.actions.FindAction("Move").ReadValue<Vector2>().y > 0.1f)
             {
                 direction = 3;
             }
-            else if (context.performed && input.actions.FindAction("Move").ReadValue<Vector2>().y < 0)
+            else if (context.performed && input.actions.FindAction("Move").ReadValue<Vector2>().y < -0.1f)
             {
                 direction = 4;
             }
