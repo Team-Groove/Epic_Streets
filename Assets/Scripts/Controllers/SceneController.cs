@@ -84,11 +84,16 @@ public class SceneController : MonoBehaviour
         if (SceneController.instance != null)
         {
             DontDestroyOnLoad(gameObject);
-            return;
+            
         }
         else
         {
             Destroy(gameObject);
+        }
+
+        if (SceneManager.GetSceneByName("MainMenu").isLoaded || SceneManager.GetSceneByName("MainHub").isLoaded)
+        {
+            PlayerPrefs.DeleteAll();
         }
 
     }

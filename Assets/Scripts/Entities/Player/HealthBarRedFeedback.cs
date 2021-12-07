@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class HealthBarRedFeedback : MonoBehaviour
 {
-
     public static HealthBarRedFeedback instance { get; private set; }
     private Animator animator;
 

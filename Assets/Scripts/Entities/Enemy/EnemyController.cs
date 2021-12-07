@@ -18,6 +18,8 @@ public class EnemyController : Fighter
     public bool isStunned;
     public bool isDummy;
 
+    public int moneyReward;
+
     #endregion
 
     #region UNITY_CALLS
@@ -60,6 +62,7 @@ public class EnemyController : Fighter
             else
             {
                 IsDead = true;
+                
             }
         }
     }
@@ -83,7 +86,10 @@ public class EnemyController : Fighter
       
     }
     
-   
+    public void AddMoney()
+    {
+        MoneyController.currentMoney += moneyReward;
+    }
     
     public void DestroyObject()
     {

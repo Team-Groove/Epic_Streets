@@ -16,6 +16,8 @@ public class DialogueLine : DialogueBaseClass
 
     private bool canTalkTo = true;
 
+    public bool canUpgrade;
+
     private IEnumerator lineAppear;
 
     private void Awake()
@@ -32,6 +34,14 @@ public class DialogueLine : DialogueBaseClass
         ResetLine();
         lineAppear = (WriteText(input, textHolder, delay));
         StartCoroutine(lineAppear);
+    }
+
+    private void OnDisable()
+    {
+        if (canUpgrade && MoneyController.currentMoney >= 500)
+        {
+            MoneyController.canUpgrade = true;
+        }
     }
 
     private void Update()

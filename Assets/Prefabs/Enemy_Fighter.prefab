@@ -546,11 +546,12 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   healthBar: {fileID: 7408336631475702788}
   IsDead: 0
-  stunnedDuration: 0.4
+  stunnedDuration: 0.3
   spriteRendererLocalScaleX: 0
   playersPos: {x: 0, y: 0}
   isStunned: 0
   isDummy: 0
+  moneyReward: 100
 --- !u!114 &5391920343759691023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,8 +566,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSidePos_1: {fileID: 0}
   playerSidePos_2: {fileID: 0}
-  attackDistance: 1
-  timeBetweenAttacks: 1.8
+  attackDistance: 1.3
+  timeBetweenAttacks: 1.5
   distance1: 0
   distance2: 0
   distanceFromObjective: 0
@@ -1097,9 +1098,9 @@ MonoBehaviour:
   popUpNumberSpawnPoint: {fileID: 7408336630677001997}
   particleSpawnPoint: {fileID: 9190814780228294695}
   staggerCount: 0
-  timeBetweenStagger: 1.2
-  staggerTimer: 0.5
-  staggerResistence: 2
+  timeBetweenStagger: 2
+  staggerTimer: 0.4
+  staggerResistence: 1
 --- !u!1 &7408336631333234766
 GameObject:
   m_ObjectHideFlags: 0

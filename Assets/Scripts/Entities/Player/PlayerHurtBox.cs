@@ -4,16 +4,18 @@ public class PlayerHurtBox : MonoBehaviour
 {
     #region VARIABLES
 
-    private PlayerAnimation anim;
+    public PlayerAnimation anim;
     private PlayerController player;
     
-    private AudioManager audioManager;
+    public AudioManager audioManager;
     
     [SerializeField]
     private GameObject hitSpawnPoint;
 
     [SerializeField]
     private ParticleSystem hurtEffect;
+
+    private HealthBarRedFeedback redFeedback;
 
     #endregion
 
@@ -24,6 +26,7 @@ public class PlayerHurtBox : MonoBehaviour
         anim = GetComponentInParent<PlayerAnimation>();
         player = GetComponentInParent<PlayerController>();
         audioManager = FindObjectOfType<AudioManager>();
+        redFeedback = FindObjectOfType<HealthBarRedFeedback>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +36,9 @@ public class PlayerHurtBox : MonoBehaviour
             anim.StartCoroutine("DamageRedFeedback");
             player.ReceiveDamage(10);
 
-            HealthBarRedFeedback.instance.PlayAnimation();
+            redFeedback.PlayAnimation();
+         
+
 
             audioManager.Play("HurtBox_2");
 

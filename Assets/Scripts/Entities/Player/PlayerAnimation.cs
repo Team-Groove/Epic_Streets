@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerAnimation : MonoBehaviour
 {
@@ -97,6 +98,12 @@ public class PlayerAnimation : MonoBehaviour
         {
             damageManager.criticalHit = false;
         }
+        if (!SceneManager.GetSceneByName("MainMenu").isLoaded)
+        {
+            damageManager = GameObject.Find("DamageManager").GetComponent<AttackDamageManager>();
+        }
+      
+
     }
 
     #endregion

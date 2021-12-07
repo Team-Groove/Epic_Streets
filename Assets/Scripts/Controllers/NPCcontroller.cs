@@ -15,11 +15,12 @@ public class NPCcontroller : MonoBehaviour
         EToTalk.SetActive(false);
     }
 
+
+
     public void ActivateDialogue()
     {
         dialogue.SetActive(true);
     }
-
     public bool DialogueActive()
     {
         return dialogue.activeSelf;
@@ -32,7 +33,6 @@ public class NPCcontroller : MonoBehaviour
             EToTalk.gameObject.SetActive(true);
         }
     }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")

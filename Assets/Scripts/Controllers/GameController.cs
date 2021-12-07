@@ -77,7 +77,6 @@ public class GameController : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         SceneController.LoadScene("MainHub", 2f, 1f);
-
     }
   
     private void CheckIfObjectExistInScene(string objectToFind, GameObject objectToInstantiate)

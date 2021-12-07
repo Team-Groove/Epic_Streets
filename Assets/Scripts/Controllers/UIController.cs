@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     [SerializeField] public Image TabMenu;
     [SerializeField] private Image pauseMenu;
     [SerializeField] private Image[] comboSlots;
+ 
 
     private Image settingsMenu;
 
@@ -19,8 +20,9 @@ public class UIController : MonoBehaviour
 
     public bool gameInPause;
 
-    //BUG EVENT SYSTEm
-    
+    //PlayerPref posiciones
+
+
 
     //VARIABLES ESTATICAS
     public bool tabMenuOn;
@@ -30,17 +32,17 @@ public class UIController : MonoBehaviour
     #region UNITY_CALLS
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+         if (instance == null)
+         {
+             instance = this;
+         }
+         else
+         {
+             Destroy(gameObject);
+             return;
+         }
 
-        DontDestroyOnLoad(gameObject);
+         DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {
@@ -108,5 +110,30 @@ public class UIController : MonoBehaviour
     {
         gameInPause = false;
     }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneManager.GetSceneByName("MainMenu").isLoaded)
+        {
+            gameObject.SetActive(false);
+        }
+       /* if (!SceneManager.GetSceneByName("MainMenu").isLoaded && !SceneManager.GetSceneByName("MainHub").isLoaded)
+        {
+            gameObject.SetActive(true);
+        }*/
+
+        if (SceneManager.GetSceneByName("MainHub").IsValid())
+        {
+            gameObject.SetActive(true);
+            gameOverScreen.gameObject.SetActive(false);
+        }
+
+    }
+
     #endregion
 }

@@ -6,53 +6,68 @@ public class PlayerController : Fighter
 {
     #region VARIABLES
 
-    public static PlayerController instance;
+   // public static PlayerController instance;
 
     private NPCcontroller npc;
-    private UIController uiController;
-    private PlayersHealthBar playerhealthBar;
-    private PlayerAnimation playerAnimation;
+    
+    //AFTER LOAD REMAINS
 
-    private Vector3 SpawnPointOnEnterLevel;
+    public UIController uiController;
+    private PlayersHealthBar playerhealthBar;
+
     private Keyboard keyboard;
+
+    //DATA SAVE
+
+    private string playerHpPrefName = "PlayerHp";
+    private string playerMaxHpPrefName = "PlayerMaxHp";
+    
+    public bool maxHpUpgraded = false;
 
     #endregion
 
     #region UNITY_CALLS
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnLevelFinishedLoading;
-    }
 
     public override void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else 
-        {
-            Destroy(gameObject);
-            return;
-        }
-
+    { 
+        LoadData();
+        
         playerhealthBar = GetComponent<PlayersHealthBar>();
+   
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponentInChildren<BoxCollider2D>();
-        playerAnimation = GetComponent<PlayerAnimation>();
 
-        DontDestroyOnLoad(gameObject);
+        if (SceneManager.GetSceneByName("MainHub").IsValid())
+        {
+            IsDead = false;
+            currenthealth = maxhealth;
+        }
+        
     }
 
     private void Start()
     { 
-        keyboard = Keyboard.current;
+        keyboard = Keyboard.current; 
     }
 
     private void Update()
     {
+        healthBar = GameObject.Find("UIController").gameObject.transform.Find("HealthBar").GetComponent<HealthBar>();
+        uiController = GameObject.Find("UIController").GetComponent<UIController>();
+        playerhealthBar.FindHealthBarSprite();
+
         UpdateHealthBar(currenthealth);
+       
+
+        healthBar.SetMaxHealth(maxhealth);
+
+        if (maxHpUpgraded)
+        {
+            currenthealth = maxhealth;
+            maxHpUpgraded = false;
+        }
+
         IfCurrentLifeisZero();
     }
 
@@ -117,45 +132,39 @@ public class PlayerController : Fighter
         }
     }
 
-    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    private void SaveData()
     {
-        if (SceneManager.GetSceneByName("MainMenu").isLoaded)
+        PlayerPrefs.SetFloat(playerHpPrefName, currenthealth);
+        PlayerPrefs.SetFloat(playerMaxHpPrefName, maxhealth);
+    }
+
+    private void OnDestroy()
+    {
+        SaveData();
+    }
+
+    private void LoadData()
+    {
+        if (PlayerPrefs.HasKey(playerHpPrefName))
         {
-            uiController.gameObject.SetActive(false);
-            return;
+            currenthealth = PlayerPrefs.GetFloat(playerHpPrefName, maxhealth);
         }
         else
         {
-            uiController = GameObject.FindObjectOfType<UIController>();
-            uiController.gameObject.SetActive(true);
-
-            playerAnimation.damageManager = FindObjectOfType<AttackDamageManager>();
-
-            playerhealthBar.FindHealthBarSprite();
-
-            healthBar = GameObject.Find("UIController").gameObject.transform.Find("HealthBar").GetComponent<HealthBar>();
-            SpawnPointOnEnterLevel = GameObject.Find("PlayerSpawnPoint").gameObject.transform.position;
-
-            transform.position = SpawnPointOnEnterLevel;
-        }
-
-        if (SceneManager.GetSceneByName("MainHub").isLoaded)
-        {
-
-            IsDead = false;
-            
-            uiController = GameObject.FindObjectOfType<UIController>();
-
             currenthealth = maxhealth;
-
-            playerhealthBar.FindHealthBarSprite();
-
-            healthBar = GameObject.Find("UIController").gameObject.transform.Find("HealthBar").GetComponent<HealthBar>();
-            SpawnPointOnEnterLevel = GameObject.Find("PlayerSpawnPoint").gameObject.transform.position;
-
-            transform.position = SpawnPointOnEnterLevel;
+            PlayerPrefs.SetFloat(playerHpPrefName, maxhealth);
         }
-    
+
+        if (PlayerPrefs.HasKey(playerMaxHpPrefName))
+        {
+            maxhealth = PlayerPrefs.GetFloat(playerMaxHpPrefName, 100);
+        }
+        else
+        {
+            maxhealth = 100;
+            PlayerPrefs.SetFloat(playerMaxHpPrefName, 100);
+        }
+
     }
 
     #endregion
