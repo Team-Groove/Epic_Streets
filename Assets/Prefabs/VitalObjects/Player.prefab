@@ -759,7 +759,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 0}
-  effect: 0
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &6002284492560559993
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,7 +914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 0}
-  effect: 0
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &6002284493209616216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,4 +1145,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 6002284491983274009}
-  effect: 1
+  effectOnTop: 1
+  effectOnBot: 0

@@ -5,10 +5,12 @@ using UnityEngine;
 public class OrderInLayerEntity : MonoBehaviour
 {
 
-    public SpriteRenderer players;
+    public SpriteRenderer players = null;
+    public TrailRenderer trail = null;
 
-    public bool effect;
-  
+    public bool effectOnTop;
+    public bool effectOnBot;
+
     SpriteRenderer sr;
 
     void Start()
@@ -19,9 +21,13 @@ public class OrderInLayerEntity : MonoBehaviour
 
     void Update()
     {
-        if (effect)
+        if (effectOnTop)
         {
             sr.sortingOrder = players.sortingOrder + 1;
+        }
+        else if (effectOnBot)
+        {
+            trail.sortingOrder = players.sortingOrder - 1;
         }
         else
         {
