@@ -566,7 +566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSidePos_1: {fileID: 0}
   playerSidePos_2: {fileID: 0}
-  attackDistance: 2.4
+  attackDistance: 0.6
   timeBetweenAttacks: 1.2
   isAttacking: 0
   chasingPlayer: 0
@@ -1014,6 +1014,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703f9133bafafad4498c0b48f7548bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: {fileID: 0}
+  effect: 0
 --- !u!1 &7408336631259336187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,6 +1389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703f9133bafafad4498c0b48f7548bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: {fileID: 0}
+  effect: 0
 --- !u!1 &9190814780228294695
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6154346994511669972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'StatusSpawn '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 6154346995022182998}
   - component: {fileID: 6154346995022183017}
   - component: {fileID: 6154346995022182994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,8 +198,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSidePos_1: {fileID: 0}
   playerSidePos_2: {fileID: 0}
-  attackDistance: 9
-  timeBetweenAttacks: 2
+  attackDistance: 8.5
+  timeBetweenAttacks: 2.8
   isAttacking: 0
   chasingPlayer: 0
 --- !u!114 &6154346995022182999
@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6154346995271991798}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ParticleSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6154346995346808652}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ProjectileSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,6 +427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703f9133bafafad4498c0b48f7548bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: {fileID: 0}
+  effect: 0
 --- !u!1 &6154346995737473693
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6154346996227960113}
   - component: {fileID: 6154346996227960112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1016,7 +1018,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6154346996276249523}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NumberSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1048,7 +1050,7 @@ GameObject:
   - component: {fileID: 6154346996308550448}
   - component: {fileID: 6154346996308550451}
   - component: {fileID: 6154346996308550450}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,7 +1225,7 @@ GameObject:
   - component: {fileID: 6154346996561246424}
   - component: {fileID: 6154346996561246427}
   - component: {fileID: 6154346996561246426}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1309,3 +1311,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703f9133bafafad4498c0b48f7548bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: {fileID: 0}
+  effect: 0

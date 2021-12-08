@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1b337287abec6874488b9c2166f3e03f
+guid: 5d4d2f933d3559e40b05fddcb24924c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7967280768171218844
-    second: hidrante_0
+      213: 6220497478337741233
+    second: Stagger_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -35,7 +35,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -49,7 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 9
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -71,7 +71,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -83,7 +83,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,13 +94,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hidrante_0
+      name: Stagger_0
       rect:
         serializedVersion: 2
-        x: 36
-        y: 27
-        width: 117
-        height: 132
+        x: 4
+        y: 1
+        width: 11
+        height: 20
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -108,8 +108,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9795ac65a7719e60800000000000000
-      internalID: 7967280768171218844
+      spriteID: 1b1c88abf75a35650800000000000000
+      internalID: 6220497478337741233
       vertices: []
       indices: 
       edges: []

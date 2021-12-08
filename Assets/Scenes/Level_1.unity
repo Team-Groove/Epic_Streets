@@ -315,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7811162877951838917, guid: 8ce69a14ef3abab43b243465a810f9b9, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7811162877951838917, guid: 8ce69a14ef3abab43b243465a810f9b9, type: 3}
       propertyPath: m_AnchorMax.x
@@ -486,7 +486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7408336630474282167, guid: 8ea30eb61680d824197a319757ab4b12, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7408336630474282167, guid: 8ea30eb61680d824197a319757ab4b12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -628,7 +628,7 @@ Transform:
   m_LocalScale: {x: 3.125, y: 3.125, z: 3.125}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &984521085
 PrefabInstance:
@@ -764,7 +764,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1347558544
 PrefabInstance:
@@ -873,7 +873,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 12.537679, y: 3.7184238}
+  m_Offset: {x: 24.289288, y: 3.7184238}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -884,7 +884,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.90724, y: 25.66278}
+  m_Size: {x: 32.55155, y: 25.66278}
   m_EdgeRadius: 0
 --- !u!114 &1354273354
 MonoBehaviour:
@@ -5916,7 +5916,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1693986089
 PolygonCollider2D:
@@ -6017,7 +6017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3384063987001226662, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3384063987001226662, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6133,7 +6133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 16376917921340876, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
       propertyPath: m_SortingOrder
-      value: 93
+      value: 111
       objectReference: {fileID: 0}
     - target: {fileID: 6002284491756347681, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
       propertyPath: m_Name
@@ -6141,7 +6141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6002284491756347687, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6002284491756347687, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6287,7 +6287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7617539254140383819, guid: 479160e1c7d88a64388684ab8b726042, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7617539254140383819, guid: 479160e1c7d88a64388684ab8b726042, type: 3}
       propertyPath: m_AnchorMax.x

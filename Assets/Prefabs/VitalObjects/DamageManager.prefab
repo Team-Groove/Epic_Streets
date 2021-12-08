@@ -65,6 +65,6 @@ MonoBehaviour:
   kick2: 25
   final1: 50
   longDistance: 10
-  fighterDmg: 20
+  fighterDmg: 15
   goblinDmg: 10
   bossDmg: 40

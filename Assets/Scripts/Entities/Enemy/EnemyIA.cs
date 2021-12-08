@@ -11,6 +11,7 @@ public class EnemyIA : MonoBehaviour
     private Animator animator;
     private EnemyMovement movement;
     private EnemyController controller;
+    private PlayerController player;
 
     [SerializeField] private float attackDistance;
     [SerializeField] private float timeBetweenAttacks;
@@ -40,6 +41,7 @@ public class EnemyIA : MonoBehaviour
         playerSidePos_2 = GameObject.Find("PointsEnemiesGo2").transform;
         movement = GetComponent<EnemyMovement>();
         controller = GetComponent<EnemyController>();
+        player = FindObjectOfType<PlayerController>();
     }
     private void Start()
     {
@@ -142,7 +144,7 @@ public class EnemyIA : MonoBehaviour
     }
     private void Attack()
     {
-        if (readyToAttack)
+        if (readyToAttack && !player.IsDead)
         {
             animator.SetBool("Attack", true);
         }
