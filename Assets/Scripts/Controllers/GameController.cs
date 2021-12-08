@@ -66,7 +66,8 @@ public class GameController : MonoBehaviour
     }
     private IEnumerator GameOverCoroutine()
     {
-        
+        AudioManager.instance.StopAllMusic();
+        AudioManager.instance.PlayMusic("GameOver");
         gameOverScreen.gameObject.SetActive(true);
 
         for (float t = 0; t < 1; t += Time.deltaTime / gameOverFadeInTime) //DURACION DEL FADE IN

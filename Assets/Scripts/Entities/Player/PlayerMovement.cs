@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerAnimation anim;
     private PlayerController player;
 
+    private float pitch;
+
     #endregion
 
     #region BOOLS
@@ -34,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     {
         FlipSprite();
         CheckIfMoving();
+
+        pitch = Random.Range(0.8f, 1f);
     }
 
     private void FixedUpdate()
@@ -117,5 +121,22 @@ public class PlayerMovement : MonoBehaviour
         controlAxis.y = context.ReadValue<Vector2>().y;
     }
 
+    public void PlayStepSound_1()
+    {
+        AudioManager.instance.Play("StepSounds_1", pitch);
+    }
+    public void PlayStepSound_2()
+    {
+        AudioManager.instance.Play("StepSounds_2", pitch);
+    }
+    public void PlayStepSound_3()
+    {
+        AudioManager.instance.Play("StepSounds_3");
+    }
+
+    public void PlayStepSound_4()
+    {
+        AudioManager.instance.Play("StepSounds_4");
+    }
     #endregion
 }

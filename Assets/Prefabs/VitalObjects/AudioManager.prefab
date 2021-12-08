@@ -98,6 +98,42 @@ MonoBehaviour:
     pitch: 0.8
     loop: 0
     audioSource: {fileID: 0}
+  - name: StepSounds
+    audioClip: {fileID: 8300000, guid: f793e06678e65094f96043bc9f8c6696, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: StepSounds_1
+    audioClip: {fileID: 8300000, guid: cb75134ecd5082748a1c33e92e17fb40, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: StepSounds_2
+    audioClip: {fileID: 8300000, guid: a136d3fa75b75014494496efdda65a47, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: StepSounds_3
+    audioClip: {fileID: 8300000, guid: 7247344fecd3a534b9c7b7e5f563935e, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: DistanceAttack
+    audioClip: {fileID: 8300000, guid: 33cf90ae86e46cd4c989c695ed4d8d2d, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: ChargeAttack
+    audioClip: {fileID: 8300000, guid: 9ddf066595b6b934a8084d3ab8bc8c12, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
   musics:
   - name: FightMusic
     audioClip: {fileID: 8300000, guid: c255f8398ea01b843909cf3562f1ff0f, type: 3}
@@ -106,13 +142,25 @@ MonoBehaviour:
     loop: 1
     audioSource: {fileID: 0}
   - name: MainMenuMusic
-    audioClip: {fileID: 8300000, guid: 356b2167c2ec87647b704d4a256d2d2b, type: 3}
+    audioClip: {fileID: 8300000, guid: a0fc52748da959f4fbe66e1105ce00b8, type: 3}
     volume: 0.3
     pitch: 1
     loop: 0
     audioSource: {fileID: 0}
   - name: MainHubMusic
-    audioClip: {fileID: 8300000, guid: 1bcbad1fa9fc04540a7af98a59cff59d, type: 3}
+    audioClip: {fileID: 8300000, guid: 4d691b207e4302940ad7f75d7559cf12, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: FinalBossMusic
+    audioClip: {fileID: 8300000, guid: a0fc52748da959f4fbe66e1105ce00b8, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: GameOver
+    audioClip: {fileID: 8300000, guid: d5ed4dbbbef524141815dc0b77668063, type: 3}
     volume: 0.3
     pitch: 1
     loop: 0

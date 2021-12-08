@@ -30,6 +30,8 @@ public class AudioManager: MonoBehaviour
             s.audioSource = gameObject.AddComponent<AudioSource>();
             s.audioSource.clip = s.audioClip;
 
+            s.audioSource.playOnAwake = false;
+
             s.audioSource.volume = s.volume;
             s.audioSource.pitch = s.pitch;
         }
@@ -38,6 +40,8 @@ public class AudioManager: MonoBehaviour
         {
             s.audioSource = gameObject.AddComponent<AudioSource>();
             s.audioSource.clip = s.audioClip;
+
+            s.audioSource.playOnAwake = false;
 
             s.audioSource.loop = s.loop;
 
@@ -53,10 +57,13 @@ public class AudioManager: MonoBehaviour
 
     private void Start()
     {
-        
+        StopMusic("FightMusic");
+        StopMusic("MainHubMusic");
+        StopMusic("FinalBossMusic");
+        PlayMusic("MainMenuMusic");
     }
 
-    public void Play(string name)
+    public void Play(string name, float pitch = (1))
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
       
@@ -65,10 +72,23 @@ public class AudioManager: MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-       
+
+        s.audioSource.pitch = pitch;
         s.audioSource.Play();
     }
+    public void Stop(string name, float pitch = (1))
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
 
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+
+        s.audioSource.pitch = pitch;
+        s.audioSource.Stop();
+    }
     public void PlayMusic(string name)
     {
        
@@ -83,7 +103,6 @@ public class AudioManager: MonoBehaviour
         m.audioSource.Play();
      
     }
-
     public void StopMusic(string name)
     {
 
@@ -98,6 +117,13 @@ public class AudioManager: MonoBehaviour
         m.audioSource.Stop();
 
     }
+    public void StopAllMusic()
+    {
+        StopMusic("FightMusic");
+        StopMusic("MainHubMusic");
+        StopMusic("FinalBossMusic");
+        StopMusic("MainMenuMusic");
+    }
 
     private void ChangeMusicDependingOfScene(Scene scene, LoadSceneMode mode)
     {
@@ -105,19 +131,29 @@ public class AudioManager: MonoBehaviour
         {
             StopMusic("FightMusic");
             StopMusic("MainHubMusic");
+            StopMusic("FinalBossMusic");
             PlayMusic("MainMenuMusic");
         }
         else if (SceneManager.GetSceneByName("MainHub").isLoaded)
         {
             StopMusic("FightMusic");
             StopMusic("MainMenuMusic");
+            StopMusic("FinalBossMusic");
             PlayMusic("MainHubMusic");
         }
         else if (SceneManager.GetSceneByName("Level_1").isLoaded)
         {
             StopMusic("MainMenuMusic");
             StopMusic("MainHubMusic");
+            StopMusic("FinalBossMusic");
             PlayMusic("FightMusic");
+        }
+        else if (SceneManager.GetSceneByName("Level_6").isLoaded)
+        {
+            StopMusic("MainMenuMusic");
+            StopMusic("MainHubMusic");
+            StopMusic("FightMusic");
+            PlayMusic("FinalBossMusic");
         }
     }
 

@@ -3,24 +3,25 @@ using UnityEngine;
 public class AttackDamageManager : MonoBehaviour
 {
 
-    public bool canPoison;
-    public bool canFreeze;
-    public bool canBurn;
-    public bool canWindBack;
-    public bool canStun;
 
-    public bool criticalHit;
 
-    //POISON
+    [HideInInspector] public bool canPoison;
+    [HideInInspector] public bool canFreeze;
+    [HideInInspector] public bool canBurn;
+    [HideInInspector] public bool canWindBack;
+    [HideInInspector] public bool canStun;
+    [HideInInspector] public bool criticalHit;
+
+    [Header("Poison Stats")]
     public float poisonTotalDamage;
     public float poisonDamagePerLoop;
     public float poisonInterval;
-    
-    //FREEZE
+
+    [Header("Freeze Stats")]
     public float freezeDuration;
     public float slowAmount;
-    
-    //BURN
+
+    [Header("Burning Stats")]
     public float burnTotalDamage;
     public float burnDamagePerLoop;
     public float burnInterval;
@@ -28,11 +29,17 @@ public class AttackDamageManager : MonoBehaviour
     public float stunDuration;
     public float windForce;
 
-    [SerializeField] public int punch1 = 10;
-    [SerializeField] public int punch2 = 15;
-    [SerializeField] public int kick1 = 20;
-    [SerializeField] public int kick2 = 25;
-    [SerializeField] public int final1 = 30;
-    [SerializeField] public int longDistance = 10;
+    [Header("Player Attack Stats")]
+    [SerializeField] public float punch1 = 10;
+    [SerializeField] public float punch2 = 15;
+    [SerializeField] public float kick1 = 20;
+    [SerializeField] public float kick2 = 25;
+    [SerializeField] public float final1 = 30;
+    [SerializeField] public float longDistance = 10;
+
+    [Header("Enemy Stats")]
+    [SerializeField] public float fighterDmg;
+    [SerializeField] public float goblinDmg;
+    [SerializeField] public float bossDmg;
 
 }

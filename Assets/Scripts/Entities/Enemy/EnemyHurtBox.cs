@@ -50,7 +50,7 @@ public class EnemyHurtBox : MonoBehaviour
 
     #region FUNCTIONS
 
-    private void CheckAttackTag(Collider2D collision, string nameOfAttack, int dmgReceived, string audioName, 
+    private void CheckAttackTag(Collider2D collision, string nameOfAttack, float dmgReceived, string audioName, 
         float pitch, bool canStagger, bool ableToApplyStatus, bool canApplyStatus, _statusEffects newStatus)
     {
         if (collision.gameObject.CompareTag(nameOfAttack))

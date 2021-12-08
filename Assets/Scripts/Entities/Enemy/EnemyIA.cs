@@ -16,18 +16,18 @@ public class EnemyIA : MonoBehaviour
     [SerializeField] private float timeBetweenAttacks;
     
     private float timer;
-    [SerializeField] private float distance1;
-    [SerializeField] private float distance2;
-    [SerializeField] private float distanceFromObjective;
+    private float distance1;
+    private float distance2;
+    private float distanceFromObjective;
 
-    public Vector3 pointToGo;
+    private Vector3 pointToGo;
     
     private bool cooling;
 
-    public bool chasingPlayer;
-    public bool readyToAttack;
-    public bool isAttacking;
-
+    private bool readyToAttack;
+    
+    [HideInInspector] public bool isAttacking;
+    [HideInInspector] public bool chasingPlayer;
 
     #endregion
 

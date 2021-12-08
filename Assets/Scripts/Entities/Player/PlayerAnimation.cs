@@ -386,6 +386,19 @@ public class PlayerAnimation : MonoBehaviour
     {
         audioManager.Play("WindKick");
     }
+    public void PlayChargeAttack()
+    {
+        AudioManager.instance.Play("ChargeAttack");
+    }
+    public void StopChargeAttack()
+    {
+        AudioManager.instance.Stop("ChargeAttack");
+    }
+    public void PlayDistanceAttack()
+    {
+        AudioManager.instance.Play("DistanceAttack");
+    }
+
     #endregion
 
 }

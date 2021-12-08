@@ -16,6 +16,8 @@ TagManager:
   - ChangeScene2
   - RepeatScene
   - NPC
+  - EnemyProjectile
+  - BossAttack
   layers:
   - Default
   - TransparentFX
@@ -25,7 +27,7 @@ TagManager:
   - UI
   - HurtBox
   - HitBox
-  - 
+  - Enemy
   - 
   - Post
   - 

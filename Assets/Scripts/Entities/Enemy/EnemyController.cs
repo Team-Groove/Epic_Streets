@@ -130,5 +130,7 @@ public class EnemyController : Fighter
         spriteRenderer.color = Color.white;
     }
 
+   
+
     #endregion
 }
