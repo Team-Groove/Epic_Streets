@@ -247,7 +247,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 10063203}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &12126073
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +374,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 12126075}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &21285341
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +576,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 26028176}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &43846564
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +624,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 43846567}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!212 &43846567
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1266,7 +1274,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &296971623
 PrefabInstance:
@@ -1666,7 +1674,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 325197194}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!212 &325197194
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1879,7 +1889,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 359339803}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &371591708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,7 +2352,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 407506039}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!61 &407506043
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2380,7 +2394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8727942067825815922, guid: b8dd8e4158562ad46ab25286a7bf1a5e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8727942067825815922, guid: b8dd8e4158562ad46ab25286a7bf1a5e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2557,7 +2571,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 602308878}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!95 &602308877
 Animator:
   serializedVersion: 3
@@ -3355,7 +3371,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 817548537}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!61 &817548541
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3600,7 +3618,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 861046293}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!212 &861046293
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3787,7 +3807,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 867108474}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!212 &867108474
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4315,7 +4337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &954228861
 GameObject:
@@ -4394,7 +4416,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 954249327}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!61 &954249325
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4942,7 +4966,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 1039255917}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!212 &1039255917
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5201,7 +5227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 1059981901}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!95 &1059981900
 Animator:
   serializedVersion: 3
@@ -5548,7 +5576,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 1100341757}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &1111701966
 GameObject:
   m_ObjectHideFlags: 0
@@ -6507,7 +6537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 1286411467}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &1294334475
 GameObject:
   m_ObjectHideFlags: 0
@@ -6836,7 +6868,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 1310299180}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!82 &1310299185
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7127,7 +7161,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 1328388376}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &1380139053
 GameObject:
   m_ObjectHideFlags: 0
@@ -7351,7 +7387,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 1408962290}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!212 &1408962290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7592,7 +7630,7 @@ Transform:
   - {fileID: 884031161}
   - {fileID: 712435491}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1434680688
 GameObject:
@@ -13953,7 +13991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6100238965948737405, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6100238965948737405, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
       propertyPath: m_AnchorMax.x
@@ -14875,7 +14913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7811162877951838917, guid: 8ce69a14ef3abab43b243465a810f9b9, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7811162877951838917, guid: 8ce69a14ef3abab43b243465a810f9b9, type: 3}
       propertyPath: m_AnchorMax.x
@@ -15136,7 +15174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 1876022074}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &1879205967
 GameObject:
   m_ObjectHideFlags: 0
@@ -15462,7 +15502,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 1949973110}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!212 &1949973110
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15787,7 +15829,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 2020927853}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!212 &2020927853
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16449,7 +16493,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 2104554252}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &2140384200
 GameObject:
   m_ObjectHideFlags: 0
@@ -16495,7 +16541,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 2140384203}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!212 &2140384203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16652,7 +16700,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.755436, y: 2.7846355}
+  m_Offset: {x: -10.770515, y: -4.1717787}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -16663,7 +16711,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.939873, y: 36.63984}
+  m_Size: {x: 28.970032, y: 50.552673}
   m_EdgeRadius: 0
 --- !u!4 &232778928643263382
 Transform:
@@ -16709,7 +16757,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.6017227, y: -12.379189}
+  m_Offset: {x: -0.27052402, y: -17.644419}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -16720,7 +16768,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 40.743393, y: 16.865852}
+  m_Size: {x: 63.52246, y: 27.396313}
   m_EdgeRadius: 0
 --- !u!4 &232778928651155398
 Transform:
@@ -16857,7 +16905,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.5592785, y: 15.521924}
+  m_Offset: {x: 2.2554312, y: 25.184204}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -16868,7 +16916,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 39.754543, y: 5.6895275}
+  m_Size: {x: 53.002213, y: 25.0141}
   m_EdgeRadius: 0
 --- !u!4 &232778929434657595
 Transform:

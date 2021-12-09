@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 6154346995022182994}
   m_Layer: 8
   m_Name: Enemy_Goblin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -428,7 +428,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 0}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &6154346995737473693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +1054,7 @@ GameObject:
   - component: {fileID: 6154346996308550450}
   m_Layer: 8
   m_Name: Hurtbox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1312,4 +1314,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 0}
-  effect: 0
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
