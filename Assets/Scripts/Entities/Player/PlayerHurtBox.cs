@@ -10,6 +10,10 @@ public class PlayerHurtBox : MonoBehaviour
     private AudioManager audioManager;
     private HealthBarRedFeedback redFeedback;
 
+    public bool canBeDmg;
+    public float invulnerabilityTime = 0.5f;
+    private float inviTimer;
+
     [SerializeField] private GameObject hitSpawnPoint;
     [SerializeField] private ParticleSystem hurtEffect;
     #endregion
@@ -23,8 +27,17 @@ public class PlayerHurtBox : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         redFeedback = FindObjectOfType<HealthBarRedFeedback>();
         damageManager = FindObjectOfType<AttackDamageManager>();
+
+        inviTimer = invulnerabilityTime;
+        canBeDmg = true;
+    
     }
 
+    private void Update()
+    {
+        CanBeDmgTimer();
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         CheckAttack(collision, "EnemyPunch1", damageManager.fighterDmg);
@@ -34,8 +47,9 @@ public class PlayerHurtBox : MonoBehaviour
 
     private void CheckAttack(Collider2D collision, string tag, float dmg)
     {
-        if (collision.gameObject.CompareTag(tag))
+        if (collision.gameObject.CompareTag(tag) && canBeDmg)
         {
+            
             anim.StartCoroutine("DamageRedFeedback");
             player.ReceiveDamage(dmg);
 
@@ -49,6 +63,23 @@ public class PlayerHurtBox : MonoBehaviour
                 hitSpawnPoint.transform.position.z), Quaternion.identity);
 
             CineMachineShake.Instance.ShakeCamera(3f, 0.3f);
+
+            canBeDmg = false;
+        }
+    }
+    private void CanBeDmgTimer()
+    {
+        if (!canBeDmg)
+        {
+            if (inviTimer > 0)
+            {
+                inviTimer -= Time.deltaTime;
+            }
+            else
+            {
+                inviTimer = invulnerabilityTime;
+                canBeDmg = true;
+            }
         }
     }
 } 
