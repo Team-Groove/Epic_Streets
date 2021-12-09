@@ -57,10 +57,7 @@ public class AudioManager: MonoBehaviour
 
     private void Start()
     {
-        StopMusic("FightMusic");
-        StopMusic("MainHubMusic");
-        StopMusic("FinalBossMusic");
-        PlayMusic("MainMenuMusic");
+      
     }
 
     public void Play(string name, float pitch = (1))
