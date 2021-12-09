@@ -5,6 +5,7 @@ public class ComboSystemManager : MonoBehaviour
 
     #region VARIABLES
 
+   
     public UIComboSlotReceiver[] comboSlots;
     public string[] comboStrings;
     public int[] attackDamage;
@@ -16,10 +17,17 @@ public class ComboSystemManager : MonoBehaviour
     private void Update()
     {
         //SITUACIONES HARDCODEADAS PORQUE NO SE COMO SE USA BIEN EL FOR (ESTARIA BUENO ARREGLARLO)
+
+
+        comboStrings[0] = comboSlots[0].stringName;
+        comboStrings[1] = comboSlots[1].stringName;
+        comboStrings[2] = comboSlots[2].stringName;
         
-        SituationsOfOne();
+        
+        
+        /*SituationsOfOne();
         SituationOfTwo();
-        SituationOfThree();
+        SituationOfThree();*/
     }
 
     #endregion

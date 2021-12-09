@@ -39,10 +39,9 @@ public class UIComboSlotReceiver : MonoBehaviour, IDropHandler
     {
         for (int i = 0; i < attacks.Length; i++)
         {
-            if (rectTransform.localPosition == attacks[i].GetComponent<DragAndDrop>().defaultPos)
+            if (attacks[i].transform.localPosition == transform.localPosition)
             {
-               
-                
+                stringName = attacks[i].GetComponent<AttackClass>().nameOfAttack;
             }
         }
     }
@@ -61,7 +60,7 @@ public class UIComboSlotReceiver : MonoBehaviour, IDropHandler
                 stringName = null;
                 attackDamage = 0;
                 filled = false;
-                comboManager.comboSlots[slotNumber] = null;
+               // comboManager.comboSlots[slotNumber] = null;
             }
         }
     }

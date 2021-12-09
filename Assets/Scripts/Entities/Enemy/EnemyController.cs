@@ -5,10 +5,13 @@ public class EnemyController : Fighter
 {
     #region OWN_VARIABLES
 
-    private Transform player;
-    private EnemyIA ia;
-    private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    protected Transform player;
+    protected EnemyIA ia;
+    protected SpriteRenderer spriteRenderer;
+    protected Animator animator;
+
+    private SceneController sceneController;
+    
     private int randomInt;
 
     public float stunnedDuration;
@@ -26,6 +29,13 @@ public class EnemyController : Fighter
 
     private void Start()
     {
+        sceneController = FindObjectOfType<SceneController>();
+
+        if (sceneController.endGameNum == 1)
+        {
+            maxhealth *= 1.5f;
+        }
+
         player = FindObjectOfType<PlayerController>().transform;
         playersPos = player.transform.position;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();

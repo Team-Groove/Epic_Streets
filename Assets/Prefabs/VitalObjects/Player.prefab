@@ -759,6 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 0}
+  trail: {fileID: 0}
   effectOnTop: 0
   effectOnBot: 0
 --- !u!1 &6002284492560559993
@@ -914,6 +915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 0}
+  trail: {fileID: 0}
   effectOnTop: 0
   effectOnBot: 0
 --- !u!1 &6002284493209616216
@@ -1021,6 +1023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4f7c85fc165fb4c9f56c9db600e387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBeDmg: 0
+  invulnerabilityTime: 0.5
   hitSpawnPoint: {fileID: 8203726880375476604}
   hurtEffect: {fileID: 2305386218368246775, guid: 548ec6bda404e274cb3040bf5468beaa, type: 3}
 --- !u!61 &3890128513523301846
@@ -1036,7 +1040,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009271622, y: 1.4594593}
+  m_Offset: {x: -0.009271622, y: 1.3187678}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1047,7 +1051,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75138474, y: 1.5097122}
+  m_Size: {x: 0.75138474, y: 1.7910953}
   m_EdgeRadius: 0
 --- !u!1 &9015166271198694633
 GameObject:
@@ -1145,5 +1149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: {fileID: 6002284491983274009}
+  trail: {fileID: 0}
   effectOnTop: 1
   effectOnBot: 0

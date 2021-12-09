@@ -11,6 +11,8 @@ public class SceneController : MonoBehaviour
 
     private static SceneController instance;
 
+    public int endGameNum;
+
     #endregion
 
     #region UNITY_CALLS
@@ -84,14 +86,13 @@ public class SceneController : MonoBehaviour
         if (SceneController.instance != null)
         {
             DontDestroyOnLoad(gameObject);
-            
         }
         else
         {
             Destroy(gameObject);
         }
 
-        if (SceneManager.GetSceneByName("MainMenu").isLoaded || SceneManager.GetSceneByName("MainHub").isLoaded)
+        if (SceneManager.GetSceneByName("MainMenu").isLoaded)
         {
             PlayerPrefs.DeleteAll();
         }
