@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 9011686691431958044}
   - component: {fileID: 5163730586957947528}
   - component: {fileID: 3888208173307021887}
-  - component: {fileID: 1837619974275102204}
+  - component: {fileID: 342642648059751637}
   m_Layer: 5
-  m_Name: SettingManu_img
+  m_Name: SettingMenu_img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1837619974275102204
+--- !u!114 &342642648059751637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,9 +86,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1221115840035702945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb324c08847b094cabdf4c04fc986d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 74444bbdac5edc145895a3d5befe9fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effects_s: {fileID: 5543114657851181083}
+  music_s: {fileID: 5264596892512509741}
 --- !u!1 &1711215935826127369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,11 +1362,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1837619974275102204}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetVolume
         m_Mode: 0
@@ -6575,7 +6577,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

@@ -12,7 +12,10 @@ public class MainMenu : MonoBehaviour
 
     #region UNITY_CALLS
 
-    
+    private void Start()
+    {
+        Options.SetActive(false);
+    }
 
     #endregion
 

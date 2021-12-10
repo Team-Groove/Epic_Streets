@@ -52,7 +52,8 @@ public class Dash : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private PlayerController controller;
     [SerializeField] private GameObject deactiavateBoxCollider;
-    
+    [SerializeField] private GameObject hurtbox;
+
     #endregion
 
     #region UNITY_CALLS
@@ -193,10 +194,12 @@ public class Dash : MonoBehaviour
         if (isDashingX || isDashingY)
         {
             deactiavateBoxCollider.SetActive(false);
+            hurtbox.SetActive(false);
         }
         else
         {
             deactiavateBoxCollider.SetActive(true);
+            hurtbox.SetActive(true);
         }
     }
 

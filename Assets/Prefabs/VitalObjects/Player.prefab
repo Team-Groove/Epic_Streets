@@ -372,6 +372,7 @@ MonoBehaviour:
   isDashingX: 0
   visualDashFeedbackColor: {r: 0.6415094, g: 0.5719117, b: 0.6287781, a: 1}
   deactiavateBoxCollider: {fileID: 6002284491685679912}
+  hurtbox: {fileID: 8701653049484630642}
 --- !u!114 &6002284491756347710
 MonoBehaviour:
   m_ObjectHideFlags: 0

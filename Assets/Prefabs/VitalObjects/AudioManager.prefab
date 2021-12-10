@@ -134,9 +134,33 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     audioSource: {fileID: 0}
+  - name: BossDeathScream
+    audioClip: {fileID: 8300000, guid: e4e84e85e8ad1594dbdc6bbd9b411ed9, type: 3}
+    volume: 0.2
+    pitch: 0.5
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: BossExhales
+    audioClip: {fileID: 8300000, guid: 7cf53479a37f6d14ab63b99e8ffc128d, type: 3}
+    volume: 0.2
+    pitch: 0.5
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: BossScream
+    audioClip: {fileID: 8300000, guid: 9cd6f8d2a4d466744aa053de4adf63ae, type: 3}
+    volume: 0.2
+    pitch: 0.5
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: PickUp
+    audioClip: {fileID: 8300000, guid: 89eda2631dfe4684bb9ddb81ecd2aa73, type: 3}
+    volume: 0.2
+    pitch: 0.5
+    loop: 0
+    audioSource: {fileID: 0}
   musics:
   - name: FightMusic
-    audioClip: {fileID: 8300000, guid: c255f8398ea01b843909cf3562f1ff0f, type: 3}
+    audioClip: {fileID: 8300000, guid: 026ec491987569e409d5b6c2e6c98da1, type: 3}
     volume: 0.3
     pitch: 1
     loop: 1
@@ -145,19 +169,19 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: a0fc52748da959f4fbe66e1105ce00b8, type: 3}
     volume: 0.3
     pitch: 1
-    loop: 0
+    loop: 1
     audioSource: {fileID: 0}
   - name: MainHubMusic
     audioClip: {fileID: 8300000, guid: 4d691b207e4302940ad7f75d7559cf12, type: 3}
     volume: 0.3
     pitch: 1
-    loop: 0
+    loop: 1
     audioSource: {fileID: 0}
   - name: FinalBossMusic
-    audioClip: {fileID: 8300000, guid: a0fc52748da959f4fbe66e1105ce00b8, type: 3}
+    audioClip: {fileID: 8300000, guid: 2b9c8f12694c30b40af80f0e3a8e166c, type: 3}
     volume: 0.3
     pitch: 1
-    loop: 0
+    loop: 1
     audioSource: {fileID: 0}
   - name: GameOver
     audioClip: {fileID: 8300000, guid: d5ed4dbbbef524141815dc0b77668063, type: 3}
@@ -165,3 +189,5 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     audioSource: {fileID: 0}
+  musicVolume: 1
+  effectVolume: 1

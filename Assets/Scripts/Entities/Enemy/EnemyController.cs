@@ -10,7 +10,7 @@ public class EnemyController : Fighter
     protected SpriteRenderer spriteRenderer;
     protected Animator animator;
 
-    private SceneController sceneController;
+    protected SceneController sceneController;
     
     private int randomInt;
 

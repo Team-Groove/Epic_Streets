@@ -25,9 +25,9 @@ public class ComboSystemManager : MonoBehaviour
         
         
         
-        /*SituationsOfOne();
+        SituationsOfOne();
         SituationOfTwo();
-        SituationOfThree();*/
+        SituationOfThree();
     }
 
     #endregion

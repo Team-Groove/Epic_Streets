@@ -1,15 +1,18 @@
 using UnityEngine;
-using UnityEngine.Audio;
+
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AudioManager: MonoBehaviour
 {
-
     public static AudioManager instance;
     
     public Sound[] sounds;
     public Sound[] musics;
+
+    public float musicVolume;
+    public float effectVolume;
 
     private void Awake()
     {
@@ -48,6 +51,8 @@ public class AudioManager: MonoBehaviour
             s.audioSource.volume = s.volume;
             s.audioSource.pitch = s.pitch;
         }
+    
+        
     }
 
     private void OnEnable()
@@ -55,9 +60,21 @@ public class AudioManager: MonoBehaviour
         SceneManager.sceneLoaded += ChangeMusicDependingOfScene;
     }
 
-    private void Start()
+    private void Update()
     {
-      
+        
+        musicVolume = AudioSettings.music;
+        effectVolume = AudioSettings.effect;
+
+        for (int i = 0; i < musics.Length; i++)
+        {
+            sounds[i].audioSource.volume = effectVolume;
+        }
+
+        for (int i = 0; i < musics.Length; i++)
+        {
+            musics[i].audioSource.volume = musicVolume;
+        }
     }
 
     public void Play(string name, float pitch = (1))
@@ -69,6 +86,8 @@ public class AudioManager: MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+
+        s.audioSource.volume = effectVolume;
 
         s.audioSource.pitch = pitch;
         s.audioSource.Play();
@@ -96,7 +115,9 @@ public class AudioManager: MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        
+
+        m.audioSource.volume = musicVolume;
+
         m.audioSource.Play();
      
     }
