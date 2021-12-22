@@ -68,7 +68,6 @@ public class UIComboSlotReceiver : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
 
-     
         eventData.pointerDrag.GetComponent<DragAndDrop>().droppedOnSlot = true;
         eventData.pointerDrag.GetComponent<DragAndDrop>().defaultPos = transform.localPosition;
 

@@ -8,7 +8,6 @@ public class DialogueBaseClass : MonoBehaviour
 {
     public bool finished { get; protected set; }
 
-
     protected IEnumerator WriteText(string input, TextMeshProUGUI textHolder, float delay)
    {
         for (int i = 0; i < input.Length; i++)

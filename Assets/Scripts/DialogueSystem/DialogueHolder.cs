@@ -7,11 +7,8 @@ public class DialogueHolder : MonoBehaviour
     private IEnumerator dialogeSeq;
     private bool dialogueFinished;
 
-    private bool canToAgain;
-
     private void OnEnable()
     {
-        canToAgain = false;
         dialogeSeq = DialogueSequence();
         StartCoroutine(dialogeSeq);
     }
@@ -29,7 +26,7 @@ public class DialogueHolder : MonoBehaviour
     {
         if (!dialogueFinished)
         {
-            for (int i = 0; i < transform.childCount; i++)
+            for (int i = 0; i < transform.childCount - 1; i++)
             {
                 Deactivate();
                 transform.GetChild(i).gameObject.SetActive(true);

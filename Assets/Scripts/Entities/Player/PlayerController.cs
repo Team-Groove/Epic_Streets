@@ -8,7 +8,7 @@ public class PlayerController : Fighter
 
    // public static PlayerController instance;
 
-    private NPCcontroller npc;
+    private NPCController npc;
     
     //AFTER LOAD REMAINS
 
@@ -69,18 +69,20 @@ public class PlayerController : Fighter
         }
 
         IfCurrentLifeisZero();
+
+        if (npc == null) return;
+
+        else if (keyboard.eKey.isPressed && npc.canTalkTo)
+        {
+            npc.ActivateDialogue();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "NPC")
         {
-            npc = collision.gameObject.GetComponentInParent<NPCcontroller>();
-
-            if (keyboard.eKey.isPressed && !npc.DialogueActive())
-            {
-                npc.ActivateDialogue();
-            }
+            npc = collision.gameObject.GetComponentInParent<NPCController>();
         }
     }
 

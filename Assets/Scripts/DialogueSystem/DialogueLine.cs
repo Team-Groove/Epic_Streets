@@ -46,17 +46,15 @@ public class DialogueLine : DialogueBaseClass
 
     private void Update()
     {
-       if (Keyboard.current.spaceKey.wasPressedThisFrame )
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             if (textHolder.text != input)
             {
                 StopCoroutine(lineAppear);
                 textHolder.text = input;
+                lineAppear = null;
             }
-            else
-            {
-                finished = true;
-            }
+            else finished = true;
         }
     }
     

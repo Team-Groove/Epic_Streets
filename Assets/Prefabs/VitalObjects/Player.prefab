@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6656642944302569456}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PointsEnemiesGo1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3851043981714914681}
   - component: {fileID: 3546003417431149683}
   - component: {fileID: 3656701980428416541}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SecondaryCooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6929221756467322683}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PointsEnemiesGo2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6002284491685679913}
   - component: {fileID: 6002284491685679918}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collider
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 6002284491756347686}
   - component: {fileID: 6002284491756347684}
   - component: {fileID: 6002284491756347706}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 6002284491983274008}
   - component: {fileID: 6002284491983274009}
   - component: {fileID: 6002284491983274014}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpriteRenderer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -773,7 +773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6002284492560559998}
   - component: {fileID: 6002284492560559999}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HitBox
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 6002284492724265355}
   - component: {fileID: 6002284492724265352}
   - component: {fileID: 6002284492724265353}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6002284493209616217}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: InstatiatePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -958,7 +958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2682553445833207648}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: SpawnParticules
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -990,7 +990,7 @@ GameObject:
   - component: {fileID: 8152270593373747451}
   - component: {fileID: 5527669256840651815}
   - component: {fileID: 3890128513523301846}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: HurtBox
   m_TagString: PlayerHurtBox
   m_Icon: {fileID: 0}
@@ -1065,7 +1065,7 @@ GameObject:
   - component: {fileID: 9079923085844257866}
   - component: {fileID: 16376917921340876}
   - component: {fileID: 1229313923427183373}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: AttackEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

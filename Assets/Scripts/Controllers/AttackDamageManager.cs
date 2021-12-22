@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class AttackDamageManager : MonoBehaviour
 {
-
-
-
     [HideInInspector] public bool canPoison;
     [HideInInspector] public bool canFreeze;
     [HideInInspector] public bool canBurn;

@@ -1644,6 +1644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 410026517}
   EToTalk: {fileID: 965662127}
+  canTalkTo: 0
 --- !u!61 &205959491
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1867,6 +1868,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cinemachine
       objectReference: {fileID: 0}
+    - target: {fileID: 3384063987001226660, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 232778929373555174}
     - target: {fileID: 3384063987001226661, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
       propertyPath: m_Follow
       value: 
@@ -1918,6 +1923,14 @@ PrefabInstance:
     - target: {fileID: 3384063987001226662, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384063987755374505, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.1775055
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384063987755374505, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.042263985
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
@@ -2882,6 +2895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 866641661}
   EToTalk: {fileID: 212409339}
+  canTalkTo: 0
 --- !u!61 &325197191
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3025,7 +3039,7 @@ GameObject:
   - component: {fileID: 325745812}
   - component: {fileID: 325745811}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Instructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3089,7 +3103,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -921090377
+  m_SortingLayerID: 896093799
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &325745814
@@ -3109,9 +3123,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 265, y: 149}
-  m_SizeDelta: {x: 530, y: 298}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -62.9, y: 8.4}
+  m_SizeDelta: {x: 10, y: 10}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &332875701
 GameObject:
   m_ObjectHideFlags: 0
@@ -6142,6 +6156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 623790272}
   EToTalk: {fileID: 992927988}
+  canTalkTo: 0
 --- !u!4 &839240819 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4490201764129013301, guid: 9d81091177daef8429c2c4c80e9f7c97, type: 3}
@@ -7277,7 +7292,7 @@ MonoBehaviour:
   delay: 0.01
   characterSprite: {fileID: 21300000, guid: cf7404d6a96716848aaaa4768b0d4f26, type: 3}
   imageHolder: {fileID: 603710768}
-  canUpgrade: 1
+  canUpgrade: 0
 --- !u!114 &908532309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8732,6 +8747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 1685484250}
   EToTalk: {fileID: 1156442219}
+  canTalkTo: 0
 --- !u!61 &1039255914
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12141,7 +12157,7 @@ MonoBehaviour:
   delay: 0.01
   characterSprite: {fileID: 21300000, guid: cf7404d6a96716848aaaa4768b0d4f26, type: 3}
   imageHolder: {fileID: 1926021009}
-  canUpgrade: 1
+  canUpgrade: 0
 --- !u!114 &1418427363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19512,64 +19528,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 705989515005342765, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1221115840035702945, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2037579044510293574, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2037579044510293574, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2037579044744943142, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 499.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 2346897150396782893, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2636702897523750394, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000476015559746548, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4121552111296416043, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346193167810144449, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795040527342924337, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5240690253259231559, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264599030325385463, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100238964679550986, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6100238965948737376, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: gameInPause
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6100238965948737377, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
@@ -19658,18 +19622,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6100238965948737405, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6295591643628994154, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6451919040006751510, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8111553936737319526, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -20115,7 +20067,7 @@ MonoBehaviour:
   delay: 0.01
   characterSprite: {fileID: 21300000, guid: cf7404d6a96716848aaaa4768b0d4f26, type: 3}
   imageHolder: {fileID: 237411090}
-  canUpgrade: 1
+  canUpgrade: 0
 --- !u!114 &1612996269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20247,8 +20199,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -237.2, y: -154.67}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 37.68, y: -0.21999979}
+  m_SizeDelta: {x: 99.93, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1615551018
 MonoBehaviour:
@@ -20270,8 +20222,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "WDAS - Movement\nJ - Combo attack\nK - Special Attack\nL - Distance Attack\nSpace
-    - Dash\nE - Talk \nTAB - Open/Close menu combo\nEsc - Pause menu"
+  m_text: "WDAS - Movement\n(HOLD) J - Combo attack\nK - Special Attack\nL - Distance
+    Attack\nSpace - Dash\nE - Talk \nTAB - Open/Close menu combo\nEsc - Pause menu"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb2cdbe7b1319dc46aeb54856c35da19, type: 2}
   m_sharedMaterial: {fileID: 1071530073993910699, guid: fb2cdbe7b1319dc46aeb54856c35da19, type: 2}
@@ -20298,8 +20250,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.7
-  m_fontSizeBase: 0.7
+  m_fontSize: 0.5
+  m_fontSizeBase: 0.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -20334,7 +20286,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 10.189972, y: 0, z: 179.85934, w: 39.836407}
+  m_margin: {x: 10.189972, y: 10.04129, z: 10.025116, w: 10.084446}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

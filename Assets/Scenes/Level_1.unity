@@ -5918,6 +5918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cinemachine
       objectReference: {fileID: 0}
+    - target: {fileID: 3384063987001226660, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 1693986089}
     - target: {fileID: 3384063987001226662, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -5961,6 +5965,14 @@ PrefabInstance:
     - target: {fileID: 3384063987001226662, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384063987755374505, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.015335083
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384063987755374505, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.2102413
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}

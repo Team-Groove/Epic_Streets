@@ -27,11 +27,17 @@ public class MoneyController : MonoBehaviour
 
     private void Update()
     {
-        uiDisplay.text = "Money: " + currentMoney.ToString();
+        uiDisplay.text = "Points: " + currentMoney.ToString();
 
         if (canUpgrade)
         {
             UpgradeMaxLife();
+        }
+
+        if (player.IsDead)
+        {
+            currentMoney = 0;
+            PlayerPrefs.SetFloat(moneyPref, 0);
         }
     }
 

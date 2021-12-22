@@ -9,10 +9,11 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rigidBody;
     private EnemyController controller;
     private EnemyIA ia;
+    private StatusEffects status;
 
     private float spriteRendererLocalScaleX;
 
-    public float pushBackForce;
+    public float pushForce;
 
     #endregion
 
@@ -22,7 +23,9 @@ public class EnemyMovement : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         controller = GetComponent<EnemyController>();
-        ia = GetComponent<EnemyIA>();
+        status = GetComponent<StatusEffects>();
+         ia = GetComponent<EnemyIA>();
+       
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     private void Start()
@@ -37,6 +40,12 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MoveCharacter();
+
+        if (status.actualStatusEffect == _statusEffects.pushedBack)
+        {
+            PushEnemyBack();
+        }
+        
     }
 
     #endregion
@@ -66,7 +75,7 @@ public class EnemyMovement : MonoBehaviour
     }
     private void MoveCharacter()
     {
-        if (ia.chasingPlayer && !controller.isStunned && !controller.IsDead)
+        if (ia.chasingPlayer && !controller.isStunned && !controller.IsDead && status.actualStatusEffect != _statusEffects.pushedBack)
         {
             rigidBody.velocity = new Vector2(ia.GetPlayerPos().x * controller.horizontal_speed, ia.GetPlayerPos().y * controller.vertical_speed);
         }
@@ -83,17 +92,17 @@ public class EnemyMovement : MonoBehaviour
         rigidBody.velocity = Vector2.zero;
     }
 
-    public void PushEnemyBack(float pushBackForce)
+    public void PushEnemyBack()
     {
         if (controller.playersPos.x > transform.position.x)
         {
-            rigidBody.velocity = Vector2.zero;
-            rigidBody.AddForce(Vector2.left * pushBackForce);
+            Debug.Log("Push left");
+            rigidBody.AddForce(Vector2.left * pushForce, ForceMode2D.Impulse);
         }
         else if (controller.playersPos.x < transform.position.x)
         {
-            rigidBody.velocity = Vector2.zero;
-            rigidBody.AddForce(Vector2.right * pushBackForce);
+            Debug.Log("Push right");
+            rigidBody.AddForce(Vector2.right * pushForce, ForceMode2D.Impulse);
         }
         
     }

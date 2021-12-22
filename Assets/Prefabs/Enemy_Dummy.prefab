@@ -155,6 +155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703f9133bafafad4498c0b48f7548bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: {fileID: 0}
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &3178485900652487149
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +485,7 @@ MonoBehaviour:
   playersPos: {x: 0, y: 0}
   isStunned: 0
   isDummy: 1
+  moneyReward: 0
 --- !u!114 &2951898938165157171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,6 +686,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703f9133bafafad4498c0b48f7548bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: {fileID: 0}
+  trail: {fileID: 0}
+  effectOnTop: 0
+  effectOnBot: 0
 --- !u!1 &3178485901950980362
 GameObject:
   m_ObjectHideFlags: 0

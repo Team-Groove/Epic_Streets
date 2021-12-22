@@ -3,27 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NPCcontroller : MonoBehaviour
+public class NPCController : MonoBehaviour
 {
     
     [SerializeField] private GameObject dialogue;
 
     [SerializeField] private GameObject EToTalk;
 
+    public bool canTalkTo;
+
     private void Start()
     {
         EToTalk.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (dialogue.activeSelf) canTalkTo = false;
+        else canTalkTo = true;
+    }
 
+    public bool DialogueActive()
+    {
+        return dialogue.activeSelf;
+    }
 
     public void ActivateDialogue()
     {
         dialogue.SetActive(true);
     }
-    public bool DialogueActive()
+    public bool CanTalk()
     {
-        return dialogue.activeSelf;
+        return canTalkTo;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

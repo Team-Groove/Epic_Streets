@@ -3,13 +3,12 @@ using UnityEngine;
 using TMPro;
 
 
-public enum _statusEffects {normal, poisoned, freezed, burned, stunned, pushedBack }
+public enum _statusEffects {normal, poisoned, freezed, burned, pushedBack }
 
 public class StatusEffects : MonoBehaviour
 {
     private EnemyMovement movement;
-    private EnemyHurtBox hurtbox;
-    private EnemyIA ia;
+ 
     private AttackDamageManager damageManager;
     private EnemyController controller;
 
@@ -25,8 +24,8 @@ public class StatusEffects : MonoBehaviour
     private void Awake()
     {
         movement = GetComponent<EnemyMovement>();
-        hurtbox = GetComponent<EnemyHurtBox>();
-        ia = GetComponent<EnemyIA>();
+        //hurtbox = GetComponent<EnemyHurtBox>();
+        //ia = GetComponent<EnemyIA>();
         controller = GetComponent<EnemyController>();
         damageManager = FindObjectOfType<AttackDamageManager>();
     }
@@ -69,25 +68,29 @@ public class StatusEffects : MonoBehaviour
 
                 break;
             
-            case _statusEffects.stunned:
-
-                
-
-                break;
+ 
             
             case _statusEffects.pushedBack:
 
-                StartCoroutine(PushedState());
+                PushedBack();
 
                 break;
             
         }
     }
 
-    private IEnumerator PushedState()
+    private IEnumerator PushedState(float duration, Color color)
     {
-        movement.PushEnemyBack(damageManager.windForce);
-        yield return new WaitForSeconds(0.5f);
+        SetStatusNamePopUp("Pushed", color);
+     
+        controller.EnemyStatusEffectFeedback(color);
+
+        yield return new WaitForSeconds(duration);
+
+        popUpStatusName.SetActive(false);
+
+        controller.EnemyNoStatusFeedback();
+
         actualStatusEffect = _statusEffects.normal;
     }
     private IEnumerator PoisonedStatus(Color color, float poisonDamage, float damagePerLoop, float interval)
@@ -189,7 +192,14 @@ public class StatusEffects : MonoBehaviour
             StartCoroutine(BurnedStatus( new Color(1f, 120f / 255f, 49 / 255f), damageManager.burnTotalDamage, damageManager.burnDamagePerLoop, damageManager.burnInterval));
         }
     }
-
+    public void PushedBack()
+    {
+        if (!isStatusOn)
+        {
+            isStatusOn = true;
+            StartCoroutine(PushedState(0.5f, Color.grey));
+        }
+    }
     private void SetStatusNamePopUp(string statusName, Color color)
     {
         popUpStatusName.GetComponentInChildren<TextMeshPro>().text = statusName;
