@@ -4254,6 +4254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effects_s: {fileID: 1938724537}
   music_s: {fileID: 297438550}
+  firstRun: 1
 --- !u!1 &1578747683
 GameObject:
   m_ObjectHideFlags: 0

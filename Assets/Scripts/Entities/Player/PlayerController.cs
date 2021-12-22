@@ -14,6 +14,8 @@ public class PlayerController : Fighter
 
     public UIController uiController;
     private PlayersHealthBar playerhealthBar;
+    private SceneController sceneController;
+
 
     private Keyboard keyboard;
 
@@ -21,7 +23,9 @@ public class PlayerController : Fighter
 
     private string playerHpPrefName = "PlayerHp";
     private string playerMaxHpPrefName = "PlayerMaxHp";
-    
+
+    private float newpluslife = 100;
+
     public bool maxHpUpgraded = false;
 
     #endregion
@@ -34,20 +38,24 @@ public class PlayerController : Fighter
         LoadData();
         
         playerhealthBar = GetComponent<PlayersHealthBar>();
-   
+        sceneController = FindObjectOfType<SceneController>();
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponentInChildren<BoxCollider2D>();
 
         if (SceneManager.GetSceneByName("MainHub").IsValid())
         {
             IsDead = false;
+            if (sceneController.endGameNum > 0)
+            {
+                maxhealth += newpluslife;
+            }
             currenthealth = maxhealth;
         }
         
     }
 
     private void Start()
-    { 
+    {
         keyboard = Keyboard.current; 
     }
 
@@ -168,6 +176,7 @@ public class PlayerController : Fighter
         }
 
     }
+
 
     #endregion
 }

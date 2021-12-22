@@ -24,8 +24,23 @@ public class HealthPack : MonoBehaviour
 
     private void OnDestroy()
     {
-        player.currenthealth += healthToPlayer;
-        PlayerPrefs.SetFloat(playerHpPrefName, player.currenthealth);
+        if (player.currenthealth == player.maxhealth)
+        {
+            return;
+        }
+        else 
+        {
+
+            player.currenthealth += healthToPlayer;
+
+            if (player.currenthealth > player.maxhealth)
+            {
+                player.currenthealth = player.maxhealth;
+            }
+                
+            PlayerPrefs.SetFloat(playerHpPrefName, player.currenthealth);
+        }
+     
     }
 
 }

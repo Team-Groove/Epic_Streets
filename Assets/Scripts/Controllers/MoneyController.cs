@@ -9,12 +9,28 @@ public class MoneyController : MonoBehaviour
     [SerializeField]
     public static float currentMoney;
     public static bool canUpgrade;
-    
-    [SerializeField] private TextMeshProUGUI uiDisplay;
 
+    private SceneController sceneController;
+
+    [SerializeField] private TextMeshProUGUI uiDisplay;
+    [SerializeField] private TextMeshProUGUI newgameplus;
 
     private void Awake()
     {
+
+        sceneController = FindObjectOfType<SceneController>();
+
+        if (sceneController.endGameNum > 0)
+        {
+            newgameplus.gameObject.SetActive(true);
+            newgameplus.text = "New Game+ " + sceneController.endGameNum;
+        }
+        else
+        {
+            newgameplus.text = null;
+            newgameplus.gameObject.SetActive(false);
+        }
+
         LoadData();
 
         player = GameObject.Find("Player").GetComponent<PlayerController>();

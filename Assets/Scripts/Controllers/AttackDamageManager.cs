@@ -2,6 +2,29 @@ using UnityEngine;
 
 public class AttackDamageManager : MonoBehaviour
 {
+
+    private SceneController sceneController;
+    private int multiplier;
+    
+    private void Awake()
+    {
+        sceneController = FindObjectOfType<SceneController>();
+
+        if (sceneController.endGameNum > 0)
+        {
+            multiplier = sceneController.endGameNum + 1;
+
+            fighterDmg *= multiplier / 1.5f;
+            goblinDmg *= multiplier / 1.5f;
+            bossDmg *= multiplier / 1.5f;
+        }
+    }
+
+    private void Update()
+    {
+       
+    }
+
     [HideInInspector] public bool canPoison;
     [HideInInspector] public bool canFreeze;
     [HideInInspector] public bool canBurn;

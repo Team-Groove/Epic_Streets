@@ -805,11 +805,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6c28f1c61193046964933f17df3957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: Do you have the money ?
+  input: Good luck !
   delay: 0.01
   characterSprite: {fileID: 21300000, guid: cf7404d6a96716848aaaa4768b0d4f26, type: 3}
   imageHolder: {fileID: 1433941208}
-  canUpgrade: 1
+  canUpgrade: 0
 --- !u!114 &64663185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1926,11 +1926,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3384063987755374505, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.1775055
+      value: 9.188316
       objectReference: {fileID: 0}
     - target: {fileID: 3384063987755374505, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.042263985
+      value: -0.04231167
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cd5f02b33dd62d45bddd05ac1160174, type: 3}
@@ -2392,30 +2392,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 16376917921340876, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 16376917921340876, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: m_SortingOrder
-      value: -649
-      objectReference: {fileID: 0}
-    - target: {fileID: 16376917921340876, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1043667075
-      objectReference: {fileID: 0}
-    - target: {fileID: 935259350177713153, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: effect
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 935259350177713153, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: multiplier
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1229313923427183373, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: players
-      value: 
-      objectReference: {fileID: 1543581079}
     - target: {fileID: 6002284491756347681, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2463,54 +2439,6 @@ PrefabInstance:
     - target: {fileID: 6002284491756347687, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6002284491756347707, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: attackColors.Array.data[0].color.b
-      value: 0.045021314
-      objectReference: {fileID: 0}
-    - target: {fileID: 6002284491756347707, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: attackColors.Array.data[0].color.g
-      value: 0.3301887
-      objectReference: {fileID: 0}
-    - target: {fileID: 6002284491756347707, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: attackColors.Array.data[0].color.r
-      value: 0.035822365
-      objectReference: {fileID: 0}
-    - target: {fileID: 6002284491756347707, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: attackColors.Array.data[2].color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6002284491756347707, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: attackColors.Array.data[2].color.g
-      value: 0.07994806
-      objectReference: {fileID: 0}
-    - target: {fileID: 6002284491756347707, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: attackColors.Array.data[2].color.r
-      value: 0.38679248
-      objectReference: {fileID: 0}
-    - target: {fileID: 6002284491756347707, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: attackColors.Array.data[0].intensity
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6002284491756347707, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: attackColors.Array.data[1].intensity
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 6002284491756347707, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: attackColors.Array.data[2].intensity
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6002284491756347708, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: currenthealth
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203726880375476604, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8701653049484630642, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
@@ -7288,7 +7216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6c28f1c61193046964933f17df3957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: I can upgrade your stats...
+  input: You might find one that fits you combat style
   delay: 0.01
   characterSprite: {fileID: 21300000, guid: cf7404d6a96716848aaaa4768b0d4f26, type: 3}
   imageHolder: {fileID: 603710768}
@@ -19626,11 +19554,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ff19162ff2179f4088cd585f2655956, type: 3}
---- !u!212 &1543581079 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6002284491983274009, guid: e8dbb41b78730054b9b18149c2dad20c, type: 3}
-  m_PrefabInstance: {fileID: 296971623}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1565138980
 GameObject:
   m_ObjectHideFlags: 0
@@ -20063,7 +19986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6c28f1c61193046964933f17df3957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: 'Also, I can always use some money. If you have 500 of our currency... '
+  input: Try different combinations in your combo menu
   delay: 0.01
   characterSprite: {fileID: 21300000, guid: cf7404d6a96716848aaaa4768b0d4f26, type: 3}
   imageHolder: {fileID: 237411090}

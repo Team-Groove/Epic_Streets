@@ -294,7 +294,7 @@ MonoBehaviour:
   vertical_speed: 6
   horizontal_speed: 6
   maxhealth: 100
-  currenthealth: 100
+  currenthealth: 50
   rigidBody: {fileID: 0}
   healthBar: {fileID: 0}
   IsDead: 0
@@ -331,14 +331,14 @@ MonoBehaviour:
   attackTag: {fileID: 6002284492560559993}
   attackColors:
   - name: Veneno
-    color: {r: 0.05513528, g: 0.5566038, b: 0.07199136, a: 1}
+    color: {r: 0.05882353, g: 0.3882353, b: 0, a: 1}
     intensity: 50
   - name: Hielo
     color: {r: 0.0016909974, g: 0.34087086, b: 0.3584906, a: 0}
-    intensity: 300
+    intensity: 250
   - name: Fuego
-    color: {r: 0.9811321, g: 0.68992424, b: 0, a: 0}
-    intensity: 5
+    color: {r: 0.38679248, g: 0.07994806, b: 0, a: 0}
+    intensity: 10
   - name: Viento
     color: {r: 0.80544674, g: 0.9433962, b: 0.9303316, a: 0}
     intensity: 10
@@ -958,7 +958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2682553445833207648}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: SpawnParticules
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -990,7 +990,7 @@ GameObject:
   - component: {fileID: 8152270593373747451}
   - component: {fileID: 5527669256840651815}
   - component: {fileID: 3890128513523301846}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: HurtBox
   m_TagString: PlayerHurtBox
   m_Icon: {fileID: 0}

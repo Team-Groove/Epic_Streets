@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6154346994511669972}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: 'StatusSpawn '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6154346995271991798}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: ParticleSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6154346995840461700}
   - component: {fileID: 6154346995840461703}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: StatusNamePopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 6154346995930828011}
   - component: {fileID: 6154346995930828013}
   - component: {fileID: 6154346995930828010}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6154346996276249523}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: NumberSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1052,7 +1052,7 @@ GameObject:
   - component: {fileID: 6154346996308550448}
   - component: {fileID: 6154346996308550451}
   - component: {fileID: 6154346996308550450}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Hurtbox
   m_TagString: Enemy
   m_Icon: {fileID: 0}
