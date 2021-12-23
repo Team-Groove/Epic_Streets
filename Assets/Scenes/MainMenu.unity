@@ -183,6 +183,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7258467181942944973, guid: f7e5cc5b69c5c5c44bb5d4c44b560f11, type: 3}
+      propertyPath: sounds.Array.data[8].pitch
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258467181942944973, guid: f7e5cc5b69c5c5c44bb5d4c44b560f11, type: 3}
+      propertyPath: sounds.Array.data[8].volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258467181942944973, guid: f7e5cc5b69c5c5c44bb5d4c44b560f11, type: 3}
       propertyPath: musics.Array.data[1].audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 4d691b207e4302940ad7f75d7559cf12, type: 3}
@@ -5926,6 +5934,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7811162877951838913, guid: 8ce69a14ef3abab43b243465a810f9b9, type: 3}
+      propertyPath: endGameNum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7811162877951838917, guid: 8ce69a14ef3abab43b243465a810f9b9, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -8,7 +8,7 @@ public class AttackDamageManager : MonoBehaviour
     
     private void Awake()
     {
-        sceneController = FindObjectOfType<SceneController>();
+        sceneController = GameObject.Find("SceneController").GetComponent<SceneController>();
 
         if (sceneController.endGameNum > 0)
         {
@@ -20,10 +20,6 @@ public class AttackDamageManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-       
-    }
 
     [HideInInspector] public bool canPoison;
     [HideInInspector] public bool canFreeze;

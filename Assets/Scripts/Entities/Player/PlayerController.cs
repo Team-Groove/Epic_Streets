@@ -38,7 +38,7 @@ public class PlayerController : Fighter
         LoadData();
         
         playerhealthBar = GetComponent<PlayersHealthBar>();
-        sceneController = FindObjectOfType<SceneController>();
+        sceneController = GameObject.Find("SceneController").GetComponent<SceneController>();
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponentInChildren<BoxCollider2D>();
 

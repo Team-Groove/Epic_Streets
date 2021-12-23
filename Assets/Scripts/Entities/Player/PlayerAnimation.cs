@@ -368,7 +368,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlaySoundDash()
     {
-        audioManager.Play("Dash");
+        audioManager.Play("Dash", 0.9f, 0.45f);
     }
     public void PlaySoundFireKick()
     {

@@ -18,7 +18,7 @@ public class MoneyController : MonoBehaviour
     private void Awake()
     {
 
-        sceneController = FindObjectOfType<SceneController>();
+        sceneController = GameObject.Find("SceneController").GetComponent<SceneController>();
 
         if (sceneController.endGameNum > 0)
         {

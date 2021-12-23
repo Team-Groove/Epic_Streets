@@ -7,7 +7,7 @@ public class EndGame : MonoBehaviour
 
     private void Start()
     {
-        sceneController = FindObjectOfType<SceneController>();
+        sceneController = GameObject.Find("SceneController").GetComponent<SceneController>();
         sceneController.endGameNum += 1;
     }
 
@@ -15,14 +15,11 @@ public class EndGame : MonoBehaviour
     {
         SceneController.LoadScene("MainHub", 1f, 1f);
     }
-    
-    private void SaveData()
+
+    public void Quit()
     {
-  
+        Application.Quit();
     }
 
-    private void OnDestroy()
-    {
-        SaveData();
-    }
+   
 }

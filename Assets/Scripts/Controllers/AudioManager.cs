@@ -77,7 +77,7 @@ public class AudioManager: MonoBehaviour
         }
     }
 
-    public void Play(string name, float pitch = (1))
+    public void Play(string name, float pitch = (1), float volume = (0f))
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
       
@@ -87,7 +87,7 @@ public class AudioManager: MonoBehaviour
             return;
         }
 
-        s.audioSource.volume = effectVolume;
+        s.audioSource.volume = effectVolume - volume;
 
         s.audioSource.pitch = pitch;
         s.audioSource.Play();
