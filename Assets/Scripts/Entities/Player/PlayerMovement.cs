@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private AttackSystem attack;
     private PlayerAnimation anim;
     private PlayerController player;
+    private UIController uiController;
 
     private float pitch;
 
@@ -60,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FlipSprite()
     {
-        if (player.IsDead || player.InDialogue())
+        if (player.IsDead || player.InDialogue() || uiController.gameInPause)
         {
             return;
         }
@@ -78,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void CheckIfMoving()
     {
-        if (controlAxis != Vector2.zero)
+        if (controlAxis != Vector2.zero && !uiController.gameInPause)
         {
             isMoving = true;
         }
@@ -108,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
         attack = GetComponent<AttackSystem>();
         anim = GetComponent<PlayerAnimation>();
         player = GetComponent<PlayerController>();
+        uiController = GameObject.Find("UIController").GetComponent<UIController>();
     }
 
     #endregion

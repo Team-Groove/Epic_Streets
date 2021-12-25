@@ -5936,7 +5936,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7811162877951838913, guid: 8ce69a14ef3abab43b243465a810f9b9, type: 3}
       propertyPath: endGameNum
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7811162877951838917, guid: 8ce69a14ef3abab43b243465a810f9b9, type: 3}
       propertyPath: m_Pivot.x

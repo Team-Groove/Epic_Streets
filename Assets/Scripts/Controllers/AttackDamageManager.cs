@@ -12,11 +12,11 @@ public class AttackDamageManager : MonoBehaviour
 
         if (sceneController.endGameNum > 0)
         {
-            multiplier = sceneController.endGameNum + 1;
+            multiplier = sceneController.endGameNum + 2;
 
-            fighterDmg *= multiplier / 1.5f;
-            goblinDmg *= multiplier / 1.5f;
-            bossDmg *= multiplier / 1.5f;
+            fighterDmg *= multiplier / 2f;
+            goblinDmg *= multiplier / 2f;
+            bossDmg *= multiplier / 2f;
         }
     }
 

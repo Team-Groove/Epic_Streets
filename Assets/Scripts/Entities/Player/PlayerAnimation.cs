@@ -18,6 +18,7 @@ public class PlayerAnimation : MonoBehaviour
     private ComboSystemManager comboSystem;
     public AttackDamageManager damageManager;
     private AudioManager audioManager;
+    private UIController uiController;
 
     public SpriteRenderer spriteRenderer;
 
@@ -44,6 +45,7 @@ public class PlayerAnimation : MonoBehaviour
         comboSystem = FindObjectOfType<ComboSystemManager>();
         damageManager = FindObjectOfType<AttackDamageManager>();
         audioManager = FindObjectOfType<AudioManager>();
+        uiController = GameObject.Find("UIController").GetComponent<UIController>();
         GetStringFromComboSystem();
     }
 
@@ -55,28 +57,39 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        if (!controller.IsDead && !controller.InDialogue())
+        if (!controller.IsDead && !controller.InDialogue() || !uiController.gameInPause)
         {
             GetStringFromComboSystem();
 
-            SetAnimationBool(movement.isMoving, "Run");
+            SetAnimationBool( "Run", movement.isMoving);
 
-            PlayAnimation(dash.isDashingX, "Dash");
-            PlayAnimation(dash.isDashingY, "Dash_Y");
+         
             //CONDICION ATAQUE FUERTE
             CheckStateInfo_Play("Punch_1", attack.strongAttack, "StrongPunch", "Punch_2", "Kick_2");
             //CONDICION ATAQUES NORMALES
             CheckStateInfo_Play("StrongPunch", attack.normalAttack, normalAttackAnimationsNames[currentAttackIndex], "DistanceAttack");
             //CONDICION ATAQUE A DISTANCIA
             CheckStateInfo_Play("Punch_1", distance.distanceAttack, "DistanceAttack", "Punch_2", "Kick_2", "StrongPunch");
-
+           
+         
+           
+            PlayAnimation(dash.isDashingY, "Dash_Y");
+            PlayAnimation(dash.isDashingX, "Dash");
+            
+            
             StopVelocityMovementWhenAttack();
 
            
         }
        
         DeathAnimation();
-        
+
+        if (controller.InDialogue())
+        {
+            animator.SetBool("Run", false);
+            animator.Play("Idle");
+        }
+  
 
         //CAMBIAR EL COLOR DEL MATERIAL 
 
@@ -123,7 +136,7 @@ public class PlayerAnimation : MonoBehaviour
             }
         }
     }
-    private void SetAnimationBool(bool isActive, string stateName)
+    private void SetAnimationBool(string stateName, bool isActive)
     {
         animator.SetBool(stateName, isActive);
     }
@@ -368,7 +381,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlaySoundDash()
     {
-        audioManager.Play("Dash", 0.9f, 0.45f);
+        audioManager.Play("Dash", 0.9f, 0.1f);
     }
     public void PlaySoundFireKick()
     {
